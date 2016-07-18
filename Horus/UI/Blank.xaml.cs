@@ -23,9 +23,9 @@ namespace Horus
         {
             InitializeComponent();
 
-            this.Loaded += Blank_Loaded;
-            this.MouseDown += Blank_MouseDown;
-            this.KeyUp += Blank_KeyUp;
+            //this.Loaded += Blank_Loaded;
+            //this.MouseDown += Blank_MouseDown;
+            //this.KeyUp += Blank_KeyUp;
         }
 
         private void Blank_KeyUp(object sender, KeyEventArgs e)

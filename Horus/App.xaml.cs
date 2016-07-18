@@ -1,5 +1,6 @@
 ﻿using Accord.Vision.Detection;
 using AForge.Video.DirectShow;
+using Horus.Classes;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -20,15 +21,10 @@ namespace Horus
     public partial class App : System.Windows.Application
     {
         //Global Variables
-        public static string imageSavePath = @"\Captures";
+        public static string imageSavePath = "";
         public static string currentIP = "";
 
-        //Create an Instance for VideoCaptureDevice
-        private VideoCaptureDevice videoCaptureDevice;
-
-        //Create an Instance for Haar Object
-        private HaarObjectDetector haarObjectDetector;
-        private HaarCascade cascade;
+        public static AbstractSMSService smsClient;
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
@@ -55,6 +51,11 @@ namespace Horus
                         window.Show();
                     }
                 }
+
+                //Set Image Storage Path & Create Directory if required
+                imageSavePath = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Captures");
+                if (!Directory.Exists(imageSavePath))
+                    Directory.CreateDirectory(imageSavePath);
 
                 //Load Settings From Configuration File
                 if (File.Exists("Settings.xml"))
@@ -103,6 +104,32 @@ namespace Horus
                        direction = direction.Substring(first, last - first);
                        currentIP = direction;
                    });
+        }
+
+        public static void setSMSService(string carrierName)
+        {
+            switch (carrierName)
+            {
+                case "Telstra":
+                    App.smsClient = new TelstraSMSService();
+                    break;
+                case "Optus":
+                    App.smsClient = new OptusSMSService();
+                    break;
+                case "Vodafone":
+                    App.smsClient = new VodafoneSMSService();
+                    break;
+            }
+        }
+
+        public static void setMobileNumber(string phoneNum)
+        {
+            smsClient.setMobileNumber(phoneNum);
+        }
+
+        public static void setUserName(string userName)
+        {
+            smsClient.setUserName(userName);
         }
     }
 }
