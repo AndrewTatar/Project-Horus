@@ -53,7 +53,7 @@ namespace Horus
         {
             InitializeComponent();
 
-            //this.Loaded += MainWindow_Loaded;
+            this.Loaded += MainWindow_Loaded;
             //this.MouseDown += MainWindow_MouseDown;
             //this.KeyUp += MainWindow_KeyUp;
         }
