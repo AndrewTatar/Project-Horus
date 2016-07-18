@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://tempuri.org/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xs="http://www.w3.org/2001/XMLSchema" name="ISOAPServerservice" targetNamespace="http://tempuri.org/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types />
+  <message name="SendSMS2Request">
+    <part name="strInSerialNo" type="xs:string" />
+    <part name="strInSMSKey" type="xs:string" />
+    <part name="strInRecipients" type="xs:string" />
+    <part name="strInContent1" type="xs:base64Binary" />
+    <part name="strInContent2" type="xs:string" />
+    <part name="strInOriginator" type="xs:string" />
+    <part name="strInReplyEmail" type="xs:string" />
+    <part name="strInScheduledUTCDateTime" type="xs:string" />
+    <part name="iInMessageType" type="xs:int" />
+    <part name="iInOptions" type="xs:int" />
+    <part name="strOutMessageIDs" type="xs:string" />
+  </message>
+  <message name="SendSMS2Response">
+    <part name="strOutMessageIDs" type="xs:string" />
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="SendTextSMSRequest">
+    <part name="strInSerialNo" type="xs:string" />
+    <part name="strInSMSKey" type="xs:string" />
+    <part name="strInRecipients" type="xs:string" />
+    <part name="strInMessageText" type="xs:string" />
+    <part name="strInReplyEmail" type="xs:string" />
+    <part name="strInOriginator" type="xs:string" />
+    <part name="iInType" type="xs:int" />
+    <part name="strOutMessageIDs" type="xs:string" />
+  </message>
+  <message name="SendTextSMSResponse">
+    <part name="strOutMessageIDs" type="xs:string" />
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="SendWideSMSRequest">
+    <part name="strInSerialNo" type="xs:string" />
+    <part name="strInSMSKey" type="xs:string" />
+    <part name="strInRecipients" type="xs:string" />
+    <part name="strInMessageText" type="xs:string" />
+    <part name="strInReplyEmail" type="xs:string" />
+    <part name="strInOriginator" type="xs:string" />
+    <part name="iInType" type="xs:int" />
+    <part name="strOutMessageIDs" type="xs:string" />
+  </message>
+  <message name="SendWideSMSResponse">
+    <part name="strOutMessageIDs" type="xs:string" />
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="SendBinarySMSRequest">
+    <part name="strInSerialNo" type="xs:string" />
+    <part name="strInSMSKey" type="xs:string" />
+    <part name="strInRecipients" type="xs:string" />
+    <part name="strInBinaryContent" type="xs:base64Binary" />
+    <part name="strInExtraParam" type="xs:string" />
+    <part name="strInReplyEmail" type="xs:string" />
+    <part name="iInType" type="xs:int" />
+    <part name="strOutMessageIDs" type="xs:string" />
+  </message>
+  <message name="SendBinarySMSResponse">
+    <part name="strOutMessageIDs" type="xs:string" />
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="SendBinarySMSByContentRequest">
+    <part name="strInSerialNo" type="xs:string" />
+    <part name="strInSMSKey" type="xs:string" />
+    <part name="strInRecipients" type="xs:string" />
+    <part name="strInBinaryContent" type="xs:base64Binary" />
+    <part name="strInExtraParam" type="xs:string" />
+    <part name="strInReplyEmail" type="xs:string" />
+    <part name="iInContentType" type="xs:int" />
+    <part name="iInSourceType" type="xs:int" />
+    <part name="strOutMessageIDs" type="xs:string" />
+  </message>
+  <message name="SendBinarySMSByContentResponse">
+    <part name="strOutMessageIDs" type="xs:string" />
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="SendWAPSIRequest">
+    <part name="strInSerialNo" type="xs:string" />
+    <part name="strInSMSKey" type="xs:string" />
+    <part name="strInRecipients" type="xs:string" />
+    <part name="strInURL" type="xs:string" />
+    <part name="strInContent" type="xs:string" />
+    <part name="strInReplyEmail" type="xs:string" />
+    <part name="strOutMessageIDs" type="xs:string" />
+  </message>
+  <message name="SendWAPSIResponse">
+    <part name="strOutMessageIDs" type="xs:string" />
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="CreateMMSRequest">
+    <part name="strInSerialNo" type="xs:string" />
+    <part name="strInSMSKey" type="xs:string" />
+    <part name="strInOutTransactionID" type="xs:string" />
+  </message>
+  <message name="CreateMMSResponse">
+    <part name="strInOutTransactionID" type="xs:string" />
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="AddMMSContentRequest">
+    <part name="strInSerialNo" type="xs:string" />
+    <part name="strInSMSKey" type="xs:string" />
+    <part name="strInTransactionID" type="xs:string" />
+    <part name="strInContent" type="xs:base64Binary" />
+    <part name="strInContentType" type="xs:string" />
+    <part name="strInContentLocationOrID" type="xs:string" />
+  </message>
+  <message name="AddMMSContentResponse">
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="AddBase64MMSContentRequest">
+    <part name="strInSerialNo" type="xs:string" />
+    <part name="strInSMSKey" type="xs:string" />
+    <part name="strInTransactionID" type="xs:string" />
+    <part name="strInBase64Content" type="xs:string" />
+    <part name="strInContentType" type="xs:string" />
+    <part name="strInContentLocationOrID" type="xs:string" />
+  </message>
+  <message name="AddBase64MMSContentResponse">
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="SendMMSRequest">
+    <part name="strInSerialNo" type="xs:string" />
+    <part name="strInSMSKey" type="xs:string" />
+    <part name="strInTransactionID" type="xs:string" />
+    <part name="strInRecipients" type="xs:string" />
+    <part name="strInSubject" type="xs:string" />
+    <part name="strInReplyEmail" type="xs:string" />
+    <part name="strOutMessageIDs" type="xs:string" />
+  </message>
+  <message name="SendMMSResponse">
+    <part name="strOutMessageIDs" type="xs:string" />
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="SendMobileContentRequest">
+    <part name="strInSerialNo" type="xs:string" />
+    <part name="strInSMSKey" type="xs:string" />
+    <part name="strInRecipients" type="xs:string" />
+    <part name="strInCodeID" type="xs:string" />
+    <part name="strInExtraParam" type="xs:string" />
+    <part name="strInReplyEmail" type="xs:string" />
+    <part name="iInOptions" type="xs:int" />
+    <part name="strOutMessageIDs" type="xs:string" />
+  </message>
+  <message name="SendMobileContentResponse">
+    <part name="strOutMessageIDs" type="xs:string" />
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="GetMobileContentPreviewURLRequest">
+    <part name="strInSerialNo" type="xs:string" />
+    <part name="strInSMSKey" type="xs:string" />
+    <part name="strInCodeID" type="xs:string" />
+    <part name="strOutURL" type="xs:string" />
+  </message>
+  <message name="GetMobileContentPreviewURLResponse">
+    <part name="strOutURL" type="xs:string" />
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="CheckMessageStatusRequest">
+    <part name="strInSerialNo" type="xs:string" />
+    <part name="strInSMSKey" type="xs:string" />
+    <part name="strInMessageIDs" type="xs:string" />
+    <part name="strOutMessageStatus" type="xs:string" />
+  </message>
+  <message name="CheckMessageStatusResponse">
+    <part name="strOutMessageStatus" type="xs:string" />
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="GetPropertyPageRequest">
+    <part name="strInSerialNo" type="xs:string" />
+    <part name="strInSMSKey" type="xs:string" />
+    <part name="strOutContent" type="xs:string" />
+    <part name="bFirstUse" type="xs:boolean" />
+  </message>
+  <message name="GetPropertyPageResponse">
+    <part name="strOutContent" type="xs:string" />
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="GetCreditsLeftRequest">
+    <part name="strInSerialNo" type="xs:string" />
+    <part name="strInSMSKey" type="xs:string" />
+    <part name="dOutCreditsLeft" type="xs:double" />
+  </message>
+  <message name="GetCreditsLeftResponse">
+    <part name="dOutCreditsLeft" type="xs:double" />
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="GetLicenseInformationRequest">
+    <part name="strInSerialNo" type="xs:string" />
+    <part name="strInSMSKey" type="xs:string" />
+    <part name="strOutLicenseInfo" type="xs:string" />
+  </message>
+  <message name="GetLicenseInformationResponse">
+    <part name="strOutLicenseInfo" type="xs:string" />
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="GetIncomingMessageRequest">
+    <part name="strInSerialNo" type="xs:string" />
+    <part name="strInSMSKey" type="xs:string" />
+    <part name="strInReplyEmail" type="xs:string" />
+    <part name="strOutSender" type="xs:string" />
+    <part name="strOutMessageContent" type="xs:string" />
+    <part name="strOutTimeStamp" type="xs:string" />
+    <part name="iOutMessagesLeft" type="xs:int" />
+  </message>
+  <message name="GetIncomingMessageResponse">
+    <part name="strOutSender" type="xs:string" />
+    <part name="strOutMessageContent" type="xs:string" />
+    <part name="strOutTimeStamp" type="xs:string" />
+    <part name="iOutMessagesLeft" type="xs:int" />
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="EnterScheduleRequest">
+    <part name="strInSerialNo" type="xs:string" />
+    <part name="strInSMSKey" type="xs:string" />
+    <part name="strInRecipients" type="xs:string" />
+    <part name="strInMessageText" type="xs:string" />
+    <part name="strInReplyEmail" type="xs:string" />
+    <part name="strInOriginator" type="xs:string" />
+    <part name="dInDateTime" type="xs:double" />
+    <part name="dInRefTime" type="xs:double" />
+    <part name="iInType" type="xs:int" />
+  </message>
+  <message name="EnterScheduleResponse">
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="EnterScheduleExtRequest">
+    <part name="strInSerialNo" type="xs:string" />
+    <part name="strInSMSKey" type="xs:string" />
+    <part name="strInRecipients" type="xs:string" />
+    <part name="strInMessageText" type="xs:string" />
+    <part name="strInReplyEmail" type="xs:string" />
+    <part name="strInOriginator" type="xs:string" />
+    <part name="dInDateTime" type="xs:double" />
+    <part name="dInRefTime" type="xs:double" />
+    <part name="iInType" type="xs:int" />
+    <part name="strOutMessageIDs" type="xs:string" />
+  </message>
+  <message name="EnterScheduleExtResponse">
+    <part name="strOutMessageIDs" type="xs:string" />
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="DeleteScheduleRequest">
+    <part name="strInSerialNo" type="xs:string" />
+    <part name="strInSMSKey" type="xs:string" />
+    <part name="strInMessageIDs" type="xs:string" />
+  </message>
+  <message name="DeleteScheduleResponse">
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="CreateGroupRequest">
+    <part name="strInSerialNo" type="xs:string" />
+    <part name="strInSMSKey" type="xs:string" />
+    <part name="strInGroupName" type="xs:string" />
+    <part name="strInGroupMembers" type="xs:string" />
+    <part name="iOutMembersCreated" type="xs:int" />
+  </message>
+  <message name="CreateGroupResponse">
+    <part name="iOutMembersCreated" type="xs:int" />
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="GetListNamesRequest">
+    <part name="strInSerialNo" type="xs:string" />
+    <part name="strInSMSKey" type="xs:string" />
+    <part name="strOutListNames" type="xs:string" />
+  </message>
+  <message name="GetListNamesResponse">
+    <part name="strOutListNames" type="xs:string" />
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="GetListEntriesRequest">
+    <part name="strInSerialNo" type="xs:string" />
+    <part name="strInSMSKey" type="xs:string" />
+    <part name="iInListID" type="xs:int" />
+    <part name="strOutListEntries" type="xs:string" />
+  </message>
+  <message name="GetListEntriesResponse">
+    <part name="strOutListEntries" type="xs:string" />
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="RegisterAccountRequest">
+    <part name="strInSerialNo" type="xs:string" />
+    <part name="strInSMSKey" type="xs:string" />
+    <part name="strInName" type="xs:string" />
+    <part name="strInEmailAddress" type="xs:string" />
+    <part name="strInOrganization" type="xs:string" />
+    <part name="strInPhone" type="xs:string" />
+    <part name="iInCountryID" type="xs:int" />
+    <part name="strOutSMSKey" type="xs:string" />
+  </message>
+  <message name="RegisterAccountResponse">
+    <part name="strOutSMSKey" type="xs:string" />
+    <part name="return" type="xs:int" />
+  </message>
+  <message name="RedWebServiceVersionRequest" />
+  <message name="RedWebServiceVersionResponse">
+    <part name="return" type="xs:string" />
+  </message>
+  <portType name="ISOAPServer">
+    <operation name="SendSMS2">
+      <input message="tns:SendSMS2Request" />
+      <output message="tns:SendSMS2Response" />
+    </operation>
+    <operation name="SendTextSMS">
+      <input message="tns:SendTextSMSRequest" />
+      <output message="tns:SendTextSMSResponse" />
+    </operation>
+    <operation name="SendWideSMS">
+      <input message="tns:SendWideSMSRequest" />
+      <output message="tns:SendWideSMSResponse" />
+    </operation>
+    <operation name="SendBinarySMS">
+      <input message="tns:SendBinarySMSRequest" />
+      <output message="tns:SendBinarySMSResponse" />
+    </operation>
+    <operation name="SendBinarySMSByContent">
+      <input message="tns:SendBinarySMSByContentRequest" />
+      <output message="tns:SendBinarySMSByContentResponse" />
+    </operation>
+    <operation name="SendWAPSI">
+      <input message="tns:SendWAPSIRequest" />
+      <output message="tns:SendWAPSIResponse" />
+    </operation>
+    <operation name="CreateMMS">
+      <input message="tns:CreateMMSRequest" />
+      <output message="tns:CreateMMSResponse" />
+    </operation>
+    <operation name="AddMMSContent">
+      <input message="tns:AddMMSContentRequest" />
+      <output message="tns:AddMMSContentResponse" />
+    </operation>
+    <operation name="AddBase64MMSContent">
+      <input message="tns:AddBase64MMSContentRequest" />
+      <output message="tns:AddBase64MMSContentResponse" />
+    </operation>
+    <operation name="SendMMS">
+      <input message="tns:SendMMSRequest" />
+      <output message="tns:SendMMSResponse" />
+    </operation>
+    <operation name="SendMobileContent">
+      <input message="tns:SendMobileContentRequest" />
+      <output message="tns:SendMobileContentResponse" />
+    </operation>
+    <operation name="GetMobileContentPreviewURL">
+      <input message="tns:GetMobileContentPreviewURLRequest" />
+      <output message="tns:GetMobileContentPreviewURLResponse" />
+    </operation>
+    <operation name="CheckMessageStatus">
+      <input message="tns:CheckMessageStatusRequest" />
+      <output message="tns:CheckMessageStatusResponse" />
+    </operation>
+    <operation name="GetPropertyPage">
+      <input message="tns:GetPropertyPageRequest" />
+      <output message="tns:GetPropertyPageResponse" />
+    </operation>
+    <operation name="GetCreditsLeft">
+      <input message="tns:GetCreditsLeftRequest" />
+      <output message="tns:GetCreditsLeftResponse" />
+    </operation>
+    <operation name="GetLicenseInformation">
+      <input message="tns:GetLicenseInformationRequest" />
+      <output message="tns:GetLicenseInformationResponse" />
+    </operation>
+    <operation name="GetIncomingMessage">
+      <input message="tns:GetIncomingMessageRequest" />
+      <output message="tns:GetIncomingMessageResponse" />
+    </operation>
+    <operation name="EnterSchedule">
+      <input message="tns:EnterScheduleRequest" />
+      <output message="tns:EnterScheduleResponse" />
+    </operation>
+    <operation name="EnterScheduleExt">
+      <input message="tns:EnterScheduleExtRequest" />
+      <output message="tns:EnterScheduleExtResponse" />
+    </operation>
+    <operation name="DeleteSchedule">
+      <input message="tns:DeleteScheduleRequest" />
+      <output message="tns:DeleteScheduleResponse" />
+    </operation>
+    <operation name="CreateGroup">
+      <input message="tns:CreateGroupRequest" />
+      <output message="tns:CreateGroupResponse" />
+    </operation>
+    <operation name="GetListNames">
+      <input message="tns:GetListNamesRequest" />
+      <output message="tns:GetListNamesResponse" />
+    </operation>
+    <operation name="GetListEntries">
+      <input message="tns:GetListEntriesRequest" />
+      <output message="tns:GetListEntriesResponse" />
+    </operation>
+    <operation name="RegisterAccount">
+      <input message="tns:RegisterAccountRequest" />
+      <output message="tns:RegisterAccountResponse" />
+    </operation>
+    <operation name="RedWebServiceVersion">
+      <input message="tns:RedWebServiceVersionRequest" />
+      <output message="tns:RedWebServiceVersionResponse" />
+    </operation>
+  </portType>
+  <binding name="ISOAPServerbinding" type="tns:ISOAPServer">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <operation name="SendSMS2">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#SendSMS2" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="SendTextSMS">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#SendTextSMS" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="SendWideSMS">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#SendWideSMS" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="SendBinarySMS">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#SendBinarySMS" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="SendBinarySMSByContent">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#SendBinarySMSByContent" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="SendWAPSI">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#SendWAPSI" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="CreateMMS">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#CreateMMS" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="AddMMSContent">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#AddMMSContent" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="AddBase64MMSContent">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#AddBase64MMSContent" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="SendMMS">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#SendMMS" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="SendMobileContent">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#SendMobileContent" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetMobileContentPreviewURL">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#GetMobileContentPreviewURL" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="CheckMessageStatus">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#CheckMessageStatus" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetPropertyPage">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#GetPropertyPage" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetCreditsLeft">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#GetCreditsLeft" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetLicenseInformation">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#GetLicenseInformation" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetIncomingMessage">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#GetIncomingMessage" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="EnterSchedule">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#EnterSchedule" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="EnterScheduleExt">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#EnterScheduleExt" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="DeleteSchedule">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#DeleteSchedule" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="CreateGroup">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#CreateGroup" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetListNames">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#GetListNames" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="GetListEntries">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#GetListEntries" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="RegisterAccount">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#RegisterAccount" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="RedWebServiceVersion">
+      <soap:operation soapAction="urn:SOAPServerImpl-ISOAPServer#RedWebServiceVersion" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:SOAPServerImpl-ISOAPServer" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ISOAPServerservice">
+    <port name="ISoapServerPort" binding="tns:ISOAPServerbinding">
+      <soap:address location="http://xml.redcoal.com/soapserver.dll/soap/ISoapServer" />
+    </port>
+  </service>
+</definitions>
