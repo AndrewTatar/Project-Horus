@@ -8,6 +8,15 @@ namespace Horus.Classes
 {
     public class VodafoneSMSService : AbstractSMSService
     {
+        public VodafoneSMSService()
+        {
 
+        }
+
+        public VodafoneSMSService(string Username, string MobileNumber)
+        {
+            base.userName = Username;
+            base.mobileNumber = MobileNumber;
+        }
     }
 }

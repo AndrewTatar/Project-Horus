@@ -10,15 +10,26 @@ namespace Horus.Classes
 {
     public class TelstraSMSService : AbstractSMSService
     {
+        const string SERVICE_KEY = "GoEiEpAOv0KPqe03kcV7AuX8FGyuRM5u";
+        const string SERVICE_SECRET = "BzbZMIwfQrfQusa1";
+
         public TelstraSMSService()
         {
-            base.serviceKey = "GoEiEpAOv0KPqe03kcV7AuX8FGyuRM5u";
-            base.serviceSecret = "BzbZMIwfQrfQusa1";
+            base.serviceKey = SERVICE_KEY;
+            base.serviceSecret = SERVICE_SECRET;
+        }
+
+        public TelstraSMSService(string Username, string MobileNumber)
+        {
+            base.serviceKey = SERVICE_KEY;
+            base.serviceSecret = SERVICE_SECRET;
+            base.mobileNumber = MobileNumber;
+            base.userName = Username;
         }
 
         public override string sendSMS()
         {
-            Console.WriteLine("...sending sms...");
+            App.WriteMessage("Sending SMS Notification (Telstra)");
             return SendSms(GetAccessToken(), base.mobileNumber, base.message);
         }
 

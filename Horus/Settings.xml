@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Settings>
-  <FirstName></FirstName>
-  <LastName></LastName>
+  <FirstName>Tim</FirstName>
+  <LastName>Larkin</LastName>
   <SMS>
-    <Enabled></Enabled>
-    <Carrier></Carrier>
-    <MobileNumber></MobileNumber>
+    <Enabled>True</Enabled>
+    <Carrier>Telstra</Carrier>
+    <MobileNumber>0411299522</MobileNumber>
+    <Message></Message>
   </SMS>
 </Settings>

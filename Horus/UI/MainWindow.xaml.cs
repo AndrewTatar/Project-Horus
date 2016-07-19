@@ -54,8 +54,15 @@ namespace Horus
             InitializeComponent();
 
             this.Loaded += MainWindow_Loaded;
+            this.Closing += MainWindow_Closing;
             //this.MouseDown += MainWindow_MouseDown;
             //this.KeyUp += MainWindow_KeyUp;
+        }
+
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            CloseVideoSource();
+            App.RequestClose();
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -65,6 +72,20 @@ namespace Horus
 
             //Full Screen
             WindowState = WindowState.Maximized;
+
+            //Configure Webcam
+            cascade = new FaceHaarCascade();
+            haarObjectDetector = new HaarObjectDetector(cascade,
+                25, ObjectDetectorSearchMode.Single, 1.2f,
+                ObjectDetectorScalingMode.SmallerToGreater);
+
+            //Setup Dispatcher Timer
+            dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            dispatcherTimer.Interval = new TimeSpan(0, 1, 0);
+
+            //Connect to Camera
+            OpenVideoSource();
 
             //Graphics/Animations for Screensaver
             //TODO: Graphics/Animation Loading
@@ -88,13 +109,16 @@ namespace Horus
             try
             {
                 //gets the first webcam available
-                videoCaptureDevice =
-                    new VideoCaptureDevice(new FilterInfoCollection(FilterCategory.VideoInputDevice)[0].MonikerString);
-                //self-described
+                videoCaptureDevice = new VideoCaptureDevice(new FilterInfoCollection(FilterCategory.VideoInputDevice)[0].MonikerString);
+
+                //Start Capture of Video Device
                 videoCaptureDevice.NewFrame += new NewFrameEventHandler(nextFrame);
                 videoCaptureDevice.Start();
-                dispatcherTimer.Start();
 
+                dispatcherTimer.Start();
+                cameraOnline = true;
+
+                App.WriteMessage("Webcam Connected");
             }
             catch (Exception exception)
             {
@@ -105,15 +129,20 @@ namespace Horus
         //Close the video source
         private void CloseVideoSource()
         {
-            try
+            if (cameraOnline)
             {
-                videoCaptureDevice.Stop();
-            }
+                try
+                {
+                    videoCaptureDevice.Stop();
+                    cameraOnline = false;
 
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.ToString());
-            }
+                    App.WriteMessage("Webcam Disconnected");
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.ToString());
+                }
+            }            
         }
 
         /// <summary>getFrame from the videosource</summary>
@@ -121,11 +150,12 @@ namespace Horus
         {
             // get new frame
             bitmap = eventArgs.Frame;
-            
             lastFrame = (Bitmap) bitmap.Clone();
+
             // process the frame
             ResizeBicubic resize = new ResizeBicubic(lastFrame.Width/2, lastFrame.Height/2);
             Bitmap bresize = resize.Apply(lastFrame);
+
             //Convert the Image into grayscale Image
             grayImage = Grayscale.CommonAlgorithms.BT709.Apply(bresize);
             Rectangle[] rect = haarObjectDetector.ProcessFrame(grayImage);
@@ -134,15 +164,16 @@ namespace Horus
                 //check flag is false
                 if (face_captured == false)
                 {
+                    App.WriteMessage("Face Captured");
+
                     //take a pic if false, set  flag true (reset to false after 2 minutes (could be 5 or 0 minutes))
                     captureImage(lastFrame);
                     face_captured = true;
                 }
             }
-        } //End of nextFrame
+        }
 
         /// <summary></summary>
-
         private async void captureImage(Bitmap image)
         {
             await
@@ -150,7 +181,7 @@ namespace Horus
                     async () =>
                     //This code is intended to run on a new thread, control is returned to the caller on the UI thread.
                     {
-                        Guid photoID = System.Guid.NewGuid();
+                        Guid photoID = Guid.NewGuid();
 
                         string photoName = photoID.ToString() + ".png"; //file name
 
@@ -159,18 +190,25 @@ namespace Horus
                             image.Save(fileStream, ImageFormat.Png);
                         }
 
+                        App.WriteMessage("Photo Saved To File");
+
                         byte[] byteArray = File.ReadAllBytes(System.IO.Path.Combine(App.imageSavePath, photoName));
 
                         await GoogleAppAuthorisation.AuthorizeAndUpload(byteArray, photoName);
+                        App.WriteMessage("Photo Uploaded to Drive");
 
-                        App.smsClient.sendSMS();
+                        if (App.smsClient != null)
+                        {
+                            App.smsClient.sendSMS();
+                            App.WriteMessage("SMS Notification Sent");
+                        }                        
                     });
         }
 
         /// <summary></summary>
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-
+            //Clear Face Captured Flag
             if (face_captured == true)
             {
                 face_captured = false;

@@ -38,5 +38,10 @@ namespace Horus.Classes
         {
             this.userName = userName;
         }
+
+        public void setMessage(string message)
+        {
+            this.message = message;
+        }
     }
 }
