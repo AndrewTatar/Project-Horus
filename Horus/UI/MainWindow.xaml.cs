@@ -36,14 +36,13 @@ namespace Horus
     /// </summary>
     public partial class MainWindow : Window
     {
-        //Create an Instance for VideoCaptureDevice
-        private VideoCaptureDevice videoCaptureDevice;
-
-        //Create an Instance for Haar Object
-        private HaarObjectDetector haarObjectDetector;
+        //Webcam Variables
+        private VideoCaptureDevice videoCaptureDevice;      //Create an Instance for VideoCaptureDevice
+        private HaarObjectDetector haarObjectDetector;      //Create an Instance for Haar Object
         private HaarCascade cascade;
-
         private SimpleBackgroundModelingDetector motionDetector = new SimpleBackgroundModelingDetector();
+
+        //Image Processing Variablse
         private Bitmap bitmap, lastFrame, grayImage;
         private bool face_captured = true;
         private DispatcherTimer dispatcherTimer = new DispatcherTimer();
