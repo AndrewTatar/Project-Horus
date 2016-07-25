@@ -8,212 +8,212 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Horus.OptusSMS {
+namespace Horus.OptusWebServiceReference {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="OptusSMS.ISOAPServer")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="OptusWebServiceReference.ISOAPServer")]
     public interface ISOAPServer {
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#SendSMS2", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        Horus.OptusSMS.SendSMS2Response SendSMS2(Horus.OptusSMS.SendSMS2Request request);
-        
+        Horus.OptusWebServiceReference.SendSMS2Response SendSMS2(Horus.OptusWebServiceReference.SendSMS2Request request);        
+
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#SendSMS2", ReplyAction="*")]
-        System.Threading.Tasks.Task<Horus.OptusSMS.SendSMS2Response> SendSMS2Async(Horus.OptusSMS.SendSMS2Request request);
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.SendSMS2Response> SendSMS2Async(Horus.OptusWebServiceReference.SendSMS2Request request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#SendTextSMS", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        Horus.OptusSMS.SendTextSMSResponse SendTextSMS(Horus.OptusSMS.SendTextSMSRequest request);
+        Horus.OptusWebServiceReference.SendTextSMSResponse SendTextSMS(Horus.OptusWebServiceReference.SendTextSMSRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#SendTextSMS", ReplyAction="*")]
-        System.Threading.Tasks.Task<Horus.OptusSMS.SendTextSMSResponse> SendTextSMSAsync(Horus.OptusSMS.SendTextSMSRequest request);
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.SendTextSMSResponse> SendTextSMSAsync(Horus.OptusWebServiceReference.SendTextSMSRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#SendWideSMS", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        Horus.OptusSMS.SendWideSMSResponse SendWideSMS(Horus.OptusSMS.SendWideSMSRequest request);
+        Horus.OptusWebServiceReference.SendWideSMSResponse SendWideSMS(Horus.OptusWebServiceReference.SendWideSMSRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#SendWideSMS", ReplyAction="*")]
-        System.Threading.Tasks.Task<Horus.OptusSMS.SendWideSMSResponse> SendWideSMSAsync(Horus.OptusSMS.SendWideSMSRequest request);
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.SendWideSMSResponse> SendWideSMSAsync(Horus.OptusWebServiceReference.SendWideSMSRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#SendBinarySMS", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        Horus.OptusSMS.SendBinarySMSResponse SendBinarySMS(Horus.OptusSMS.SendBinarySMSRequest request);
+        Horus.OptusWebServiceReference.SendBinarySMSResponse SendBinarySMS(Horus.OptusWebServiceReference.SendBinarySMSRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#SendBinarySMS", ReplyAction="*")]
-        System.Threading.Tasks.Task<Horus.OptusSMS.SendBinarySMSResponse> SendBinarySMSAsync(Horus.OptusSMS.SendBinarySMSRequest request);
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.SendBinarySMSResponse> SendBinarySMSAsync(Horus.OptusWebServiceReference.SendBinarySMSRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#SendBinarySMSByContent", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        Horus.OptusSMS.SendBinarySMSByContentResponse SendBinarySMSByContent(Horus.OptusSMS.SendBinarySMSByContentRequest request);
+        Horus.OptusWebServiceReference.SendBinarySMSByContentResponse SendBinarySMSByContent(Horus.OptusWebServiceReference.SendBinarySMSByContentRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#SendBinarySMSByContent", ReplyAction="*")]
-        System.Threading.Tasks.Task<Horus.OptusSMS.SendBinarySMSByContentResponse> SendBinarySMSByContentAsync(Horus.OptusSMS.SendBinarySMSByContentRequest request);
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.SendBinarySMSByContentResponse> SendBinarySMSByContentAsync(Horus.OptusWebServiceReference.SendBinarySMSByContentRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#SendWAPSI", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        Horus.OptusSMS.SendWAPSIResponse SendWAPSI(Horus.OptusSMS.SendWAPSIRequest request);
+        Horus.OptusWebServiceReference.SendWAPSIResponse SendWAPSI(Horus.OptusWebServiceReference.SendWAPSIRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#SendWAPSI", ReplyAction="*")]
-        System.Threading.Tasks.Task<Horus.OptusSMS.SendWAPSIResponse> SendWAPSIAsync(Horus.OptusSMS.SendWAPSIRequest request);
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.SendWAPSIResponse> SendWAPSIAsync(Horus.OptusWebServiceReference.SendWAPSIRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#CreateMMS", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        Horus.OptusSMS.CreateMMSResponse CreateMMS(Horus.OptusSMS.CreateMMSRequest request);
+        Horus.OptusWebServiceReference.CreateMMSResponse CreateMMS(Horus.OptusWebServiceReference.CreateMMSRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#CreateMMS", ReplyAction="*")]
-        System.Threading.Tasks.Task<Horus.OptusSMS.CreateMMSResponse> CreateMMSAsync(Horus.OptusSMS.CreateMMSRequest request);
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.CreateMMSResponse> CreateMMSAsync(Horus.OptusWebServiceReference.CreateMMSRequest request);
         
         // CODEGEN: Generating message contract since the wrapper namespace (urn:SOAPServerImpl-ISOAPServer) of message AddMMSContentRequest does not match the default value (http://tempuri.org/)
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#AddMMSContent", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        Horus.OptusSMS.AddMMSContentResponse AddMMSContent(Horus.OptusSMS.AddMMSContentRequest request);
+        Horus.OptusWebServiceReference.AddMMSContentResponse AddMMSContent(Horus.OptusWebServiceReference.AddMMSContentRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#AddMMSContent", ReplyAction="*")]
-        System.Threading.Tasks.Task<Horus.OptusSMS.AddMMSContentResponse> AddMMSContentAsync(Horus.OptusSMS.AddMMSContentRequest request);
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.AddMMSContentResponse> AddMMSContentAsync(Horus.OptusWebServiceReference.AddMMSContentRequest request);
         
         // CODEGEN: Generating message contract since the wrapper namespace (urn:SOAPServerImpl-ISOAPServer) of message AddBase64MMSContentRequest does not match the default value (http://tempuri.org/)
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#AddBase64MMSContent", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        Horus.OptusSMS.AddBase64MMSContentResponse AddBase64MMSContent(Horus.OptusSMS.AddBase64MMSContentRequest request);
+        Horus.OptusWebServiceReference.AddBase64MMSContentResponse AddBase64MMSContent(Horus.OptusWebServiceReference.AddBase64MMSContentRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#AddBase64MMSContent", ReplyAction="*")]
-        System.Threading.Tasks.Task<Horus.OptusSMS.AddBase64MMSContentResponse> AddBase64MMSContentAsync(Horus.OptusSMS.AddBase64MMSContentRequest request);
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.AddBase64MMSContentResponse> AddBase64MMSContentAsync(Horus.OptusWebServiceReference.AddBase64MMSContentRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#SendMMS", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        Horus.OptusSMS.SendMMSResponse SendMMS(Horus.OptusSMS.SendMMSRequest request);
+        Horus.OptusWebServiceReference.SendMMSResponse SendMMS(Horus.OptusWebServiceReference.SendMMSRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#SendMMS", ReplyAction="*")]
-        System.Threading.Tasks.Task<Horus.OptusSMS.SendMMSResponse> SendMMSAsync(Horus.OptusSMS.SendMMSRequest request);
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.SendMMSResponse> SendMMSAsync(Horus.OptusWebServiceReference.SendMMSRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#SendMobileContent", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        Horus.OptusSMS.SendMobileContentResponse SendMobileContent(Horus.OptusSMS.SendMobileContentRequest request);
+        Horus.OptusWebServiceReference.SendMobileContentResponse SendMobileContent(Horus.OptusWebServiceReference.SendMobileContentRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#SendMobileContent", ReplyAction="*")]
-        System.Threading.Tasks.Task<Horus.OptusSMS.SendMobileContentResponse> SendMobileContentAsync(Horus.OptusSMS.SendMobileContentRequest request);
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.SendMobileContentResponse> SendMobileContentAsync(Horus.OptusWebServiceReference.SendMobileContentRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#GetMobileContentPreviewURL", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        Horus.OptusSMS.GetMobileContentPreviewURLResponse GetMobileContentPreviewURL(Horus.OptusSMS.GetMobileContentPreviewURLRequest request);
+        Horus.OptusWebServiceReference.GetMobileContentPreviewURLResponse GetMobileContentPreviewURL(Horus.OptusWebServiceReference.GetMobileContentPreviewURLRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#GetMobileContentPreviewURL", ReplyAction="*")]
-        System.Threading.Tasks.Task<Horus.OptusSMS.GetMobileContentPreviewURLResponse> GetMobileContentPreviewURLAsync(Horus.OptusSMS.GetMobileContentPreviewURLRequest request);
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.GetMobileContentPreviewURLResponse> GetMobileContentPreviewURLAsync(Horus.OptusWebServiceReference.GetMobileContentPreviewURLRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#CheckMessageStatus", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        Horus.OptusSMS.CheckMessageStatusResponse CheckMessageStatus(Horus.OptusSMS.CheckMessageStatusRequest request);
+        Horus.OptusWebServiceReference.CheckMessageStatusResponse CheckMessageStatus(Horus.OptusWebServiceReference.CheckMessageStatusRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#CheckMessageStatus", ReplyAction="*")]
-        System.Threading.Tasks.Task<Horus.OptusSMS.CheckMessageStatusResponse> CheckMessageStatusAsync(Horus.OptusSMS.CheckMessageStatusRequest request);
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.CheckMessageStatusResponse> CheckMessageStatusAsync(Horus.OptusWebServiceReference.CheckMessageStatusRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#GetPropertyPage", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        Horus.OptusSMS.GetPropertyPageResponse GetPropertyPage(Horus.OptusSMS.GetPropertyPageRequest request);
+        Horus.OptusWebServiceReference.GetPropertyPageResponse GetPropertyPage(Horus.OptusWebServiceReference.GetPropertyPageRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#GetPropertyPage", ReplyAction="*")]
-        System.Threading.Tasks.Task<Horus.OptusSMS.GetPropertyPageResponse> GetPropertyPageAsync(Horus.OptusSMS.GetPropertyPageRequest request);
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.GetPropertyPageResponse> GetPropertyPageAsync(Horus.OptusWebServiceReference.GetPropertyPageRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#GetCreditsLeft", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        Horus.OptusSMS.GetCreditsLeftResponse GetCreditsLeft(Horus.OptusSMS.GetCreditsLeftRequest request);
+        Horus.OptusWebServiceReference.GetCreditsLeftResponse GetCreditsLeft(Horus.OptusWebServiceReference.GetCreditsLeftRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#GetCreditsLeft", ReplyAction="*")]
-        System.Threading.Tasks.Task<Horus.OptusSMS.GetCreditsLeftResponse> GetCreditsLeftAsync(Horus.OptusSMS.GetCreditsLeftRequest request);
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.GetCreditsLeftResponse> GetCreditsLeftAsync(Horus.OptusWebServiceReference.GetCreditsLeftRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#GetLicenseInformation", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        Horus.OptusSMS.GetLicenseInformationResponse GetLicenseInformation(Horus.OptusSMS.GetLicenseInformationRequest request);
+        Horus.OptusWebServiceReference.GetLicenseInformationResponse GetLicenseInformation(Horus.OptusWebServiceReference.GetLicenseInformationRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#GetLicenseInformation", ReplyAction="*")]
-        System.Threading.Tasks.Task<Horus.OptusSMS.GetLicenseInformationResponse> GetLicenseInformationAsync(Horus.OptusSMS.GetLicenseInformationRequest request);
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.GetLicenseInformationResponse> GetLicenseInformationAsync(Horus.OptusWebServiceReference.GetLicenseInformationRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#GetIncomingMessage", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        Horus.OptusSMS.GetIncomingMessageResponse GetIncomingMessage(Horus.OptusSMS.GetIncomingMessageRequest request);
+        Horus.OptusWebServiceReference.GetIncomingMessageResponse GetIncomingMessage(Horus.OptusWebServiceReference.GetIncomingMessageRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#GetIncomingMessage", ReplyAction="*")]
-        System.Threading.Tasks.Task<Horus.OptusSMS.GetIncomingMessageResponse> GetIncomingMessageAsync(Horus.OptusSMS.GetIncomingMessageRequest request);
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.GetIncomingMessageResponse> GetIncomingMessageAsync(Horus.OptusWebServiceReference.GetIncomingMessageRequest request);
         
         // CODEGEN: Generating message contract since the wrapper namespace (urn:SOAPServerImpl-ISOAPServer) of message EnterScheduleRequest does not match the default value (http://tempuri.org/)
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#EnterSchedule", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        Horus.OptusSMS.EnterScheduleResponse EnterSchedule(Horus.OptusSMS.EnterScheduleRequest request);
+        Horus.OptusWebServiceReference.EnterScheduleResponse EnterSchedule(Horus.OptusWebServiceReference.EnterScheduleRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#EnterSchedule", ReplyAction="*")]
-        System.Threading.Tasks.Task<Horus.OptusSMS.EnterScheduleResponse> EnterScheduleAsync(Horus.OptusSMS.EnterScheduleRequest request);
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.EnterScheduleResponse> EnterScheduleAsync(Horus.OptusWebServiceReference.EnterScheduleRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#EnterScheduleExt", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        Horus.OptusSMS.EnterScheduleExtResponse EnterScheduleExt(Horus.OptusSMS.EnterScheduleExtRequest request);
+        Horus.OptusWebServiceReference.EnterScheduleExtResponse EnterScheduleExt(Horus.OptusWebServiceReference.EnterScheduleExtRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#EnterScheduleExt", ReplyAction="*")]
-        System.Threading.Tasks.Task<Horus.OptusSMS.EnterScheduleExtResponse> EnterScheduleExtAsync(Horus.OptusSMS.EnterScheduleExtRequest request);
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.EnterScheduleExtResponse> EnterScheduleExtAsync(Horus.OptusWebServiceReference.EnterScheduleExtRequest request);
         
         // CODEGEN: Generating message contract since the wrapper namespace (urn:SOAPServerImpl-ISOAPServer) of message DeleteScheduleRequest does not match the default value (http://tempuri.org/)
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#DeleteSchedule", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        Horus.OptusSMS.DeleteScheduleResponse DeleteSchedule(Horus.OptusSMS.DeleteScheduleRequest request);
+        Horus.OptusWebServiceReference.DeleteScheduleResponse DeleteSchedule(Horus.OptusWebServiceReference.DeleteScheduleRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#DeleteSchedule", ReplyAction="*")]
-        System.Threading.Tasks.Task<Horus.OptusSMS.DeleteScheduleResponse> DeleteScheduleAsync(Horus.OptusSMS.DeleteScheduleRequest request);
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.DeleteScheduleResponse> DeleteScheduleAsync(Horus.OptusWebServiceReference.DeleteScheduleRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#CreateGroup", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        Horus.OptusSMS.CreateGroupResponse CreateGroup(Horus.OptusSMS.CreateGroupRequest request);
+        Horus.OptusWebServiceReference.CreateGroupResponse CreateGroup(Horus.OptusWebServiceReference.CreateGroupRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#CreateGroup", ReplyAction="*")]
-        System.Threading.Tasks.Task<Horus.OptusSMS.CreateGroupResponse> CreateGroupAsync(Horus.OptusSMS.CreateGroupRequest request);
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.CreateGroupResponse> CreateGroupAsync(Horus.OptusWebServiceReference.CreateGroupRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#GetListNames", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        Horus.OptusSMS.GetListNamesResponse GetListNames(Horus.OptusSMS.GetListNamesRequest request);
+        Horus.OptusWebServiceReference.GetListNamesResponse GetListNames(Horus.OptusWebServiceReference.GetListNamesRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#GetListNames", ReplyAction="*")]
-        System.Threading.Tasks.Task<Horus.OptusSMS.GetListNamesResponse> GetListNamesAsync(Horus.OptusSMS.GetListNamesRequest request);
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.GetListNamesResponse> GetListNamesAsync(Horus.OptusWebServiceReference.GetListNamesRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#GetListEntries", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        Horus.OptusSMS.GetListEntriesResponse GetListEntries(Horus.OptusSMS.GetListEntriesRequest request);
+        Horus.OptusWebServiceReference.GetListEntriesResponse GetListEntries(Horus.OptusWebServiceReference.GetListEntriesRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#GetListEntries", ReplyAction="*")]
-        System.Threading.Tasks.Task<Horus.OptusSMS.GetListEntriesResponse> GetListEntriesAsync(Horus.OptusSMS.GetListEntriesRequest request);
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.GetListEntriesResponse> GetListEntriesAsync(Horus.OptusWebServiceReference.GetListEntriesRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#RegisterAccount", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        Horus.OptusSMS.RegisterAccountResponse RegisterAccount(Horus.OptusSMS.RegisterAccountRequest request);
+        Horus.OptusWebServiceReference.RegisterAccountResponse RegisterAccount(Horus.OptusWebServiceReference.RegisterAccountRequest request);
         
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#RegisterAccount", ReplyAction="*")]
-        System.Threading.Tasks.Task<Horus.OptusSMS.RegisterAccountResponse> RegisterAccountAsync(Horus.OptusSMS.RegisterAccountRequest request);
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.RegisterAccountResponse> RegisterAccountAsync(Horus.OptusWebServiceReference.RegisterAccountRequest request);
         
         // CODEGEN: Generating message contract since the wrapper namespace (urn:SOAPServerImpl-ISOAPServer) of message RedWebServiceVersionRequest does not match the default value (http://tempuri.org/)
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#RedWebServiceVersion", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        Horus.OptusSMS.RedWebServiceVersionResponse RedWebServiceVersion(Horus.OptusSMS.RedWebServiceVersionRequest request);
+        Horus.OptusWebServiceReference.RedWebServiceVersionResponse RedWebServiceVersion(Horus.OptusWebServiceReference.RedWebServiceVersionRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="urn:SOAPServerImpl-ISOAPServer#RedWebServiceVersion", ReplyAction="*")]
-        System.Threading.Tasks.Task<Horus.OptusSMS.RedWebServiceVersionResponse> RedWebServiceVersionAsync(Horus.OptusSMS.RedWebServiceVersionRequest request);
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.RedWebServiceVersionResponse> RedWebServiceVersionAsync(Horus.OptusWebServiceReference.RedWebServiceVersionRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1612,12 +1612,12 @@ namespace Horus.OptusSMS {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ISOAPServerChannel : Horus.OptusSMS.ISOAPServer, System.ServiceModel.IClientChannel {
+    public interface ISOAPServerChannel : Horus.OptusWebServiceReference.ISOAPServer, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class SOAPServerClient : System.ServiceModel.ClientBase<Horus.OptusSMS.ISOAPServer>, Horus.OptusSMS.ISOAPServer {
+    public partial class SOAPServerClient : System.ServiceModel.ClientBase<Horus.OptusWebServiceReference.ISOAPServer>, Horus.OptusWebServiceReference.ISOAPServer {
         
         public SOAPServerClient() {
         }
@@ -1639,12 +1639,12 @@ namespace Horus.OptusSMS {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Horus.OptusSMS.SendSMS2Response Horus.OptusSMS.ISOAPServer.SendSMS2(Horus.OptusSMS.SendSMS2Request request) {
+        Horus.OptusWebServiceReference.SendSMS2Response Horus.OptusWebServiceReference.ISOAPServer.SendSMS2(Horus.OptusWebServiceReference.SendSMS2Request request) {
             return base.Channel.SendSMS2(request);
         }
         
         public int SendSMS2(string strInSerialNo, string strInSMSKey, string strInRecipients, byte[] strInContent1, string strInContent2, string strInOriginator, string strInReplyEmail, string strInScheduledUTCDateTime, int iInMessageType, int iInOptions, ref string strOutMessageIDs) {
-            Horus.OptusSMS.SendSMS2Request inValue = new Horus.OptusSMS.SendSMS2Request();
+            Horus.OptusWebServiceReference.SendSMS2Request inValue = new Horus.OptusWebServiceReference.SendSMS2Request();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.strInRecipients = strInRecipients;
@@ -1656,22 +1656,22 @@ namespace Horus.OptusSMS {
             inValue.iInMessageType = iInMessageType;
             inValue.iInOptions = iInOptions;
             inValue.strOutMessageIDs = strOutMessageIDs;
-            Horus.OptusSMS.SendSMS2Response retVal = ((Horus.OptusSMS.ISOAPServer)(this)).SendSMS2(inValue);
+            Horus.OptusWebServiceReference.SendSMS2Response retVal = ((Horus.OptusWebServiceReference.ISOAPServer)(this)).SendSMS2(inValue);
             strOutMessageIDs = retVal.strOutMessageIDs;
             return retVal.@return;
         }
         
-        public System.Threading.Tasks.Task<Horus.OptusSMS.SendSMS2Response> SendSMS2Async(Horus.OptusSMS.SendSMS2Request request) {
+        public System.Threading.Tasks.Task<Horus.OptusWebServiceReference.SendSMS2Response> SendSMS2Async(Horus.OptusWebServiceReference.SendSMS2Request request) {
             return base.Channel.SendSMS2Async(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Horus.OptusSMS.SendTextSMSResponse Horus.OptusSMS.ISOAPServer.SendTextSMS(Horus.OptusSMS.SendTextSMSRequest request) {
+        Horus.OptusWebServiceReference.SendTextSMSResponse Horus.OptusWebServiceReference.ISOAPServer.SendTextSMS(Horus.OptusWebServiceReference.SendTextSMSRequest request) {
             return base.Channel.SendTextSMS(request);
         }
         
         public int SendTextSMS(string strInSerialNo, string strInSMSKey, string strInRecipients, string strInMessageText, string strInReplyEmail, string strInOriginator, int iInType, ref string strOutMessageIDs) {
-            Horus.OptusSMS.SendTextSMSRequest inValue = new Horus.OptusSMS.SendTextSMSRequest();
+            Horus.OptusWebServiceReference.SendTextSMSRequest inValue = new Horus.OptusWebServiceReference.SendTextSMSRequest();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.strInRecipients = strInRecipients;
@@ -1680,22 +1680,22 @@ namespace Horus.OptusSMS {
             inValue.strInOriginator = strInOriginator;
             inValue.iInType = iInType;
             inValue.strOutMessageIDs = strOutMessageIDs;
-            Horus.OptusSMS.SendTextSMSResponse retVal = ((Horus.OptusSMS.ISOAPServer)(this)).SendTextSMS(inValue);
+            Horus.OptusWebServiceReference.SendTextSMSResponse retVal = ((Horus.OptusWebServiceReference.ISOAPServer)(this)).SendTextSMS(inValue);
             strOutMessageIDs = retVal.strOutMessageIDs;
             return retVal.@return;
         }
         
-        public System.Threading.Tasks.Task<Horus.OptusSMS.SendTextSMSResponse> SendTextSMSAsync(Horus.OptusSMS.SendTextSMSRequest request) {
+        public System.Threading.Tasks.Task<Horus.OptusWebServiceReference.SendTextSMSResponse> SendTextSMSAsync(Horus.OptusWebServiceReference.SendTextSMSRequest request) {
             return base.Channel.SendTextSMSAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Horus.OptusSMS.SendWideSMSResponse Horus.OptusSMS.ISOAPServer.SendWideSMS(Horus.OptusSMS.SendWideSMSRequest request) {
+        Horus.OptusWebServiceReference.SendWideSMSResponse Horus.OptusWebServiceReference.ISOAPServer.SendWideSMS(Horus.OptusWebServiceReference.SendWideSMSRequest request) {
             return base.Channel.SendWideSMS(request);
         }
         
         public int SendWideSMS(string strInSerialNo, string strInSMSKey, string strInRecipients, string strInMessageText, string strInReplyEmail, string strInOriginator, int iInType, ref string strOutMessageIDs) {
-            Horus.OptusSMS.SendWideSMSRequest inValue = new Horus.OptusSMS.SendWideSMSRequest();
+            Horus.OptusWebServiceReference.SendWideSMSRequest inValue = new Horus.OptusWebServiceReference.SendWideSMSRequest();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.strInRecipients = strInRecipients;
@@ -1704,22 +1704,22 @@ namespace Horus.OptusSMS {
             inValue.strInOriginator = strInOriginator;
             inValue.iInType = iInType;
             inValue.strOutMessageIDs = strOutMessageIDs;
-            Horus.OptusSMS.SendWideSMSResponse retVal = ((Horus.OptusSMS.ISOAPServer)(this)).SendWideSMS(inValue);
+            Horus.OptusWebServiceReference.SendWideSMSResponse retVal = ((Horus.OptusWebServiceReference.ISOAPServer)(this)).SendWideSMS(inValue);
             strOutMessageIDs = retVal.strOutMessageIDs;
             return retVal.@return;
         }
         
-        public System.Threading.Tasks.Task<Horus.OptusSMS.SendWideSMSResponse> SendWideSMSAsync(Horus.OptusSMS.SendWideSMSRequest request) {
+        public System.Threading.Tasks.Task<Horus.OptusWebServiceReference.SendWideSMSResponse> SendWideSMSAsync(Horus.OptusWebServiceReference.SendWideSMSRequest request) {
             return base.Channel.SendWideSMSAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Horus.OptusSMS.SendBinarySMSResponse Horus.OptusSMS.ISOAPServer.SendBinarySMS(Horus.OptusSMS.SendBinarySMSRequest request) {
+        Horus.OptusWebServiceReference.SendBinarySMSResponse Horus.OptusWebServiceReference.ISOAPServer.SendBinarySMS(Horus.OptusWebServiceReference.SendBinarySMSRequest request) {
             return base.Channel.SendBinarySMS(request);
         }
         
         public int SendBinarySMS(string strInSerialNo, string strInSMSKey, string strInRecipients, byte[] strInBinaryContent, string strInExtraParam, string strInReplyEmail, int iInType, ref string strOutMessageIDs) {
-            Horus.OptusSMS.SendBinarySMSRequest inValue = new Horus.OptusSMS.SendBinarySMSRequest();
+            Horus.OptusWebServiceReference.SendBinarySMSRequest inValue = new Horus.OptusWebServiceReference.SendBinarySMSRequest();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.strInRecipients = strInRecipients;
@@ -1728,22 +1728,22 @@ namespace Horus.OptusSMS {
             inValue.strInReplyEmail = strInReplyEmail;
             inValue.iInType = iInType;
             inValue.strOutMessageIDs = strOutMessageIDs;
-            Horus.OptusSMS.SendBinarySMSResponse retVal = ((Horus.OptusSMS.ISOAPServer)(this)).SendBinarySMS(inValue);
+            Horus.OptusWebServiceReference.SendBinarySMSResponse retVal = ((Horus.OptusWebServiceReference.ISOAPServer)(this)).SendBinarySMS(inValue);
             strOutMessageIDs = retVal.strOutMessageIDs;
             return retVal.@return;
         }
         
-        public System.Threading.Tasks.Task<Horus.OptusSMS.SendBinarySMSResponse> SendBinarySMSAsync(Horus.OptusSMS.SendBinarySMSRequest request) {
+        public System.Threading.Tasks.Task<Horus.OptusWebServiceReference.SendBinarySMSResponse> SendBinarySMSAsync(Horus.OptusWebServiceReference.SendBinarySMSRequest request) {
             return base.Channel.SendBinarySMSAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Horus.OptusSMS.SendBinarySMSByContentResponse Horus.OptusSMS.ISOAPServer.SendBinarySMSByContent(Horus.OptusSMS.SendBinarySMSByContentRequest request) {
+        Horus.OptusWebServiceReference.SendBinarySMSByContentResponse Horus.OptusWebServiceReference.ISOAPServer.SendBinarySMSByContent(Horus.OptusWebServiceReference.SendBinarySMSByContentRequest request) {
             return base.Channel.SendBinarySMSByContent(request);
         }
         
         public int SendBinarySMSByContent(string strInSerialNo, string strInSMSKey, string strInRecipients, byte[] strInBinaryContent, string strInExtraParam, string strInReplyEmail, int iInContentType, int iInSourceType, ref string strOutMessageIDs) {
-            Horus.OptusSMS.SendBinarySMSByContentRequest inValue = new Horus.OptusSMS.SendBinarySMSByContentRequest();
+            Horus.OptusWebServiceReference.SendBinarySMSByContentRequest inValue = new Horus.OptusWebServiceReference.SendBinarySMSByContentRequest();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.strInRecipients = strInRecipients;
@@ -1753,22 +1753,22 @@ namespace Horus.OptusSMS {
             inValue.iInContentType = iInContentType;
             inValue.iInSourceType = iInSourceType;
             inValue.strOutMessageIDs = strOutMessageIDs;
-            Horus.OptusSMS.SendBinarySMSByContentResponse retVal = ((Horus.OptusSMS.ISOAPServer)(this)).SendBinarySMSByContent(inValue);
+            Horus.OptusWebServiceReference.SendBinarySMSByContentResponse retVal = ((Horus.OptusWebServiceReference.ISOAPServer)(this)).SendBinarySMSByContent(inValue);
             strOutMessageIDs = retVal.strOutMessageIDs;
             return retVal.@return;
         }
         
-        public System.Threading.Tasks.Task<Horus.OptusSMS.SendBinarySMSByContentResponse> SendBinarySMSByContentAsync(Horus.OptusSMS.SendBinarySMSByContentRequest request) {
+        public System.Threading.Tasks.Task<Horus.OptusWebServiceReference.SendBinarySMSByContentResponse> SendBinarySMSByContentAsync(Horus.OptusWebServiceReference.SendBinarySMSByContentRequest request) {
             return base.Channel.SendBinarySMSByContentAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Horus.OptusSMS.SendWAPSIResponse Horus.OptusSMS.ISOAPServer.SendWAPSI(Horus.OptusSMS.SendWAPSIRequest request) {
+        Horus.OptusWebServiceReference.SendWAPSIResponse Horus.OptusWebServiceReference.ISOAPServer.SendWAPSI(Horus.OptusWebServiceReference.SendWAPSIRequest request) {
             return base.Channel.SendWAPSI(request);
         }
         
         public int SendWAPSI(string strInSerialNo, string strInSMSKey, string strInRecipients, string strInURL, string strInContent, string strInReplyEmail, ref string strOutMessageIDs) {
-            Horus.OptusSMS.SendWAPSIRequest inValue = new Horus.OptusSMS.SendWAPSIRequest();
+            Horus.OptusWebServiceReference.SendWAPSIRequest inValue = new Horus.OptusWebServiceReference.SendWAPSIRequest();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.strInRecipients = strInRecipients;
@@ -1776,107 +1776,107 @@ namespace Horus.OptusSMS {
             inValue.strInContent = strInContent;
             inValue.strInReplyEmail = strInReplyEmail;
             inValue.strOutMessageIDs = strOutMessageIDs;
-            Horus.OptusSMS.SendWAPSIResponse retVal = ((Horus.OptusSMS.ISOAPServer)(this)).SendWAPSI(inValue);
+            Horus.OptusWebServiceReference.SendWAPSIResponse retVal = ((Horus.OptusWebServiceReference.ISOAPServer)(this)).SendWAPSI(inValue);
             strOutMessageIDs = retVal.strOutMessageIDs;
             return retVal.@return;
         }
         
-        public System.Threading.Tasks.Task<Horus.OptusSMS.SendWAPSIResponse> SendWAPSIAsync(Horus.OptusSMS.SendWAPSIRequest request) {
+        public System.Threading.Tasks.Task<Horus.OptusWebServiceReference.SendWAPSIResponse> SendWAPSIAsync(Horus.OptusWebServiceReference.SendWAPSIRequest request) {
             return base.Channel.SendWAPSIAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Horus.OptusSMS.CreateMMSResponse Horus.OptusSMS.ISOAPServer.CreateMMS(Horus.OptusSMS.CreateMMSRequest request) {
+        Horus.OptusWebServiceReference.CreateMMSResponse Horus.OptusWebServiceReference.ISOAPServer.CreateMMS(Horus.OptusWebServiceReference.CreateMMSRequest request) {
             return base.Channel.CreateMMS(request);
         }
         
         public int CreateMMS(string strInSerialNo, string strInSMSKey, ref string strInOutTransactionID) {
-            Horus.OptusSMS.CreateMMSRequest inValue = new Horus.OptusSMS.CreateMMSRequest();
+            Horus.OptusWebServiceReference.CreateMMSRequest inValue = new Horus.OptusWebServiceReference.CreateMMSRequest();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.strInOutTransactionID = strInOutTransactionID;
-            Horus.OptusSMS.CreateMMSResponse retVal = ((Horus.OptusSMS.ISOAPServer)(this)).CreateMMS(inValue);
+            Horus.OptusWebServiceReference.CreateMMSResponse retVal = ((Horus.OptusWebServiceReference.ISOAPServer)(this)).CreateMMS(inValue);
             strInOutTransactionID = retVal.strInOutTransactionID;
             return retVal.@return;
         }
         
-        public System.Threading.Tasks.Task<Horus.OptusSMS.CreateMMSResponse> CreateMMSAsync(Horus.OptusSMS.CreateMMSRequest request) {
+        public System.Threading.Tasks.Task<Horus.OptusWebServiceReference.CreateMMSResponse> CreateMMSAsync(Horus.OptusWebServiceReference.CreateMMSRequest request) {
             return base.Channel.CreateMMSAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Horus.OptusSMS.AddMMSContentResponse Horus.OptusSMS.ISOAPServer.AddMMSContent(Horus.OptusSMS.AddMMSContentRequest request) {
+        Horus.OptusWebServiceReference.AddMMSContentResponse Horus.OptusWebServiceReference.ISOAPServer.AddMMSContent(Horus.OptusWebServiceReference.AddMMSContentRequest request) {
             return base.Channel.AddMMSContent(request);
         }
         
         public int AddMMSContent(string strInSerialNo, string strInSMSKey, string strInTransactionID, byte[] strInContent, string strInContentType, string strInContentLocationOrID) {
-            Horus.OptusSMS.AddMMSContentRequest inValue = new Horus.OptusSMS.AddMMSContentRequest();
+            Horus.OptusWebServiceReference.AddMMSContentRequest inValue = new Horus.OptusWebServiceReference.AddMMSContentRequest();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.strInTransactionID = strInTransactionID;
             inValue.strInContent = strInContent;
             inValue.strInContentType = strInContentType;
             inValue.strInContentLocationOrID = strInContentLocationOrID;
-            Horus.OptusSMS.AddMMSContentResponse retVal = ((Horus.OptusSMS.ISOAPServer)(this)).AddMMSContent(inValue);
+            Horus.OptusWebServiceReference.AddMMSContentResponse retVal = ((Horus.OptusWebServiceReference.ISOAPServer)(this)).AddMMSContent(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Horus.OptusSMS.AddMMSContentResponse> Horus.OptusSMS.ISOAPServer.AddMMSContentAsync(Horus.OptusSMS.AddMMSContentRequest request) {
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.AddMMSContentResponse> Horus.OptusWebServiceReference.ISOAPServer.AddMMSContentAsync(Horus.OptusWebServiceReference.AddMMSContentRequest request) {
             return base.Channel.AddMMSContentAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Horus.OptusSMS.AddMMSContentResponse> AddMMSContentAsync(string strInSerialNo, string strInSMSKey, string strInTransactionID, byte[] strInContent, string strInContentType, string strInContentLocationOrID) {
-            Horus.OptusSMS.AddMMSContentRequest inValue = new Horus.OptusSMS.AddMMSContentRequest();
+        public System.Threading.Tasks.Task<Horus.OptusWebServiceReference.AddMMSContentResponse> AddMMSContentAsync(string strInSerialNo, string strInSMSKey, string strInTransactionID, byte[] strInContent, string strInContentType, string strInContentLocationOrID) {
+            Horus.OptusWebServiceReference.AddMMSContentRequest inValue = new Horus.OptusWebServiceReference.AddMMSContentRequest();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.strInTransactionID = strInTransactionID;
             inValue.strInContent = strInContent;
             inValue.strInContentType = strInContentType;
             inValue.strInContentLocationOrID = strInContentLocationOrID;
-            return ((Horus.OptusSMS.ISOAPServer)(this)).AddMMSContentAsync(inValue);
+            return ((Horus.OptusWebServiceReference.ISOAPServer)(this)).AddMMSContentAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Horus.OptusSMS.AddBase64MMSContentResponse Horus.OptusSMS.ISOAPServer.AddBase64MMSContent(Horus.OptusSMS.AddBase64MMSContentRequest request) {
+        Horus.OptusWebServiceReference.AddBase64MMSContentResponse Horus.OptusWebServiceReference.ISOAPServer.AddBase64MMSContent(Horus.OptusWebServiceReference.AddBase64MMSContentRequest request) {
             return base.Channel.AddBase64MMSContent(request);
         }
         
         public int AddBase64MMSContent(string strInSerialNo, string strInSMSKey, string strInTransactionID, string strInBase64Content, string strInContentType, string strInContentLocationOrID) {
-            Horus.OptusSMS.AddBase64MMSContentRequest inValue = new Horus.OptusSMS.AddBase64MMSContentRequest();
+            Horus.OptusWebServiceReference.AddBase64MMSContentRequest inValue = new Horus.OptusWebServiceReference.AddBase64MMSContentRequest();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.strInTransactionID = strInTransactionID;
             inValue.strInBase64Content = strInBase64Content;
             inValue.strInContentType = strInContentType;
             inValue.strInContentLocationOrID = strInContentLocationOrID;
-            Horus.OptusSMS.AddBase64MMSContentResponse retVal = ((Horus.OptusSMS.ISOAPServer)(this)).AddBase64MMSContent(inValue);
+            Horus.OptusWebServiceReference.AddBase64MMSContentResponse retVal = ((Horus.OptusWebServiceReference.ISOAPServer)(this)).AddBase64MMSContent(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Horus.OptusSMS.AddBase64MMSContentResponse> Horus.OptusSMS.ISOAPServer.AddBase64MMSContentAsync(Horus.OptusSMS.AddBase64MMSContentRequest request) {
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.AddBase64MMSContentResponse> Horus.OptusWebServiceReference.ISOAPServer.AddBase64MMSContentAsync(Horus.OptusWebServiceReference.AddBase64MMSContentRequest request) {
             return base.Channel.AddBase64MMSContentAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Horus.OptusSMS.AddBase64MMSContentResponse> AddBase64MMSContentAsync(string strInSerialNo, string strInSMSKey, string strInTransactionID, string strInBase64Content, string strInContentType, string strInContentLocationOrID) {
-            Horus.OptusSMS.AddBase64MMSContentRequest inValue = new Horus.OptusSMS.AddBase64MMSContentRequest();
+        public System.Threading.Tasks.Task<Horus.OptusWebServiceReference.AddBase64MMSContentResponse> AddBase64MMSContentAsync(string strInSerialNo, string strInSMSKey, string strInTransactionID, string strInBase64Content, string strInContentType, string strInContentLocationOrID) {
+            Horus.OptusWebServiceReference.AddBase64MMSContentRequest inValue = new Horus.OptusWebServiceReference.AddBase64MMSContentRequest();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.strInTransactionID = strInTransactionID;
             inValue.strInBase64Content = strInBase64Content;
             inValue.strInContentType = strInContentType;
             inValue.strInContentLocationOrID = strInContentLocationOrID;
-            return ((Horus.OptusSMS.ISOAPServer)(this)).AddBase64MMSContentAsync(inValue);
+            return ((Horus.OptusWebServiceReference.ISOAPServer)(this)).AddBase64MMSContentAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Horus.OptusSMS.SendMMSResponse Horus.OptusSMS.ISOAPServer.SendMMS(Horus.OptusSMS.SendMMSRequest request) {
+        Horus.OptusWebServiceReference.SendMMSResponse Horus.OptusWebServiceReference.ISOAPServer.SendMMS(Horus.OptusWebServiceReference.SendMMSRequest request) {
             return base.Channel.SendMMS(request);
         }
         
         public int SendMMS(string strInSerialNo, string strInSMSKey, string strInTransactionID, string strInRecipients, string strInSubject, string strInReplyEmail, ref string strOutMessageIDs) {
-            Horus.OptusSMS.SendMMSRequest inValue = new Horus.OptusSMS.SendMMSRequest();
+            Horus.OptusWebServiceReference.SendMMSRequest inValue = new Horus.OptusWebServiceReference.SendMMSRequest();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.strInTransactionID = strInTransactionID;
@@ -1884,22 +1884,22 @@ namespace Horus.OptusSMS {
             inValue.strInSubject = strInSubject;
             inValue.strInReplyEmail = strInReplyEmail;
             inValue.strOutMessageIDs = strOutMessageIDs;
-            Horus.OptusSMS.SendMMSResponse retVal = ((Horus.OptusSMS.ISOAPServer)(this)).SendMMS(inValue);
+            Horus.OptusWebServiceReference.SendMMSResponse retVal = ((Horus.OptusWebServiceReference.ISOAPServer)(this)).SendMMS(inValue);
             strOutMessageIDs = retVal.strOutMessageIDs;
             return retVal.@return;
         }
         
-        public System.Threading.Tasks.Task<Horus.OptusSMS.SendMMSResponse> SendMMSAsync(Horus.OptusSMS.SendMMSRequest request) {
+        public System.Threading.Tasks.Task<Horus.OptusWebServiceReference.SendMMSResponse> SendMMSAsync(Horus.OptusWebServiceReference.SendMMSRequest request) {
             return base.Channel.SendMMSAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Horus.OptusSMS.SendMobileContentResponse Horus.OptusSMS.ISOAPServer.SendMobileContent(Horus.OptusSMS.SendMobileContentRequest request) {
+        Horus.OptusWebServiceReference.SendMobileContentResponse Horus.OptusWebServiceReference.ISOAPServer.SendMobileContent(Horus.OptusWebServiceReference.SendMobileContentRequest request) {
             return base.Channel.SendMobileContent(request);
         }
         
         public int SendMobileContent(string strInSerialNo, string strInSMSKey, string strInRecipients, string strInCodeID, string strInExtraParam, string strInReplyEmail, int iInOptions, ref string strOutMessageIDs) {
-            Horus.OptusSMS.SendMobileContentRequest inValue = new Horus.OptusSMS.SendMobileContentRequest();
+            Horus.OptusWebServiceReference.SendMobileContentRequest inValue = new Horus.OptusWebServiceReference.SendMobileContentRequest();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.strInRecipients = strInRecipients;
@@ -1908,120 +1908,120 @@ namespace Horus.OptusSMS {
             inValue.strInReplyEmail = strInReplyEmail;
             inValue.iInOptions = iInOptions;
             inValue.strOutMessageIDs = strOutMessageIDs;
-            Horus.OptusSMS.SendMobileContentResponse retVal = ((Horus.OptusSMS.ISOAPServer)(this)).SendMobileContent(inValue);
+            Horus.OptusWebServiceReference.SendMobileContentResponse retVal = ((Horus.OptusWebServiceReference.ISOAPServer)(this)).SendMobileContent(inValue);
             strOutMessageIDs = retVal.strOutMessageIDs;
             return retVal.@return;
         }
         
-        public System.Threading.Tasks.Task<Horus.OptusSMS.SendMobileContentResponse> SendMobileContentAsync(Horus.OptusSMS.SendMobileContentRequest request) {
+        public System.Threading.Tasks.Task<Horus.OptusWebServiceReference.SendMobileContentResponse> SendMobileContentAsync(Horus.OptusWebServiceReference.SendMobileContentRequest request) {
             return base.Channel.SendMobileContentAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Horus.OptusSMS.GetMobileContentPreviewURLResponse Horus.OptusSMS.ISOAPServer.GetMobileContentPreviewURL(Horus.OptusSMS.GetMobileContentPreviewURLRequest request) {
+        Horus.OptusWebServiceReference.GetMobileContentPreviewURLResponse Horus.OptusWebServiceReference.ISOAPServer.GetMobileContentPreviewURL(Horus.OptusWebServiceReference.GetMobileContentPreviewURLRequest request) {
             return base.Channel.GetMobileContentPreviewURL(request);
         }
         
         public int GetMobileContentPreviewURL(string strInSerialNo, string strInSMSKey, string strInCodeID, ref string strOutURL) {
-            Horus.OptusSMS.GetMobileContentPreviewURLRequest inValue = new Horus.OptusSMS.GetMobileContentPreviewURLRequest();
+            Horus.OptusWebServiceReference.GetMobileContentPreviewURLRequest inValue = new Horus.OptusWebServiceReference.GetMobileContentPreviewURLRequest();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.strInCodeID = strInCodeID;
             inValue.strOutURL = strOutURL;
-            Horus.OptusSMS.GetMobileContentPreviewURLResponse retVal = ((Horus.OptusSMS.ISOAPServer)(this)).GetMobileContentPreviewURL(inValue);
+            Horus.OptusWebServiceReference.GetMobileContentPreviewURLResponse retVal = ((Horus.OptusWebServiceReference.ISOAPServer)(this)).GetMobileContentPreviewURL(inValue);
             strOutURL = retVal.strOutURL;
             return retVal.@return;
         }
         
-        public System.Threading.Tasks.Task<Horus.OptusSMS.GetMobileContentPreviewURLResponse> GetMobileContentPreviewURLAsync(Horus.OptusSMS.GetMobileContentPreviewURLRequest request) {
+        public System.Threading.Tasks.Task<Horus.OptusWebServiceReference.GetMobileContentPreviewURLResponse> GetMobileContentPreviewURLAsync(Horus.OptusWebServiceReference.GetMobileContentPreviewURLRequest request) {
             return base.Channel.GetMobileContentPreviewURLAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Horus.OptusSMS.CheckMessageStatusResponse Horus.OptusSMS.ISOAPServer.CheckMessageStatus(Horus.OptusSMS.CheckMessageStatusRequest request) {
+        Horus.OptusWebServiceReference.CheckMessageStatusResponse Horus.OptusWebServiceReference.ISOAPServer.CheckMessageStatus(Horus.OptusWebServiceReference.CheckMessageStatusRequest request) {
             return base.Channel.CheckMessageStatus(request);
         }
         
         public int CheckMessageStatus(string strInSerialNo, string strInSMSKey, string strInMessageIDs, ref string strOutMessageStatus) {
-            Horus.OptusSMS.CheckMessageStatusRequest inValue = new Horus.OptusSMS.CheckMessageStatusRequest();
+            Horus.OptusWebServiceReference.CheckMessageStatusRequest inValue = new Horus.OptusWebServiceReference.CheckMessageStatusRequest();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.strInMessageIDs = strInMessageIDs;
             inValue.strOutMessageStatus = strOutMessageStatus;
-            Horus.OptusSMS.CheckMessageStatusResponse retVal = ((Horus.OptusSMS.ISOAPServer)(this)).CheckMessageStatus(inValue);
+            Horus.OptusWebServiceReference.CheckMessageStatusResponse retVal = ((Horus.OptusWebServiceReference.ISOAPServer)(this)).CheckMessageStatus(inValue);
             strOutMessageStatus = retVal.strOutMessageStatus;
             return retVal.@return;
         }
         
-        public System.Threading.Tasks.Task<Horus.OptusSMS.CheckMessageStatusResponse> CheckMessageStatusAsync(Horus.OptusSMS.CheckMessageStatusRequest request) {
+        public System.Threading.Tasks.Task<Horus.OptusWebServiceReference.CheckMessageStatusResponse> CheckMessageStatusAsync(Horus.OptusWebServiceReference.CheckMessageStatusRequest request) {
             return base.Channel.CheckMessageStatusAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Horus.OptusSMS.GetPropertyPageResponse Horus.OptusSMS.ISOAPServer.GetPropertyPage(Horus.OptusSMS.GetPropertyPageRequest request) {
+        Horus.OptusWebServiceReference.GetPropertyPageResponse Horus.OptusWebServiceReference.ISOAPServer.GetPropertyPage(Horus.OptusWebServiceReference.GetPropertyPageRequest request) {
             return base.Channel.GetPropertyPage(request);
         }
         
         public int GetPropertyPage(string strInSerialNo, string strInSMSKey, ref string strOutContent, bool bFirstUse) {
-            Horus.OptusSMS.GetPropertyPageRequest inValue = new Horus.OptusSMS.GetPropertyPageRequest();
+            Horus.OptusWebServiceReference.GetPropertyPageRequest inValue = new Horus.OptusWebServiceReference.GetPropertyPageRequest();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.strOutContent = strOutContent;
             inValue.bFirstUse = bFirstUse;
-            Horus.OptusSMS.GetPropertyPageResponse retVal = ((Horus.OptusSMS.ISOAPServer)(this)).GetPropertyPage(inValue);
+            Horus.OptusWebServiceReference.GetPropertyPageResponse retVal = ((Horus.OptusWebServiceReference.ISOAPServer)(this)).GetPropertyPage(inValue);
             strOutContent = retVal.strOutContent;
             return retVal.@return;
         }
         
-        public System.Threading.Tasks.Task<Horus.OptusSMS.GetPropertyPageResponse> GetPropertyPageAsync(Horus.OptusSMS.GetPropertyPageRequest request) {
+        public System.Threading.Tasks.Task<Horus.OptusWebServiceReference.GetPropertyPageResponse> GetPropertyPageAsync(Horus.OptusWebServiceReference.GetPropertyPageRequest request) {
             return base.Channel.GetPropertyPageAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Horus.OptusSMS.GetCreditsLeftResponse Horus.OptusSMS.ISOAPServer.GetCreditsLeft(Horus.OptusSMS.GetCreditsLeftRequest request) {
+        Horus.OptusWebServiceReference.GetCreditsLeftResponse Horus.OptusWebServiceReference.ISOAPServer.GetCreditsLeft(Horus.OptusWebServiceReference.GetCreditsLeftRequest request) {
             return base.Channel.GetCreditsLeft(request);
         }
         
         public int GetCreditsLeft(string strInSerialNo, string strInSMSKey, ref double dOutCreditsLeft) {
-            Horus.OptusSMS.GetCreditsLeftRequest inValue = new Horus.OptusSMS.GetCreditsLeftRequest();
+            Horus.OptusWebServiceReference.GetCreditsLeftRequest inValue = new Horus.OptusWebServiceReference.GetCreditsLeftRequest();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.dOutCreditsLeft = dOutCreditsLeft;
-            Horus.OptusSMS.GetCreditsLeftResponse retVal = ((Horus.OptusSMS.ISOAPServer)(this)).GetCreditsLeft(inValue);
+            Horus.OptusWebServiceReference.GetCreditsLeftResponse retVal = ((Horus.OptusWebServiceReference.ISOAPServer)(this)).GetCreditsLeft(inValue);
             dOutCreditsLeft = retVal.dOutCreditsLeft;
             return retVal.@return;
         }
         
-        public System.Threading.Tasks.Task<Horus.OptusSMS.GetCreditsLeftResponse> GetCreditsLeftAsync(Horus.OptusSMS.GetCreditsLeftRequest request) {
+        public System.Threading.Tasks.Task<Horus.OptusWebServiceReference.GetCreditsLeftResponse> GetCreditsLeftAsync(Horus.OptusWebServiceReference.GetCreditsLeftRequest request) {
             return base.Channel.GetCreditsLeftAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Horus.OptusSMS.GetLicenseInformationResponse Horus.OptusSMS.ISOAPServer.GetLicenseInformation(Horus.OptusSMS.GetLicenseInformationRequest request) {
+        Horus.OptusWebServiceReference.GetLicenseInformationResponse Horus.OptusWebServiceReference.ISOAPServer.GetLicenseInformation(Horus.OptusWebServiceReference.GetLicenseInformationRequest request) {
             return base.Channel.GetLicenseInformation(request);
         }
         
         public int GetLicenseInformation(string strInSerialNo, string strInSMSKey, ref string strOutLicenseInfo) {
-            Horus.OptusSMS.GetLicenseInformationRequest inValue = new Horus.OptusSMS.GetLicenseInformationRequest();
+            Horus.OptusWebServiceReference.GetLicenseInformationRequest inValue = new Horus.OptusWebServiceReference.GetLicenseInformationRequest();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.strOutLicenseInfo = strOutLicenseInfo;
-            Horus.OptusSMS.GetLicenseInformationResponse retVal = ((Horus.OptusSMS.ISOAPServer)(this)).GetLicenseInformation(inValue);
+            Horus.OptusWebServiceReference.GetLicenseInformationResponse retVal = ((Horus.OptusWebServiceReference.ISOAPServer)(this)).GetLicenseInformation(inValue);
             strOutLicenseInfo = retVal.strOutLicenseInfo;
             return retVal.@return;
         }
         
-        public System.Threading.Tasks.Task<Horus.OptusSMS.GetLicenseInformationResponse> GetLicenseInformationAsync(Horus.OptusSMS.GetLicenseInformationRequest request) {
+        public System.Threading.Tasks.Task<Horus.OptusWebServiceReference.GetLicenseInformationResponse> GetLicenseInformationAsync(Horus.OptusWebServiceReference.GetLicenseInformationRequest request) {
             return base.Channel.GetLicenseInformationAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Horus.OptusSMS.GetIncomingMessageResponse Horus.OptusSMS.ISOAPServer.GetIncomingMessage(Horus.OptusSMS.GetIncomingMessageRequest request) {
+        Horus.OptusWebServiceReference.GetIncomingMessageResponse Horus.OptusWebServiceReference.ISOAPServer.GetIncomingMessage(Horus.OptusWebServiceReference.GetIncomingMessageRequest request) {
             return base.Channel.GetIncomingMessage(request);
         }
         
         public int GetIncomingMessage(string strInSerialNo, string strInSMSKey, string strInReplyEmail, ref string strOutSender, ref string strOutMessageContent, ref string strOutTimeStamp, ref int iOutMessagesLeft) {
-            Horus.OptusSMS.GetIncomingMessageRequest inValue = new Horus.OptusSMS.GetIncomingMessageRequest();
+            Horus.OptusWebServiceReference.GetIncomingMessageRequest inValue = new Horus.OptusWebServiceReference.GetIncomingMessageRequest();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.strInReplyEmail = strInReplyEmail;
@@ -2029,7 +2029,7 @@ namespace Horus.OptusSMS {
             inValue.strOutMessageContent = strOutMessageContent;
             inValue.strOutTimeStamp = strOutTimeStamp;
             inValue.iOutMessagesLeft = iOutMessagesLeft;
-            Horus.OptusSMS.GetIncomingMessageResponse retVal = ((Horus.OptusSMS.ISOAPServer)(this)).GetIncomingMessage(inValue);
+            Horus.OptusWebServiceReference.GetIncomingMessageResponse retVal = ((Horus.OptusWebServiceReference.ISOAPServer)(this)).GetIncomingMessage(inValue);
             strOutSender = retVal.strOutSender;
             strOutMessageContent = retVal.strOutMessageContent;
             strOutTimeStamp = retVal.strOutTimeStamp;
@@ -2037,17 +2037,17 @@ namespace Horus.OptusSMS {
             return retVal.@return;
         }
         
-        public System.Threading.Tasks.Task<Horus.OptusSMS.GetIncomingMessageResponse> GetIncomingMessageAsync(Horus.OptusSMS.GetIncomingMessageRequest request) {
+        public System.Threading.Tasks.Task<Horus.OptusWebServiceReference.GetIncomingMessageResponse> GetIncomingMessageAsync(Horus.OptusWebServiceReference.GetIncomingMessageRequest request) {
             return base.Channel.GetIncomingMessageAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Horus.OptusSMS.EnterScheduleResponse Horus.OptusSMS.ISOAPServer.EnterSchedule(Horus.OptusSMS.EnterScheduleRequest request) {
+        Horus.OptusWebServiceReference.EnterScheduleResponse Horus.OptusWebServiceReference.ISOAPServer.EnterSchedule(Horus.OptusWebServiceReference.EnterScheduleRequest request) {
             return base.Channel.EnterSchedule(request);
         }
         
         public int EnterSchedule(string strInSerialNo, string strInSMSKey, string strInRecipients, string strInMessageText, string strInReplyEmail, string strInOriginator, double dInDateTime, double dInRefTime, int iInType) {
-            Horus.OptusSMS.EnterScheduleRequest inValue = new Horus.OptusSMS.EnterScheduleRequest();
+            Horus.OptusWebServiceReference.EnterScheduleRequest inValue = new Horus.OptusWebServiceReference.EnterScheduleRequest();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.strInRecipients = strInRecipients;
@@ -2057,17 +2057,17 @@ namespace Horus.OptusSMS {
             inValue.dInDateTime = dInDateTime;
             inValue.dInRefTime = dInRefTime;
             inValue.iInType = iInType;
-            Horus.OptusSMS.EnterScheduleResponse retVal = ((Horus.OptusSMS.ISOAPServer)(this)).EnterSchedule(inValue);
+            Horus.OptusWebServiceReference.EnterScheduleResponse retVal = ((Horus.OptusWebServiceReference.ISOAPServer)(this)).EnterSchedule(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Horus.OptusSMS.EnterScheduleResponse> Horus.OptusSMS.ISOAPServer.EnterScheduleAsync(Horus.OptusSMS.EnterScheduleRequest request) {
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.EnterScheduleResponse> Horus.OptusWebServiceReference.ISOAPServer.EnterScheduleAsync(Horus.OptusWebServiceReference.EnterScheduleRequest request) {
             return base.Channel.EnterScheduleAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Horus.OptusSMS.EnterScheduleResponse> EnterScheduleAsync(string strInSerialNo, string strInSMSKey, string strInRecipients, string strInMessageText, string strInReplyEmail, string strInOriginator, double dInDateTime, double dInRefTime, int iInType) {
-            Horus.OptusSMS.EnterScheduleRequest inValue = new Horus.OptusSMS.EnterScheduleRequest();
+        public System.Threading.Tasks.Task<Horus.OptusWebServiceReference.EnterScheduleResponse> EnterScheduleAsync(string strInSerialNo, string strInSMSKey, string strInRecipients, string strInMessageText, string strInReplyEmail, string strInOriginator, double dInDateTime, double dInRefTime, int iInType) {
+            Horus.OptusWebServiceReference.EnterScheduleRequest inValue = new Horus.OptusWebServiceReference.EnterScheduleRequest();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.strInRecipients = strInRecipients;
@@ -2077,16 +2077,16 @@ namespace Horus.OptusSMS {
             inValue.dInDateTime = dInDateTime;
             inValue.dInRefTime = dInRefTime;
             inValue.iInType = iInType;
-            return ((Horus.OptusSMS.ISOAPServer)(this)).EnterScheduleAsync(inValue);
+            return ((Horus.OptusWebServiceReference.ISOAPServer)(this)).EnterScheduleAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Horus.OptusSMS.EnterScheduleExtResponse Horus.OptusSMS.ISOAPServer.EnterScheduleExt(Horus.OptusSMS.EnterScheduleExtRequest request) {
+        Horus.OptusWebServiceReference.EnterScheduleExtResponse Horus.OptusWebServiceReference.ISOAPServer.EnterScheduleExt(Horus.OptusWebServiceReference.EnterScheduleExtRequest request) {
             return base.Channel.EnterScheduleExt(request);
         }
         
         public int EnterScheduleExt(string strInSerialNo, string strInSMSKey, string strInRecipients, string strInMessageText, string strInReplyEmail, string strInOriginator, double dInDateTime, double dInRefTime, int iInType, ref string strOutMessageIDs) {
-            Horus.OptusSMS.EnterScheduleExtRequest inValue = new Horus.OptusSMS.EnterScheduleExtRequest();
+            Horus.OptusWebServiceReference.EnterScheduleExtRequest inValue = new Horus.OptusWebServiceReference.EnterScheduleExtRequest();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.strInRecipients = strInRecipients;
@@ -2097,109 +2097,109 @@ namespace Horus.OptusSMS {
             inValue.dInRefTime = dInRefTime;
             inValue.iInType = iInType;
             inValue.strOutMessageIDs = strOutMessageIDs;
-            Horus.OptusSMS.EnterScheduleExtResponse retVal = ((Horus.OptusSMS.ISOAPServer)(this)).EnterScheduleExt(inValue);
+            Horus.OptusWebServiceReference.EnterScheduleExtResponse retVal = ((Horus.OptusWebServiceReference.ISOAPServer)(this)).EnterScheduleExt(inValue);
             strOutMessageIDs = retVal.strOutMessageIDs;
             return retVal.@return;
         }
         
-        public System.Threading.Tasks.Task<Horus.OptusSMS.EnterScheduleExtResponse> EnterScheduleExtAsync(Horus.OptusSMS.EnterScheduleExtRequest request) {
+        public System.Threading.Tasks.Task<Horus.OptusWebServiceReference.EnterScheduleExtResponse> EnterScheduleExtAsync(Horus.OptusWebServiceReference.EnterScheduleExtRequest request) {
             return base.Channel.EnterScheduleExtAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Horus.OptusSMS.DeleteScheduleResponse Horus.OptusSMS.ISOAPServer.DeleteSchedule(Horus.OptusSMS.DeleteScheduleRequest request) {
+        Horus.OptusWebServiceReference.DeleteScheduleResponse Horus.OptusWebServiceReference.ISOAPServer.DeleteSchedule(Horus.OptusWebServiceReference.DeleteScheduleRequest request) {
             return base.Channel.DeleteSchedule(request);
         }
         
         public int DeleteSchedule(string strInSerialNo, string strInSMSKey, string strInMessageIDs) {
-            Horus.OptusSMS.DeleteScheduleRequest inValue = new Horus.OptusSMS.DeleteScheduleRequest();
+            Horus.OptusWebServiceReference.DeleteScheduleRequest inValue = new Horus.OptusWebServiceReference.DeleteScheduleRequest();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.strInMessageIDs = strInMessageIDs;
-            Horus.OptusSMS.DeleteScheduleResponse retVal = ((Horus.OptusSMS.ISOAPServer)(this)).DeleteSchedule(inValue);
+            Horus.OptusWebServiceReference.DeleteScheduleResponse retVal = ((Horus.OptusWebServiceReference.ISOAPServer)(this)).DeleteSchedule(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Horus.OptusSMS.DeleteScheduleResponse> Horus.OptusSMS.ISOAPServer.DeleteScheduleAsync(Horus.OptusSMS.DeleteScheduleRequest request) {
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.DeleteScheduleResponse> Horus.OptusWebServiceReference.ISOAPServer.DeleteScheduleAsync(Horus.OptusWebServiceReference.DeleteScheduleRequest request) {
             return base.Channel.DeleteScheduleAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Horus.OptusSMS.DeleteScheduleResponse> DeleteScheduleAsync(string strInSerialNo, string strInSMSKey, string strInMessageIDs) {
-            Horus.OptusSMS.DeleteScheduleRequest inValue = new Horus.OptusSMS.DeleteScheduleRequest();
+        public System.Threading.Tasks.Task<Horus.OptusWebServiceReference.DeleteScheduleResponse> DeleteScheduleAsync(string strInSerialNo, string strInSMSKey, string strInMessageIDs) {
+            Horus.OptusWebServiceReference.DeleteScheduleRequest inValue = new Horus.OptusWebServiceReference.DeleteScheduleRequest();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.strInMessageIDs = strInMessageIDs;
-            return ((Horus.OptusSMS.ISOAPServer)(this)).DeleteScheduleAsync(inValue);
+            return ((Horus.OptusWebServiceReference.ISOAPServer)(this)).DeleteScheduleAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Horus.OptusSMS.CreateGroupResponse Horus.OptusSMS.ISOAPServer.CreateGroup(Horus.OptusSMS.CreateGroupRequest request) {
+        Horus.OptusWebServiceReference.CreateGroupResponse Horus.OptusWebServiceReference.ISOAPServer.CreateGroup(Horus.OptusWebServiceReference.CreateGroupRequest request) {
             return base.Channel.CreateGroup(request);
         }
         
         public int CreateGroup(string strInSerialNo, string strInSMSKey, string strInGroupName, string strInGroupMembers, ref int iOutMembersCreated) {
-            Horus.OptusSMS.CreateGroupRequest inValue = new Horus.OptusSMS.CreateGroupRequest();
+            Horus.OptusWebServiceReference.CreateGroupRequest inValue = new Horus.OptusWebServiceReference.CreateGroupRequest();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.strInGroupName = strInGroupName;
             inValue.strInGroupMembers = strInGroupMembers;
             inValue.iOutMembersCreated = iOutMembersCreated;
-            Horus.OptusSMS.CreateGroupResponse retVal = ((Horus.OptusSMS.ISOAPServer)(this)).CreateGroup(inValue);
+            Horus.OptusWebServiceReference.CreateGroupResponse retVal = ((Horus.OptusWebServiceReference.ISOAPServer)(this)).CreateGroup(inValue);
             iOutMembersCreated = retVal.iOutMembersCreated;
             return retVal.@return;
         }
         
-        public System.Threading.Tasks.Task<Horus.OptusSMS.CreateGroupResponse> CreateGroupAsync(Horus.OptusSMS.CreateGroupRequest request) {
+        public System.Threading.Tasks.Task<Horus.OptusWebServiceReference.CreateGroupResponse> CreateGroupAsync(Horus.OptusWebServiceReference.CreateGroupRequest request) {
             return base.Channel.CreateGroupAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Horus.OptusSMS.GetListNamesResponse Horus.OptusSMS.ISOAPServer.GetListNames(Horus.OptusSMS.GetListNamesRequest request) {
+        Horus.OptusWebServiceReference.GetListNamesResponse Horus.OptusWebServiceReference.ISOAPServer.GetListNames(Horus.OptusWebServiceReference.GetListNamesRequest request) {
             return base.Channel.GetListNames(request);
         }
         
         public int GetListNames(string strInSerialNo, string strInSMSKey, ref string strOutListNames) {
-            Horus.OptusSMS.GetListNamesRequest inValue = new Horus.OptusSMS.GetListNamesRequest();
+            Horus.OptusWebServiceReference.GetListNamesRequest inValue = new Horus.OptusWebServiceReference.GetListNamesRequest();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.strOutListNames = strOutListNames;
-            Horus.OptusSMS.GetListNamesResponse retVal = ((Horus.OptusSMS.ISOAPServer)(this)).GetListNames(inValue);
+            Horus.OptusWebServiceReference.GetListNamesResponse retVal = ((Horus.OptusWebServiceReference.ISOAPServer)(this)).GetListNames(inValue);
             strOutListNames = retVal.strOutListNames;
             return retVal.@return;
         }
         
-        public System.Threading.Tasks.Task<Horus.OptusSMS.GetListNamesResponse> GetListNamesAsync(Horus.OptusSMS.GetListNamesRequest request) {
+        public System.Threading.Tasks.Task<Horus.OptusWebServiceReference.GetListNamesResponse> GetListNamesAsync(Horus.OptusWebServiceReference.GetListNamesRequest request) {
             return base.Channel.GetListNamesAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Horus.OptusSMS.GetListEntriesResponse Horus.OptusSMS.ISOAPServer.GetListEntries(Horus.OptusSMS.GetListEntriesRequest request) {
+        Horus.OptusWebServiceReference.GetListEntriesResponse Horus.OptusWebServiceReference.ISOAPServer.GetListEntries(Horus.OptusWebServiceReference.GetListEntriesRequest request) {
             return base.Channel.GetListEntries(request);
         }
         
         public int GetListEntries(string strInSerialNo, string strInSMSKey, int iInListID, ref string strOutListEntries) {
-            Horus.OptusSMS.GetListEntriesRequest inValue = new Horus.OptusSMS.GetListEntriesRequest();
+            Horus.OptusWebServiceReference.GetListEntriesRequest inValue = new Horus.OptusWebServiceReference.GetListEntriesRequest();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.iInListID = iInListID;
             inValue.strOutListEntries = strOutListEntries;
-            Horus.OptusSMS.GetListEntriesResponse retVal = ((Horus.OptusSMS.ISOAPServer)(this)).GetListEntries(inValue);
+            Horus.OptusWebServiceReference.GetListEntriesResponse retVal = ((Horus.OptusWebServiceReference.ISOAPServer)(this)).GetListEntries(inValue);
             strOutListEntries = retVal.strOutListEntries;
             return retVal.@return;
         }
         
-        public System.Threading.Tasks.Task<Horus.OptusSMS.GetListEntriesResponse> GetListEntriesAsync(Horus.OptusSMS.GetListEntriesRequest request) {
+        public System.Threading.Tasks.Task<Horus.OptusWebServiceReference.GetListEntriesResponse> GetListEntriesAsync(Horus.OptusWebServiceReference.GetListEntriesRequest request) {
             return base.Channel.GetListEntriesAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Horus.OptusSMS.RegisterAccountResponse Horus.OptusSMS.ISOAPServer.RegisterAccount(Horus.OptusSMS.RegisterAccountRequest request) {
+        Horus.OptusWebServiceReference.RegisterAccountResponse Horus.OptusWebServiceReference.ISOAPServer.RegisterAccount(Horus.OptusWebServiceReference.RegisterAccountRequest request) {
             return base.Channel.RegisterAccount(request);
         }
         
         public int RegisterAccount(string strInSerialNo, string strInSMSKey, string strInName, string strInEmailAddress, string strInOrganization, string strInPhone, int iInCountryID, ref string strOutSMSKey) {
-            Horus.OptusSMS.RegisterAccountRequest inValue = new Horus.OptusSMS.RegisterAccountRequest();
+            Horus.OptusWebServiceReference.RegisterAccountRequest inValue = new Horus.OptusWebServiceReference.RegisterAccountRequest();
             inValue.strInSerialNo = strInSerialNo;
             inValue.strInSMSKey = strInSMSKey;
             inValue.strInName = strInName;
@@ -2208,34 +2208,34 @@ namespace Horus.OptusSMS {
             inValue.strInPhone = strInPhone;
             inValue.iInCountryID = iInCountryID;
             inValue.strOutSMSKey = strOutSMSKey;
-            Horus.OptusSMS.RegisterAccountResponse retVal = ((Horus.OptusSMS.ISOAPServer)(this)).RegisterAccount(inValue);
+            Horus.OptusWebServiceReference.RegisterAccountResponse retVal = ((Horus.OptusWebServiceReference.ISOAPServer)(this)).RegisterAccount(inValue);
             strOutSMSKey = retVal.strOutSMSKey;
             return retVal.@return;
         }
         
-        public System.Threading.Tasks.Task<Horus.OptusSMS.RegisterAccountResponse> RegisterAccountAsync(Horus.OptusSMS.RegisterAccountRequest request) {
+        public System.Threading.Tasks.Task<Horus.OptusWebServiceReference.RegisterAccountResponse> RegisterAccountAsync(Horus.OptusWebServiceReference.RegisterAccountRequest request) {
             return base.Channel.RegisterAccountAsync(request);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Horus.OptusSMS.RedWebServiceVersionResponse Horus.OptusSMS.ISOAPServer.RedWebServiceVersion(Horus.OptusSMS.RedWebServiceVersionRequest request) {
+        Horus.OptusWebServiceReference.RedWebServiceVersionResponse Horus.OptusWebServiceReference.ISOAPServer.RedWebServiceVersion(Horus.OptusWebServiceReference.RedWebServiceVersionRequest request) {
             return base.Channel.RedWebServiceVersion(request);
         }
         
         public string RedWebServiceVersion() {
-            Horus.OptusSMS.RedWebServiceVersionRequest inValue = new Horus.OptusSMS.RedWebServiceVersionRequest();
-            Horus.OptusSMS.RedWebServiceVersionResponse retVal = ((Horus.OptusSMS.ISOAPServer)(this)).RedWebServiceVersion(inValue);
+            Horus.OptusWebServiceReference.RedWebServiceVersionRequest inValue = new Horus.OptusWebServiceReference.RedWebServiceVersionRequest();
+            Horus.OptusWebServiceReference.RedWebServiceVersionResponse retVal = ((Horus.OptusWebServiceReference.ISOAPServer)(this)).RedWebServiceVersion(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Horus.OptusSMS.RedWebServiceVersionResponse> Horus.OptusSMS.ISOAPServer.RedWebServiceVersionAsync(Horus.OptusSMS.RedWebServiceVersionRequest request) {
+        System.Threading.Tasks.Task<Horus.OptusWebServiceReference.RedWebServiceVersionResponse> Horus.OptusWebServiceReference.ISOAPServer.RedWebServiceVersionAsync(Horus.OptusWebServiceReference.RedWebServiceVersionRequest request) {
             return base.Channel.RedWebServiceVersionAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Horus.OptusSMS.RedWebServiceVersionResponse> RedWebServiceVersionAsync() {
-            Horus.OptusSMS.RedWebServiceVersionRequest inValue = new Horus.OptusSMS.RedWebServiceVersionRequest();
-            return ((Horus.OptusSMS.ISOAPServer)(this)).RedWebServiceVersionAsync(inValue);
+        public System.Threading.Tasks.Task<Horus.OptusWebServiceReference.RedWebServiceVersionResponse> RedWebServiceVersionAsync() {
+            Horus.OptusWebServiceReference.RedWebServiceVersionRequest inValue = new Horus.OptusWebServiceReference.RedWebServiceVersionRequest();
+            return ((Horus.OptusWebServiceReference.ISOAPServer)(this)).RedWebServiceVersionAsync(inValue);
         }
     }
 }
