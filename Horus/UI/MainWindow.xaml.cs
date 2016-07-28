@@ -28,6 +28,8 @@ using System.Windows.Threading;
 using Horus.Classes;
 using System.Drawing.Imaging;
 using System.IO;
+using Microsoft.ProjectOxford.Face;
+using Microsoft.ProjectOxford.Face.Contract;
 
 namespace Horus
 {
@@ -183,23 +185,45 @@ namespace Horus
                         Guid photoID = Guid.NewGuid();
 
                         string photoName = photoID.ToString() + ".png"; //file name
-
-                        using (var fileStream = new FileStream(System.IO.Path.Combine(App.imageSavePath, photoName), FileMode.Create))
+                        string imagePath = System.IO.Path.Combine(App.imageSavePath, photoName);
+                        
+                        using (var fileStream = new FileStream(imagePath, FileMode.Create))
                         {
                             image.Save(fileStream, ImageFormat.Png);
                         }
 
                         App.WriteMessage("Photo Saved To File");
 
-                        byte[] byteArray = File.ReadAllBytes(System.IO.Path.Combine(App.imageSavePath, photoName));
+                        //Check for Face & Get Attributes
+                        bool intruder = false;
 
-                        await GoogleAppAuthorisation.AuthorizeAndUpload(byteArray, photoName);
-                        App.WriteMessage("Photo Uploaded to Drive");
+                        //API Call to Microsoft Cognitive
+                        List<Face> faces = await App.UploadAndDetectFaces(imagePath);
 
-                        if (App.smsClient != null)
+                        if (faces != null)
                         {
-                            App.smsClient.sendSMS();
-                            App.WriteMessage("SMS Notification Sent");
+                            if (faces.Count > 0)
+                            {
+                                //Face Detected
+                                //Compare to Owner
+
+                            }
+                        }
+
+                        if (intruder)
+                        {
+                            //Upload Photo to Google Drive
+                            byte[] byteArray = File.ReadAllBytes(System.IO.Path.Combine(App.imageSavePath, photoName));
+
+                            await GoogleAppAuthorisation.AuthorizeAndUpload(byteArray, photoName);
+                            App.WriteMessage("Photo Uploaded to Drive");
+
+                            //Send Notification
+                            if (App.smsClient != null)
+                            {
+                                App.smsClient.sendSMS();
+                                App.WriteMessage("SMS Notification Sent");
+                            }
                         }                        
                     });
         }

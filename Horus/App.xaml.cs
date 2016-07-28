@@ -1,6 +1,8 @@
 ﻿using Accord.Vision.Detection;
 using AForge.Video.DirectShow;
 using Horus.Classes;
+using Microsoft.ProjectOxford.Face;
+using Microsoft.ProjectOxford.Face.Contract;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -23,10 +25,15 @@ namespace Horus
         //Global Variables
         public static string imageSavePath = "";
         public static string currentIP = "";
+        
+        //Facial Recognition
+        public static readonly IFaceServiceClient faceServiceClient = new FaceServiceClient("00fd2d23618542208915def496e504ea");
+        public static string faceGroupID = "";
 
+        //Communications
         public static AbstractSMSService smsClient;
 
-        private void Application_Startup(object sender, StartupEventArgs e)
+        private async void Application_Startup(object sender, StartupEventArgs e)
         {
             if (e.Args.Length == 0 || e.Args[0].ToLower().StartsWith("/s"))
             {
@@ -63,6 +70,10 @@ namespace Horus
 
                                 case "lastname":
                                     lastName = xele.InnerText;
+                                    break;
+
+                                case "faceid":
+                                    faceGroupID = xele.InnerText;
                                     break;
 
                                 case "sms":
@@ -103,6 +114,18 @@ namespace Horus
                     }
 
                     //Configure Software for Settings
+                    if (faceGroupID == "")
+                    {
+                        //Create New Owner Face Group
+                        string groupID = Guid.NewGuid().ToString();
+                        await faceServiceClient.CreatePersonGroupAsync(groupID, firstName + lastName);
+                    }
+                    else
+                    {
+                        //Check Face Group
+                        var result = await faceServiceClient.GetPersonGroupAsync(faceGroupID);
+                    }
+
                     //SMS Settings
                     if (SMSEnabled)
                     {
@@ -204,6 +227,56 @@ namespace Horus
         public static void WriteMessage(string message)
         {
             Console.WriteLine(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss.fff") + " - " + message);
+        }
+
+        ///<summary></summary>
+        public static async Task<List<Face>> UploadAndDetectFaces(string imagePath)
+        {
+            try
+            {
+                using (Stream imgFile = File.OpenRead(imagePath))
+                {
+                    var faces = await faceServiceClient.DetectAsync(imgFile, true, true);
+
+                    return faces.ToList();
+                }
+            }
+            catch (Exception)
+            {
+                return new List<Face>();
+            }
+        }
+
+        public static async Task<Boolean> VerifyPerson(Guid[] personID)
+        {
+            try
+            {
+                bool identified = false;
+
+                var results = await faceServiceClient.IdentifyAsync(faceGroupID, personID, 1);
+                foreach (var identifyResult in results)
+                {
+                    if (identifyResult.Candidates.Length == 0)
+                    {
+                        //Not Verified
+                        identified = false;
+                        Console.WriteLine("Not Identified!");
+                    }
+                    else
+                    {
+                        identified = true;
+                        //Get Verified Person Details
+                        var candidateId = identifyResult.Candidates[0].PersonId;
+                        var person = await faceServiceClient.GetPersonAsync(faceGroupID, candidateId);
+                        Console.WriteLine("Identified as {0}", person.Name);
+                    }
+                }
+                return identified;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }
