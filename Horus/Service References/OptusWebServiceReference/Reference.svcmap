@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e9d83ac1-7b57-491a-a36f-7bec74c9ad02" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="fabdaa70-a2e9-45c3-a6f1-a8935ce9e62e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,7 +22,7 @@
     <MetadataSource Address="http://xml.redcoal.com/soapserver.dll/wsdl/ISoapServer" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ISOAPServerservice.wsdl" MetadataType="Wsdl" ID="4980bdef-9191-4c54-bff1-5701a80ea1a2" SourceId="1" SourceUrl="http://xml.redcoal.com/soapserver.dll/wsdl/ISoapServer" />
+    <MetadataFile FileName="ISOAPServerservice.wsdl" MetadataType="Wsdl" ID="6a0f49cf-fde8-488f-a3cb-a6da46bb103d" SourceId="1" SourceUrl="http://xml.redcoal.com/soapserver.dll/wsdl/ISoapServer" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -187,7 +187,7 @@
     <Compile Include="Classes\SMSServices\SMSService.cs" />
     <Compile Include="Classes\SMSServices\TelstraSMSService.cs" />
     <Compile Include="Classes\SMSServices\VodafoneSMSService.cs" />
-    <Compile Include="Service References\OptusSMS\Reference.cs">
+    <Compile Include="Service References\OptusWebServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -224,82 +224,82 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\OptusSMS\Horus.OptusSMS.AddBase64MMSContentResponse.datasource">
+    <None Include="Service References\OptusWebServiceReference\Horus.OptusWebServiceReference.AddBase64MMSContentResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OptusSMS\Horus.OptusSMS.AddMMSContentResponse.datasource">
+    <None Include="Service References\OptusWebServiceReference\Horus.OptusWebServiceReference.AddMMSContentResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OptusSMS\Horus.OptusSMS.CheckMessageStatusResponse.datasource">
+    <None Include="Service References\OptusWebServiceReference\Horus.OptusWebServiceReference.CheckMessageStatusResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OptusSMS\Horus.OptusSMS.CreateGroupResponse.datasource">
+    <None Include="Service References\OptusWebServiceReference\Horus.OptusWebServiceReference.CreateGroupResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OptusSMS\Horus.OptusSMS.CreateMMSResponse.datasource">
+    <None Include="Service References\OptusWebServiceReference\Horus.OptusWebServiceReference.CreateMMSResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OptusSMS\Horus.OptusSMS.DeleteScheduleResponse.datasource">
+    <None Include="Service References\OptusWebServiceReference\Horus.OptusWebServiceReference.DeleteScheduleResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OptusSMS\Horus.OptusSMS.EnterScheduleExtResponse.datasource">
+    <None Include="Service References\OptusWebServiceReference\Horus.OptusWebServiceReference.EnterScheduleExtResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OptusSMS\Horus.OptusSMS.EnterScheduleResponse.datasource">
+    <None Include="Service References\OptusWebServiceReference\Horus.OptusWebServiceReference.EnterScheduleResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OptusSMS\Horus.OptusSMS.GetCreditsLeftResponse.datasource">
+    <None Include="Service References\OptusWebServiceReference\Horus.OptusWebServiceReference.GetCreditsLeftResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OptusSMS\Horus.OptusSMS.GetIncomingMessageResponse.datasource">
+    <None Include="Service References\OptusWebServiceReference\Horus.OptusWebServiceReference.GetIncomingMessageResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OptusSMS\Horus.OptusSMS.GetLicenseInformationResponse.datasource">
+    <None Include="Service References\OptusWebServiceReference\Horus.OptusWebServiceReference.GetLicenseInformationResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OptusSMS\Horus.OptusSMS.GetListEntriesResponse.datasource">
+    <None Include="Service References\OptusWebServiceReference\Horus.OptusWebServiceReference.GetListEntriesResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OptusSMS\Horus.OptusSMS.GetListNamesResponse.datasource">
+    <None Include="Service References\OptusWebServiceReference\Horus.OptusWebServiceReference.GetListNamesResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OptusSMS\Horus.OptusSMS.GetMobileContentPreviewURLResponse.datasource">
+    <None Include="Service References\OptusWebServiceReference\Horus.OptusWebServiceReference.GetMobileContentPreviewURLResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OptusSMS\Horus.OptusSMS.GetPropertyPageResponse.datasource">
+    <None Include="Service References\OptusWebServiceReference\Horus.OptusWebServiceReference.GetPropertyPageResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OptusSMS\Horus.OptusSMS.RedWebServiceVersionResponse.datasource">
+    <None Include="Service References\OptusWebServiceReference\Horus.OptusWebServiceReference.RedWebServiceVersionResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OptusSMS\Horus.OptusSMS.RegisterAccountResponse.datasource">
+    <None Include="Service References\OptusWebServiceReference\Horus.OptusWebServiceReference.RegisterAccountResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OptusSMS\Horus.OptusSMS.SendBinarySMSByContentResponse.datasource">
+    <None Include="Service References\OptusWebServiceReference\Horus.OptusWebServiceReference.SendBinarySMSByContentResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OptusSMS\Horus.OptusSMS.SendBinarySMSResponse.datasource">
+    <None Include="Service References\OptusWebServiceReference\Horus.OptusWebServiceReference.SendBinarySMSResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OptusSMS\Horus.OptusSMS.SendMMSResponse.datasource">
+    <None Include="Service References\OptusWebServiceReference\Horus.OptusWebServiceReference.SendMMSResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OptusSMS\Horus.OptusSMS.SendMobileContentResponse.datasource">
+    <None Include="Service References\OptusWebServiceReference\Horus.OptusWebServiceReference.SendMobileContentResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OptusSMS\Horus.OptusSMS.SendSMS2Response.datasource">
+    <None Include="Service References\OptusWebServiceReference\Horus.OptusWebServiceReference.SendSMS2Response.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OptusSMS\Horus.OptusSMS.SendTextSMSResponse.datasource">
+    <None Include="Service References\OptusWebServiceReference\Horus.OptusWebServiceReference.SendTextSMSResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OptusSMS\Horus.OptusSMS.SendWAPSIResponse.datasource">
+    <None Include="Service References\OptusWebServiceReference\Horus.OptusWebServiceReference.SendWAPSIResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OptusSMS\Horus.OptusSMS.SendWideSMSResponse.datasource">
+    <None Include="Service References\OptusWebServiceReference\Horus.OptusWebServiceReference.SendWideSMSResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OptusSMS\ISOAPServerservice.wsdl" />
+    <None Include="Service References\OptusWebServiceReference\ISOAPServerservice.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -308,24 +308,18 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\OptusWebServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\OptusWebServiceReference\configuration.svcinfo" />
+    <None Include="Service References\OptusWebServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Settings.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\OptusSMS\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\OptusSMS\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\OptusSMS\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\OptusSMS\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    <WCFMetadataStorage Include="Service References\OptusWebServiceReference\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Accord.3.0.2\build\Accord.targets" Condition="Exists('..\packages\Accord.3.0.2\build\Accord.targets')" />
