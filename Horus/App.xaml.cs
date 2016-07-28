@@ -114,18 +114,27 @@ namespace Horus
                     }
 
                     //Configure Software for Settings
-                    if (faceGroupID == "")
-                    {
-                        //Create New Owner Face Group
-                        string groupID = Guid.NewGuid().ToString();
-                        await faceServiceClient.CreatePersonGroupAsync(groupID, firstName + lastName);
-                    }
-                    else
+                    if (faceGroupID != "")
                     {
                         //Check Face Group
                         var result = await faceServiceClient.GetPersonGroupAsync(faceGroupID);
                     }
+                    else
+                    {
+                        //HACK: Test Code for creating Person Group
+                        //Create New Owner Face Group
+                        string groupID = Guid.NewGuid().ToString();
+                        await faceServiceClient.CreatePersonGroupAsync(groupID, firstName + lastName);
 
+                        //Add Person Group To Settings File
+                        var faceid = doc.SelectSingleNode("/Settings/FaceID");
+                        if (faceid != null)
+                        {
+                            faceid.InnerText = groupID;
+                        }
+                        doc.Save("Settings.xml");
+                    }
+                    
                     //SMS Settings
                     if (SMSEnabled)
                     {
@@ -252,25 +261,33 @@ namespace Horus
             try
             {
                 bool identified = false;
-
-                var results = await faceServiceClient.IdentifyAsync(faceGroupID, personID, 1);
-                foreach (var identifyResult in results)
-                {
-                    if (identifyResult.Candidates.Length == 0)
+                if (faceGroupID != "")
+                {                   
+                    var results = await faceServiceClient.IdentifyAsync(faceGroupID, personID, 1);
+                    foreach (var identifyResult in results)
                     {
-                        //Not Verified
-                        identified = false;
-                        Console.WriteLine("Not Identified!");
-                    }
-                    else
-                    {
-                        identified = true;
-                        //Get Verified Person Details
-                        var candidateId = identifyResult.Candidates[0].PersonId;
-                        var person = await faceServiceClient.GetPersonAsync(faceGroupID, candidateId);
-                        Console.WriteLine("Identified as {0}", person.Name);
+                        if (identifyResult.Candidates.Length == 0)
+                        {
+                            //Not Verified
+                            identified = false;
+                            Console.WriteLine("Not Identified!");
+                        }
+                        else
+                        {
+                            identified = true;
+                            //Get Verified Person Details
+                            var candidateId = identifyResult.Candidates[0].PersonId;
+                            var person = await faceServiceClient.GetPersonAsync(faceGroupID, candidateId);
+                            Console.WriteLine("Identified as {0}", person.Name);
+                        }
                     }
                 }
+                else
+                {
+                    //Identification Not Possible - Unknown Owner
+                    identified = true;
+                }
+                
                 return identified;
             }
             catch (Exception)

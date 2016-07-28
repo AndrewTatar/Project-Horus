@@ -190,11 +190,13 @@ namespace Horus
                         using (var fileStream = new FileStream(imagePath, FileMode.Create))
                         {
                             image.Save(fileStream, ImageFormat.Png);
+                            fileStream.Close();
                         }
 
                         App.WriteMessage("Photo Saved To File");
 
                         //Check for Face & Get Attributes
+                        bool ownerDetected = true;
                         bool intruder = false;
 
                         //API Call to Microsoft Cognitive
@@ -206,10 +208,15 @@ namespace Horus
                             {
                                 //Face Detected
                                 //Compare to Owner
+                                ownerDetected = await App.VerifyPerson(faces.Select(f => f.FaceId).ToArray());
 
+                                //Only Set Intruder flag when there is a face detected and its not the owner
+                                if (!ownerDetected)
+                                    intruder = true;
                             }
                         }
 
+                        //Test to see if we have an intruder
                         if (intruder)
                         {
                             //Upload Photo to Google Drive
@@ -224,6 +231,11 @@ namespace Horus
                                 App.smsClient.sendSMS();
                                 App.WriteMessage("SMS Notification Sent");
                             }
+                        }
+                        else
+                        {
+                            //Delete Image - No Need to keep saved image of nothing
+                            File.Delete(imagePath);
                         }                        
                     });
         }
