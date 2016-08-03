@@ -26,7 +26,7 @@ namespace Horus.Classes
             
             App.WriteMessage("Sending SMS Notification (Optus)");
             //some of the values passed here are just temporary values for testing purposes
-            SendTextSMSRequest req = new SendTextSMSRequest(base.serviceSecret, base.serviceKey, base.mobileNumber, base.message, "s3116979@student.rmit.edu.au", "s3116979", 1, "s3116979");
+            SendTextSMSRequest req = new SendTextSMSRequest(base.serviceSecret, base.serviceKey, base.mobileNumber, base.message, "s3116979@student.rmit.edu.au", base.userName, 1, "s3116979");
             return soapServer.SendTextSMS(req).ToString();
             
         }

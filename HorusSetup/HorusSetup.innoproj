@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>1.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>197dab0e-d5d8-4a7c-aa82-88036a66dbc2</ProjectGuid>
+    <AssemblyName>HorusSetup</AssemblyName>
+    <Name>HorusSetup</Name>
+    <RootNamespace>HorusSetup</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>
+    </OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>
+    </OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Script.iss">
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources" />
+    <Folder Include="Resources\Icons" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Icons\48X48-HORUS-Icon.ico">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Resources\Icons\64x64-HORUS-Icon.ico">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Resources\Icons\96x96-HORUS-Icon.ico">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\VisualInstaller\InnoSetupProject.targets" />
+</Project>
