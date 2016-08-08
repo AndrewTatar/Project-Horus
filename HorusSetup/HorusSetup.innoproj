@@ -31,8 +31,18 @@
   <ItemGroup>
     <Folder Include="Resources" />
     <Folder Include="Resources\Icons" />
+    <Folder Include="Resources\Deployable" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="itdownload.dll">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="it_download.iss">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ProjectMetaData.txt">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="Resources\Icons\48X48-HORUS-Icon.ico">
       <SubType>Content</SubType>
     </Content>
@@ -40,6 +50,9 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="Resources\Icons\96x96-HORUS-Icon.ico">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Resources\readme.txt">
       <SubType>Content</SubType>
     </Content>
   </ItemGroup>
