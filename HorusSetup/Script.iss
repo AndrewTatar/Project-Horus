@@ -27,7 +27,7 @@ AppUpdatesURL=https://github.com/AndrewTatar/Project-Horus
 DefaultDirName={code:GetPFPath|{#AppCPU}}\Team Horus\Project Horus
 DefaultGroupName=Team Horus\Project Horus
 InfoBeforeFile=C:\Users\Duane\Source\Repos\Project-Horus\HorusSetup\Resources\readme.txt
-OutputDir=C:\Users\Duane\Source\Repos\Project-Horus\HorusSetup\output
+OutputDir=C:\Users\Duane\Source\Repos\Project-Horus\HorusSetup\Deployable
 OutputBaseFilename=HorusSetup
 SetupIconFile=C:\Users\Duane\Source\Repos\Project-Horus\HorusSetup\Resources\Icons\48X48-HORUS-Icon.ico
 Compression=lzma
@@ -54,6 +54,10 @@ Name: "{group}\{#ShortcutName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename
 Name: "{commondesktop}\{#ShortcutName}"; Filename: "{app}\Horus\bin\Debug\{#MyAppExeName}"; Tasks: desktopicon; IconFilename: "{app}\{#MyAppIconName}"
 Name: "{commonprograms}\HorusSetup"; Filename: "{app}\Horus.exe"
 
+[Registry]
+Root: HKLM; Subkey: SOFTWARE\TeamHorus\Project Horus; ValueType: string; ValueName: UserName; ValueData: {{Page.Values[0]}}; Flags: createvalueifdoesntexist uninsdeletekeyifempty uninsdeletevalue
+Root: HKLM; Subkey: SOFTWARE\TeamHorus\Project Horus; ValueType: string; ValueName: UserEmail; ValueData: {{Page.Values[1]}}; Flags: createvalueifdoesntexist uninsdeletekeyifempty uninsdeletevalue
+
 [Run]
 Filename: "{app}\Horus\bin\Debug\{#MyAppExeName}"; Description: "{cm:LaunchProgram, {#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 
@@ -65,10 +69,23 @@ Type: dirifempty; Name: "userappdata\AppPublisher"
 #include "it_download.iss";     
 
 [Code]
+var
+  Page: TInputQueryWizardPage;
+
 procedure InitializeWizard();
 begin
+
   itd_init;
   itd_downloadafter(wpReady);
+  Page := CreateInputQueryPage(wpWelcome,
+  'Personal Information (Required)', 'Who are you?',
+  'Please specify your name and your email address, then click Next.');
+
+  // Add items (False means it's not a password edit)
+  Page.Add('Name:', False);
+  Page.Add('Email:', False);
+
+
 end;
 
 function GetPFPath(appCpu : string): string;
@@ -176,7 +193,7 @@ begin
 
 if (not IsDotNetDetected_da7caa4c_5c42_47d9_88e0_a8c0ed5e1b76('4.5.1', 0)) then begin
           
-    itd_addfile('http://your-repository/dotnetfx.exe', expandconstant('{tmp}\dotnet.exe'));
+    itd_addfile('https://go.microsoft.com/fwlink/?LinkId=225702', expandconstant('{tmp}\dotnet.exe'));
     
 end;
 

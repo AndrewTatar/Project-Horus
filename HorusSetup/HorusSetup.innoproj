@@ -29,11 +29,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Deployable" />
     <Folder Include="Resources" />
     <Folder Include="Resources\Icons" />
-    <Folder Include="Resources\Deployable" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Deployable\HorusSetup.exe">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="itdownload.dll">
       <SubType>Content</SubType>
     </Content>
