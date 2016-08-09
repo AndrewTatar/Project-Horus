@@ -1,6 +1,4 @@
-﻿using Accord.Vision.Detection;
-using AForge.Video.DirectShow;
-using Horus.Classes;
+﻿using Horus.Classes;
 using Microsoft.ProjectOxford.Face;
 using Microsoft.ProjectOxford.Face.Contract;
 using System;
@@ -14,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Xml;
+
 
 namespace Horus
 {
@@ -29,6 +28,7 @@ namespace Horus
         //Facial Recognition
         public static readonly IFaceServiceClient faceServiceClient = new FaceServiceClient("00fd2d23618542208915def496e504ea");
         public static string faceGroupID = "";
+        public static bool facialCheckDisabled = false;
 
         //Communications
         public static AbstractSMSService smsClient;
@@ -118,21 +118,15 @@ namespace Horus
                     {
                         //Check Face Group
                         var result = await faceServiceClient.GetPersonGroupAsync(faceGroupID);
+                        if (result.PersonGroupId == "")
+                            facialCheckDisabled = true;
                     }
                     else
                     {
-                        //HACK: Test Code for creating Person Group
-                        //Create New Owner Face Group
-                        string groupID = Guid.NewGuid().ToString();
-                        await faceServiceClient.CreatePersonGroupAsync(groupID, firstName + lastName);
-
-                        //Add Person Group To Settings File
-                        var faceid = doc.SelectSingleNode("/Settings/FaceID");
-                        if (faceid != null)
-                        {
-                            faceid.InnerText = groupID;
-                        }
-                        doc.Save("Settings.xml");
+                        //No Face Group
+                        //Facial Recognition will be disabled - this is now a general screensaver
+                        //Set disabled flag for facial recognition
+                        facialCheckDisabled = true;
                     }
                     
                     //SMS Settings

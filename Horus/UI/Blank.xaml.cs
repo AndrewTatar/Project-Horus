@@ -24,8 +24,12 @@ namespace Horus
             InitializeComponent();
 
             this.Loaded += Blank_Loaded;
-            //this.MouseDown += Blank_MouseDown;
-            //this.KeyUp += Blank_KeyUp;
+
+            if (App.facialCheckDisabled)
+            {
+                this.MouseDown += Blank_MouseDown;
+                this.KeyUp += Blank_KeyUp;
+            }
         }
 
         private void Blank_KeyUp(object sender, KeyEventArgs e)

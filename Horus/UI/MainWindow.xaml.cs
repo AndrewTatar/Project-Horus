@@ -1,11 +1,7 @@
-﻿//Aforge Reference
-using AForge.Video; //this needs to be imported via the Accord package in nuget otherwise namespace conflict with aforge's.
-using AForge.Video.DirectShow; //these namespaces are imported via the Accord package in nuget otherwise there will be a namespace conflict with aforge's. 
-//using AForge.Imaging.Filters;
-//Accord Reference
+﻿using AForge.Video; 
+using AForge.Video.DirectShow;
 using Accord.Vision.Detection;
 using Accord.Vision.Detection.Cascades;
-using AForge.Imaging;
 using AForge.Imaging.Filters;
 using AForge.Vision.Motion;
 using System;
@@ -56,8 +52,12 @@ namespace Horus
 
             this.Loaded += MainWindow_Loaded;
             this.Closing += MainWindow_Closing;
-            //this.MouseDown += MainWindow_MouseDown;
-            //this.KeyUp += MainWindow_KeyUp;
+
+            if (App.facialCheckDisabled)
+            {
+                this.MouseDown += MainWindow_MouseDown;
+                this.KeyUp += MainWindow_KeyUp;
+            }
         }
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -74,24 +74,32 @@ namespace Horus
             //Full Screen
             WindowState = WindowState.Maximized;
 
-            //Configure Webcam
-            cascade = new FaceHaarCascade();
-            haarObjectDetector = new HaarObjectDetector(cascade,
-                25, ObjectDetectorSearchMode.Single, 1.2f,
-                ObjectDetectorScalingMode.SmallerToGreater);
+            if (!App.facialCheckDisabled)
+            {
+                //Configure Webcam
+                cascade = new FaceHaarCascade();
+                haarObjectDetector = new HaarObjectDetector(cascade,
+                    25, ObjectDetectorSearchMode.Single, 1.2f,
+                    ObjectDetectorScalingMode.SmallerToGreater);
 
-            //Setup Dispatcher Timer
-            dispatcherTimer = new DispatcherTimer();
-            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
-            dispatcherTimer.Interval = new TimeSpan(0, 1, 0);
+                //Setup Dispatcher Timer
+                dispatcherTimer = new DispatcherTimer();
+                dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+                dispatcherTimer.Interval = new TimeSpan(0, 1, 0);
 
-            //Connect to Camera
-            OpenVideoSource();
+                //Connect to Camera
+                OpenVideoSource();
+            }
 
             //Graphics/Animations for Screensaver
-            //TODO: Graphics/Animation Loading
-
-            Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#00ff00"));
+            Uri video = new Uri(@"horus.wmv", UriKind.Relative);
+            mediaPlayer.Source = video;
+        }
+        
+        private void MediaElement_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            mediaPlayer.Position = new TimeSpan(0, 0, 0, 0, 1);
+            mediaPlayer.Play();
         }
 
         private void MainWindow_KeyUp(object sender, KeyEventArgs e)
@@ -121,9 +129,9 @@ namespace Horus
 
                 App.WriteMessage("Webcam Connected");
             }
-            catch (Exception exception)
+            catch (Exception ex)
             {
-                MessageBox.Show(exception.ToString());
+                App.WriteMessage(ex.ToString());
             }
         }
 
@@ -139,9 +147,9 @@ namespace Horus
 
                     App.WriteMessage("Webcam Disconnected");
                 }
-                catch (Exception exception)
+                catch (Exception ex)
                 {
-                    MessageBox.Show(exception.ToString());
+                    App.WriteMessage(ex.ToString());
                 }
             }            
         }

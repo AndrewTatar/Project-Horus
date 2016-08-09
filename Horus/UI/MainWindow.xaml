@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="" Background="Black" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="None">
     <Grid x:Name="MainGrid">
-        
+        <MediaElement x:Name="mediaPlayer" LoadedBehavior="Play" Stretch="UniformToFill" MediaEnded="MediaElement_MediaEnded" UnloadedBehavior="Manual"/>
     </Grid>
 </Window>

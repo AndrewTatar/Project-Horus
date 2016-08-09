@@ -314,9 +314,10 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Settings.xml">
+    <Content Include="Horus.wmv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Settings.xml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\OptusWebServiceReference\" />
