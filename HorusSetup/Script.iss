@@ -54,10 +54,6 @@ Name: "{group}\{#ShortcutName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename
 Name: "{commondesktop}\{#ShortcutName}"; Filename: "{app}\Horus\bin\Debug\{#MyAppExeName}"; Tasks: desktopicon; IconFilename: "{app}\{#MyAppIconName}"
 Name: "{commonprograms}\HorusSetup"; Filename: "{app}\Horus.exe"
 
-[Registry]
-Root: HKLM; Subkey: SOFTWARE\MyCompany\MyTool; ValueType: string; ValueName: UserName; ValueData: {code:GetUserName}; Flags: createvalueifdoesntexist uninsdeletekeyifempty uninsdeletevalue
-Root: HKLM; Subkey: SOFTWARE\MyCompany\MyTool; ValueType: string; ValueName: UserEmail; ValueData: {code:GetUserEmail}; Flags: createvalueifdoesntexist uninsdeletekeyifempty uninsdeletevalue
-
 [Run]
 Filename: "{app}\Horus\bin\Debug\{#MyAppExeName}"; Description: "{cm:LaunchProgram, {#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 
@@ -74,7 +70,6 @@ var
 
 procedure InitializeWizard();
 begin
-
   itd_init;
   itd_downloadafter(wpReady);
   Page := CreateInputQueryPage(wpWelcome,
@@ -83,14 +78,18 @@ begin
   // Add items (False means it's not a password edit)
   Page.Add('Name:', False);
   Page.Add('Email:', False);
+
+  // Set initial values (optional)
+  Page.Values[1] := ExpandConstant('{sysuserinfoname}');
+
 end;
 
-function GetUserName(Param: String): string;
+function GetUserName(): string;
 begin
 result := Page.Values[0];
 end;
 
-function GetUserEmail(Param: String): string;
+function GetUserEmail(): string;
 begin
 result := Page.Values[1];
 end;
@@ -187,6 +186,7 @@ begin
     end;
 
     result := success and (install = 1) and (serviceCount >= service);
+
 end;
 
 //#end_section PrerequisiteScripts
@@ -195,6 +195,8 @@ function InitializeSetup(): Boolean;
 var        
     ErrCode: integer;
     FinalResult: boolean;
+	
+
 begin
   FinalResult := true;
 
@@ -209,12 +211,10 @@ end;
   result := FinalResult;
 end;
 
-
-
-
 procedure CurStepChanged(CurStep: TSetupStep);
 var
     ErrCode: integer;
+	UserName, UserEmail: String;
 begin
  if CurStep=ssInstall then 
    begin 
@@ -230,6 +230,17 @@ end;
 WizardForm.StatusLabel.Caption := '';
 //#end_section PrerequisiteInstall
    end;
+	
+	UserName := GetUserName;
+
+	UserEmail := GetUserEmail;
+
+    RegWriteStringValue(HKEY_CURRENT_USER, 'SOFTWARE\TeamHorus\Project Horus',
+      'User Name', UserName);
+
+	RegWriteStringValue(HKEY_CURRENT_USER, 'SOFTWARE\TeamHorus\Project Horus',
+      'User Email', UserEmail);
+
 end;
 
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
