@@ -55,8 +55,8 @@ Name: "{commondesktop}\{#ShortcutName}"; Filename: "{app}\Horus\bin\Debug\{#MyAp
 Name: "{commonprograms}\HorusSetup"; Filename: "{app}\Horus.exe"
 
 [Registry]
-Root: HKLM; Subkey: SOFTWARE\TeamHorus\Project Horus; ValueType: string; ValueName: UserName; ValueData: {{Page.Values[0]}}; Flags: createvalueifdoesntexist uninsdeletekeyifempty uninsdeletevalue
-Root: HKLM; Subkey: SOFTWARE\TeamHorus\Project Horus; ValueType: string; ValueName: UserEmail; ValueData: {{Page.Values[1]}}; Flags: createvalueifdoesntexist uninsdeletekeyifempty uninsdeletevalue
+Root: HKLM; Subkey: SOFTWARE\MyCompany\MyTool; ValueType: string; ValueName: UserName; ValueData: {code:GetUserName}; Flags: createvalueifdoesntexist uninsdeletekeyifempty uninsdeletevalue
+Root: HKLM; Subkey: SOFTWARE\MyCompany\MyTool; ValueType: string; ValueName: UserEmail; ValueData: {code:GetUserEmail}; Flags: createvalueifdoesntexist uninsdeletekeyifempty uninsdeletevalue
 
 [Run]
 Filename: "{app}\Horus\bin\Debug\{#MyAppExeName}"; Description: "{cm:LaunchProgram, {#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
@@ -80,13 +80,21 @@ begin
   Page := CreateInputQueryPage(wpWelcome,
   'Personal Information (Required)', 'Who are you?',
   'Please specify your name and your email address, then click Next.');
-
   // Add items (False means it's not a password edit)
   Page.Add('Name:', False);
   Page.Add('Email:', False);
-
-
 end;
+
+function GetUserName(Param: String): string;
+begin
+result := Page.Values[0];
+end;
+
+function GetUserEmail(Param: String): string;
+begin
+result := Page.Values[1];
+end;
+
 
 function GetPFPath(appCpu : string): string;
 begin   
@@ -200,6 +208,9 @@ end;
 //#end_section PrerequisiteInit
   result := FinalResult;
 end;
+
+
+
 
 procedure CurStepChanged(CurStep: TSetupStep);
 var
