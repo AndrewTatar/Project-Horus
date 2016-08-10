@@ -127,9 +127,8 @@ namespace Horus.Classes
             {
                 
                 String username = registryKey.GetValue("User Name").ToString();               
-     
-                MessageBox.Show(username + ", the APK is available at : \n" + "https://drive.google.com/file/d/0B-hJtziIY0dlYk43WDdqY3NxZ1U/view?usp=sharing");
-
+                    
+                System.Windows.MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show(username + ", download the APK at : \n" + "https://drive.google.com/file/d/0B-hJtziIY0dlYk43WDdqY3NxZ1U/view?usp=sharing" +"?", "Download URL", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Asterisk); if (messageBoxResult.ToString() == "Yes") { System.Diagnostics.Process.Start("https://drive.google.com/file/d/0B-hJtziIY0dlYk43WDdqY3NxZ1U/view?usp=sharing"); }
 
 
 
