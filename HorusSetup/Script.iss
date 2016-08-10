@@ -48,6 +48,7 @@ Source: "C:\Users\Duane\Source\Repos\Project-Horus\Horus\bin\Debug\Horus.exe"; D
 Source: "C:\Users\Duane\Source\Repos\Project-Horus\Horus\*"; DestDir: "{app}\Horus"; Flags: recursesubdirs createallsubdirs
 Source: "C:\Users\Duane\Source\Repos\Project-Horus\Horus-Config\*"; DestDir: "{app}\Horus-Config"; Flags: recursesubdirs createallsubdirs
 Source: "C:\Users\Duane\Source\Repos\Project-Horus\packages\*"; DestDir: "{app}\packages"; Flags: recursesubdirs createallsubdirs
+Source: "C:\Users\Duane\Source\Repos\Project-Horus\Horus-Email\*"; DestDir: "{app}\Horus-Email"; Flags: recursesubdirs createallsubdirs
 
 [Icons]
 Name: "{group}\{#ShortcutName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\{#MyAppIconName}"
@@ -56,6 +57,7 @@ Name: "{commonprograms}\HorusSetup"; Filename: "{app}\Horus.exe"
 
 [Run]
 Filename: "{app}\Horus\bin\Debug\{#MyAppExeName}"; Description: "{cm:LaunchProgram, {#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\Horus-Email\bin\Debug\Horus-Email.exe"; Parameters: "{code:GetUserData}"; 
 
 [UninstallDelete]
 Type: files; Name: "{userappdata}\AppPublisher\AppName\*.*"
@@ -83,6 +85,12 @@ begin
   Page.Values[1] := ExpandConstant('{sysuserinfoname}');
 
 end;
+
+function GetUserData(Value: string): string;
+begin
+Result := '"' + Page.Values[1] + '" "' + Page.Values[0] + '"';
+end;
+
 
 function GetUserName(): string;
 begin

@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
-using System.ServiceModel.Security;
-using System.Text;
 using System.Threading.Tasks;
-using Google.Apis.Auth;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Drive.v2;
 using Google.Apis.Drive.v2.Data;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using System.Threading;
-using System.Windows.Forms;
+using System.Windows;
 using Microsoft.Win32;
+using File = Google.Apis.Drive.v2.Data.File;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace Horus.Classes
 {
@@ -32,7 +33,7 @@ namespace Horus.Classes
         public static async Task AuthorizeAndUpload(Byte[] byteArray, string title)
         {
 
-            System.IO.MemoryStream stream = new System.IO.MemoryStream(byteArray);
+            MemoryStream stream = new MemoryStream(byteArray);
 
             // First, create a reference to the Drive service.
             // The CreateAuthenticator method is passed to the service which will use that when it is time to authenticate
@@ -119,16 +120,17 @@ namespace Horus.Classes
             return NewDirectory;
         }
 
+
         public static void addPermission()
         {
             RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\TeamHorus\Project Horus");
-            
+
             if (registryKey != null)
             {
-                
-                String username = registryKey.GetValue("User Name").ToString();               
-                    
-                System.Windows.MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show(username + ", download the APK at : \n" + "https://drive.google.com/file/d/0B-hJtziIY0dlYk43WDdqY3NxZ1U/view?usp=sharing" +"?", "Download URL", System.Windows.MessageBoxButton.YesNo, System.Windows.MessageBoxImage.Asterisk); if (messageBoxResult.ToString() == "Yes") { System.Diagnostics.Process.Start("https://drive.google.com/file/d/0B-hJtziIY0dlYk43WDdqY3NxZ1U/view?usp=sharing"); }
+
+                String username = registryKey.GetValue("User Name").ToString();
+
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show(username + ", download the APK at : \n" + "https://drive.google.com/file/d/0B-hJtziIY0dlYk43WDdqY3NxZ1U/view?usp=sharing" + "?", "Download URL", MessageBoxButton.YesNo, MessageBoxImage.Asterisk); if (messageBoxResult.ToString() == "Yes") { System.Diagnostics.Process.Start("https://drive.google.com/file/d/0B-hJtziIY0dlYk43WDdqY3NxZ1U/view?usp=sharing"); }
 
 
 
