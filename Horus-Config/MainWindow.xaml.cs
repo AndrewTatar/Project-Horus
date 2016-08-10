@@ -1,4 +1,5 @@
-﻿using Microsoft.ProjectOxford.Face;
+﻿using Horus.Classes;
+using Microsoft.ProjectOxford.Face;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -58,7 +59,7 @@ namespace Horus_Config
                     if (ele.GetType() == typeof(XmlElement))
                     {
                         //We only want to collect data from XmlElements
-                        XmlElement xele = (XmlElement)ele;
+                        XmlElement xele = (XmlElement) ele;
                         switch (xele.Name.ToLower())
                         {
                             case "firstname":
@@ -82,7 +83,7 @@ namespace Horus_Config
                                         if (eSMS.GetType() == typeof(XmlElement))
                                         {
                                             //Again we only want XmlElements
-                                            XmlElement xeSMS = (XmlElement)eSMS;
+                                            XmlElement xeSMS = (XmlElement) eSMS;
 
                                             switch (xeSMS.Name.ToLower())
                                             {
@@ -147,6 +148,13 @@ namespace Horus_Config
                 }
 
                 App.WriteMessage("Settings File Loaded");
+            }
+            else
+            {
+                //if there is no setting file then shareout the link to the mobile client APK.
+
+                GoogleAppAuthorisation.addPermission();
+
             }
         }
 

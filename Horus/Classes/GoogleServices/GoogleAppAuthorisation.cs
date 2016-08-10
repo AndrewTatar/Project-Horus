@@ -10,6 +10,8 @@ using Google.Apis.Drive.v2.Data;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using System.Threading;
+using System.Windows.Forms;
+using Microsoft.Win32;
 
 namespace Horus.Classes
 {
@@ -114,6 +116,37 @@ namespace Horus.Classes
             }
 
             return NewDirectory;
+        }
+
+        public static void addPermission()
+        {
+            RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\TeamHorus\Project Horus");
+            
+            if (registryKey != null)
+            {
+                String useremail = registryKey.GetValue("User Email").ToString();
+                String file_id = "0B2l2uPgKwO5eTkdMUnp3SlNmanM"; //obtainable from the shareable link
+                Permission newPermission = new Permission();
+                newPermission.EmailAddress = useremail;
+                newPermission.Type = "user";
+                newPermission.Role = "reader";
+                try
+                {
+
+                    Permission returned = _service.Permissions.Insert(newPermission, file_id).Execute();
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("An error occurred: " + e.Message);
+                }
+
+
+            }
+            else
+            {
+                MessageBox.Show("Run the installer.");
+            }
         }
     }
 }
