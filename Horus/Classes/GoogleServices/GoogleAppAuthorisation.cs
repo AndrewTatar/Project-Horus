@@ -21,7 +21,7 @@ namespace Horus.Classes
         //WARNING: DO NOT USE THE STUDENT ACCOUNT.
 
         private static File snapshotsFolder;
-        private static UserCredential credential = GoogleWebAuthorizationBroker.AuthorizeAsync(new ClientSecrets{ ClientId = "616661645851-meq5cd830t5kbe98lko4vdcn5mukb9mp.apps.googleusercontent.com",ClientSecret = "1cPabJvr4I8KnSP5oLqhseR0"}, new[] { DriveService.Scope.Drive, DriveService.Scope.Drive }, "user", CancellationToken.None, new FileDataStore("Drive.Auth.Store")).Result;
+        private static UserCredential credential = GoogleWebAuthorizationBroker.AuthorizeAsync(new ClientSecrets{ ClientId = "616661645851-meq5cd830t5kbe98lko4vdcn5mukb9mp.apps.googleusercontent.com",ClientSecret = "1cPabJvr4I8KnSP5oLqhseR0"}, new[] { DriveService.Scope.DriveFile }, "user", CancellationToken.None, new FileDataStore("Drive.Auth.Store")).Result;
         
         public static DriveService _service { get; private set; }
 

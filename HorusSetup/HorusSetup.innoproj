@@ -34,9 +34,6 @@
     <Folder Include="Resources\Icons" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Deployable\HorusSetup.exe">
-      <SubType>Content</SubType>
-    </Content>
     <Content Include="itdownload.dll">
       <SubType>Content</SubType>
     </Content>
