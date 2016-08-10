@@ -153,7 +153,10 @@ namespace Horus_Config
             {
                 //if there is no setting file then shareout the link to the mobile client APK.
 
-                GoogleAppAuthorisation.addPermission();
+                 
+                    GoogleAppAuthorisation.addPermission();
+                
+           
 
             }
         }

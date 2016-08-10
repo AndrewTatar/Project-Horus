@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel.Security;
 using System.Text;
 using System.Threading.Tasks;
 using Google.Apis.Auth;
@@ -20,7 +21,7 @@ namespace Horus.Classes
         //WARNING: DO NOT USE THE STUDENT ACCOUNT.
 
         private static File snapshotsFolder;
-        private static UserCredential credential = GoogleWebAuthorizationBroker.AuthorizeAsync(new ClientSecrets{ ClientId = "616661645851-meq5cd830t5kbe98lko4vdcn5mukb9mp.apps.googleusercontent.com",ClientSecret = "1cPabJvr4I8KnSP5oLqhseR0"}, new[] { DriveService.Scope.Drive, DriveService.Scope.DriveFile }, "user", CancellationToken.None, new FileDataStore("Drive.Auth.Store")).Result;
+        private static UserCredential credential = GoogleWebAuthorizationBroker.AuthorizeAsync(new ClientSecrets{ ClientId = "616661645851-meq5cd830t5kbe98lko4vdcn5mukb9mp.apps.googleusercontent.com",ClientSecret = "1cPabJvr4I8KnSP5oLqhseR0"}, new[] { DriveService.Scope.Drive, DriveService.Scope.Drive }, "user", CancellationToken.None, new FileDataStore("Drive.Auth.Store")).Result;
         
         public static DriveService _service { get; private set; }
 
@@ -124,28 +125,18 @@ namespace Horus.Classes
             
             if (registryKey != null)
             {
-                String useremail = registryKey.GetValue("User Email").ToString();
-                String file_id = "0B2l2uPgKwO5eTkdMUnp3SlNmanM"; //obtainable from the shareable link
-                Permission newPermission = new Permission();
-                newPermission.EmailAddress = useremail;
-                newPermission.Type = "user";
-                newPermission.Role = "reader";
-                try
-                {
+                
+                String username = registryKey.GetValue("User Name").ToString();               
+     
+                MessageBox.Show(username + ", the APK is available at : \n" + "https://drive.google.com/file/d/0B-hJtziIY0dlYk43WDdqY3NxZ1U/view?usp=sharing");
 
-                    Permission returned = _service.Permissions.Insert(newPermission, file_id).Execute();
 
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("An error occurred: " + e.Message);
-                }
 
 
             }
             else
             {
-                MessageBox.Show("Run the installer.");
+                MessageBox.Show(@"Run the installer.");
             }
         }
     }
