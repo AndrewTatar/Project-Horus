@@ -1,5 +1,6 @@
 ﻿using Horus.Classes;
 using Microsoft.ProjectOxford.Face;
+using Microsoft.ProjectOxford.Face.Contract;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -34,6 +35,9 @@ namespace Horus_Config
         string SMSNumber = "";
         string SMSMessage = "";
         string faceGroupID = "";
+        List<Person> allowedPeople = new List<Person>();
+
+        public static bool FaceChangesMade = false;
 
         public MainWindow()
         {
@@ -116,24 +120,17 @@ namespace Horus_Config
                 {
                     //Check Face Group
                     var result = await faceServiceClient.GetPersonGroupAsync(faceGroupID);
-                }
-                else
-                {
-                    //Generate New Owner Face Group
-                    string groupID = Guid.NewGuid().ToString();
-                    await faceServiceClient.CreatePersonGroupAsync(groupID, firstName + lastName);
-
-                    //Add Person Group To Settings File
-                    var faceid = doc.SelectSingleNode("/Settings/FaceID");
-                    if (faceid != null)
+                    if (result != null)
                     {
-                        faceid.InnerText = groupID;
+                        //Valid Group
+                        LoadAllowedUsers();
                     }
-                    doc.Save("Settings.xml");
-
-                    faceGroupID = groupID;
+                    else
+                    {
+                        faceGroupID = "";
+                    }
                 }
-
+                
                 eFirstName.Text = firstName;
                 eLastName.Text = lastName;
                 chMobileEnabled.IsChecked = SMSEnabled;
@@ -147,17 +144,66 @@ namespace Horus_Config
                         item.IsSelected = true;
                 }
 
+                if (faceGroupID == "")
+                {
+                    //Generate new FaceGroupID
+                    GenerateFaceGroupID();
+
+                    bSave_Click(bSave, new RoutedEventArgs());
+                }
+
                 App.WriteMessage("Settings File Loaded");
             }
             else
             {
+                //Generate new FaceGroupID
+                GenerateFaceGroupID();
+
+                //Save to file with default values
+                bSave_Click(bSave, new RoutedEventArgs());
+
+                //TODO: Move this to the correct area. Remove reference to Horus main application
                 //if there is no setting file then shareout the link to the mobile client APK.
 
-                 
-                    GoogleAppAuthorisation.addPermission();
-                
-           
+                //HACK: Disabled
+                //GoogleAppAuthorisation.addPermission();
+            }
+        }
 
+        private async void GenerateFaceGroupID()
+        {
+            try
+            {
+                //Generate New Owner Face Group
+                string groupID = Guid.NewGuid().ToString();
+                await faceServiceClient.CreatePersonGroupAsync(groupID, "HorusSecurity");
+
+                faceGroupID = groupID;
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private async void LoadAllowedUsers()
+        {
+            allowedPeople = new List<Person>();
+
+            if (faceGroupID != "")
+            {
+                var allowed = await faceServiceClient.GetPersonsAsync(faceGroupID);
+                foreach(var p in allowed)
+                {
+                    allowedPeople.Add(p);
+                }                   
+            }
+
+            listBox.Items.Clear();
+
+            foreach (Person p in allowedPeople)
+            {
+                listBox.Items.Add(new ListBoxItem { Content = p.Name, Tag = p });
             }
         }
 
@@ -180,8 +226,10 @@ namespace Horus_Config
 
                     w.WriteElementString("FirstName", eFirstName.Text);
                     w.WriteElementString("LastName", eLastName.Text);
-                    w.WriteElementString("FaceID", faceGroupID);
 
+                    //Face Settings
+                    w.WriteElementString("FaceID", faceGroupID);
+  
                     //SMS Settings
                     w.WriteStartElement("SMS");
                     w.WriteElementString("Enabled", chMobileEnabled.IsChecked.ToString());
@@ -194,6 +242,13 @@ namespace Horus_Config
                     w.WriteEndDocument();
                 }
 
+                if (FaceChangesMade)
+                {
+                    //Retrain Faces
+                    Saving s = new Saving { faceGroupID = faceGroupID };
+                    s.ShowDialog();
+                }                
+
                 MessageBox.Show("Settings Saved!", "HORUS Configuration");
             }
             catch (Exception)
@@ -202,14 +257,43 @@ namespace Horus_Config
             }
         }
 
-        private void bTakePhoto_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //TODO: Check for changes made and prompt user
+            //TODO: Check for changes made and prompt user to save before exiting
+            bool changesFound = false;
+
+            if (changesFound)
+            {
+                //Save Changes
+                bSave_Click(bSave, new RoutedEventArgs());
+            }            
+        }
+
+        private void bManageAccess_Click(object sender, RoutedEventArgs e)
+        {
+            if (listBox.SelectedItem != null)
+            {
+                Person person = (listBox.SelectedItem as ListBoxItem).Tag as Person;
+
+                Users u = new Users { state = 1, person = person, faceGroupID = faceGroupID };
+                u.ShowDialog();
+
+                //Refresh User List
+                LoadAllowedUsers();
+            }
+            else
+            {
+                MessageBox.Show("Please select a user first!");
+            }
+        }
+
+        private void bAddUser_Click(object sender, RoutedEventArgs e)
+        {
+            Users u = new Users { state = 0, faceGroupID = faceGroupID };
+            u.ShowDialog();
+
+            //Refresh User List
+            LoadAllowedUsers();
         }
     }
 }

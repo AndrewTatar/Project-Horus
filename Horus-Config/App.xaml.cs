@@ -34,6 +34,11 @@ namespace Horus_Config
                     }
                 }
             }
+
+            if (INSTALLATION)
+            {
+                //Initial Application Install Configuration
+            }
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Horus_Config"
         mc:Ignorable="d"
-        Title="HORUS Configuration App" Height="400" Width="600" Loaded="Window_Loaded" Closing="Window_Closing">
+        Title="HORUS Configuration App" Height="400" Width="600" MinWidth="600" Loaded="Window_Loaded" Closing="Window_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -61,11 +61,17 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Image x:Name="iPhoto" Grid.Row="0"/>
-
-            <Button x:Name="bTakePhoto" Grid.Row="1" Content="Take Photo" Click="bTakePhoto_Click"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <Button x:Name="bAddUser" Grid.Row="1" Content="Add User" Margin="5" Click="bAddUser_Click"/>
+            <Button x:Name="bManageAccess" Grid.Row="1" Grid.Column="1" Content="Manage Access" Click="bManageAccess_Click" Margin="5"/>
+            <ListBox x:Name="listBox" HorizontalAlignment="Stretch"  Margin="0,25,0,0" VerticalAlignment="Stretch" Grid.ColumnSpan="2"/>
+            <Label Content="Allowed Users" HorizontalAlignment="Center" Margin="100,0" VerticalAlignment="Top" Height="25" Grid.ColumnSpan="2"/>
         </Grid>
-        
+
 
         <Button x:Name="bClose" Content="Close" Grid.Row="1" Grid.Column="0" Margin="5" Click="bClose_Click"/>
         <Button x:Name="bSave" Content="Save" Grid.Row="1" Grid.Column="1" Margin="5" Click="bSave_Click"/>
