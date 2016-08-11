@@ -162,11 +162,7 @@ namespace Horus_Config
                 //Save to file with default values
                 bSave_Click(bSave, new RoutedEventArgs());
 
-                //TODO: Move this to the correct area. Remove reference to Horus main application
-                //if there is no setting file then shareout the link to the mobile client APK.
-
-                //HACK: Disabled
-                //GoogleAppAuthorisation.addPermission();
+            
             }
         }
 

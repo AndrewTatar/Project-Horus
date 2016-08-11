@@ -121,24 +121,6 @@ namespace Horus.Classes
         }
 
 
-        public static void addPermission()
-        {
-            RegistryKey registryKey = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\TeamHorus\Project Horus");
 
-            if (registryKey != null)
-            {
-
-                String username = registryKey.GetValue("User Name").ToString();
-
-                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show(username + ", download the APK at : \n" + "https://drive.google.com/file/d/0B-hJtziIY0dlYk43WDdqY3NxZ1U/view?usp=sharing" + "?", "Download URL", MessageBoxButton.YesNo, MessageBoxImage.Asterisk); if (messageBoxResult.ToString() == "Yes") { System.Diagnostics.Process.Start("https://drive.google.com/file/d/0B-hJtziIY0dlYk43WDdqY3NxZ1U/view?usp=sharing"); }
-
-
-
-            }
-            else
-            {
-                MessageBox.Show(@"Run the installer.");
-            }
-        }
     }
 }
