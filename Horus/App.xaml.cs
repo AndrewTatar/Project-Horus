@@ -24,6 +24,7 @@ namespace Horus
         //Global Variables
         public static string imageSavePath = "";
         public static string currentIP = "";
+        public static bool CloseApplication = false;
         
         //Facial Recognition
         public static readonly IFaceServiceClient faceServiceClient = new FaceServiceClient("00fd2d23618542208915def496e504ea");
@@ -155,6 +156,12 @@ namespace Horus
 
                     App.WriteMessage("Settings File Loaded");
                 }
+                else
+                {
+                    //No settings file found
+                    //Disable Facial Recognition
+                    facialCheckDisabled = true;
+                }
 
                 //Get IP Address of System
                 fetchIP();
@@ -194,7 +201,8 @@ namespace Horus
 
         public static void RequestClose()
         {
-            App.Current.Shutdown();
+            if (CloseApplication)
+                App.Current.Shutdown();
         }
 
         public static async void fetchIP()
@@ -250,11 +258,11 @@ namespace Horus
             }
         }
 
-        public static async Task<Boolean> VerifyPerson(Guid[] personID)
+        public static async Task<string> VerifyPerson(Guid[] personID)
         {
             try
             {
-                bool identified = false;
+                string username = "";
                 if (faceGroupID != "")
                 {                   
                     var results = await faceServiceClient.IdentifyAsync(faceGroupID, personID, 1);
@@ -263,30 +271,37 @@ namespace Horus
                         if (identifyResult.Candidates.Length == 0)
                         {
                             //Not Verified
-                            identified = false;
-                            Console.WriteLine("Not Identified!");
+                            App.WriteMessage("User Not Verified");
                         }
                         else
                         {
-                            identified = true;
                             //Get Verified Person Details
-                            var candidateId = identifyResult.Candidates[0].PersonId;
-                            var person = await faceServiceClient.GetPersonAsync(faceGroupID, candidateId);
-                            Console.WriteLine("Identified as {0}", person.Name);
+                            var candidate = identifyResult.Candidates[0];
+                            if (candidate.Confidence > 0.70)
+                            {
+                                var candidateId = identifyResult.Candidates[0].PersonId;
+                                var person = await faceServiceClient.GetPersonAsync(faceGroupID, candidateId);
+                                App.WriteMessage("User Verfied as " + person.Name + " (Confidence: " + candidate.Confidence + ")");
+                                username = person.Name;
+                            }
+                            else
+                            {
+                                App.WriteMessage("User Verification Failed - Confidence: " + candidate.Confidence);
+                            }                            
                         }
                     }
                 }
                 else
                 {
                     //Identification Not Possible - Unknown Owner
-                    identified = true;
+                    username = "User";
                 }
                 
-                return identified;
+                return username;
             }
             catch (Exception)
             {
-                return false;
+                return "";
             }
         }
     }

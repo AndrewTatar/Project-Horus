@@ -10,7 +10,7 @@ namespace Horus.Classes
     {
         protected string serviceKey;
         protected string serviceSecret;
-        protected string message = "Interloper detected, please check your Drive account.";
+        protected string message = "HORUS Security: User verification failed. Please review snapshot uploaded to your Google Drive account.";
         protected string userName;
         protected string mobileNumber;
 

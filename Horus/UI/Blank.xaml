@@ -5,6 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Horus"
         mc:Ignorable="d"
-        Title="" Background="Black" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="None">
+        Title="" Background="Black" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="None" Closing="Window_Closing" Topmost="True">
     <Grid x:Name="MainGrid" />
 </Window>

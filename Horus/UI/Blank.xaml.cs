@@ -34,11 +34,13 @@ namespace Horus
 
         private void Blank_KeyUp(object sender, KeyEventArgs e)
         {
+            App.CloseApplication = true;
             App.RequestClose();
         }
 
         private void Blank_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            App.CloseApplication = true;
             App.RequestClose();
         }
 
@@ -49,6 +51,12 @@ namespace Horus
 
             //Full Screen
             this.WindowState = WindowState.Maximized;
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!App.CloseApplication)
+                e.Cancel = true;
         }
     }
 }

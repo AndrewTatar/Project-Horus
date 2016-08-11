@@ -30,7 +30,7 @@ using Microsoft.ProjectOxford.Face.Contract;
 namespace Horus
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Main Window which holds graphics and core processing code
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -38,13 +38,12 @@ namespace Horus
         private VideoCaptureDevice videoCaptureDevice;      //Create an Instance for VideoCaptureDevice
         private HaarObjectDetector haarObjectDetector;      //Create an Instance for Haar Object
         private HaarCascade cascade;
-        private SimpleBackgroundModelingDetector motionDetector = new SimpleBackgroundModelingDetector();
 
         //Image Processing Variablse
-        private Bitmap bitmap, lastFrame, grayImage;
-        private bool face_captured = true;
-        private DispatcherTimer dispatcherTimer = new DispatcherTimer();
         private bool cameraOnline = false;
+        private static bool working = false;
+        private DateTime lastCheck;        
+        private DateTime lastNotification;
 
         public MainWindow()
         {
@@ -62,6 +61,12 @@ namespace Horus
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            if (!App.CloseApplication)
+            {
+                e.Cancel = true;
+                return;
+            }
+
             CloseVideoSource();
             App.RequestClose();
         }
@@ -82,11 +87,6 @@ namespace Horus
                     25, ObjectDetectorSearchMode.Single, 1.2f,
                     ObjectDetectorScalingMode.SmallerToGreater);
 
-                //Setup Dispatcher Timer
-                dispatcherTimer = new DispatcherTimer();
-                dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
-                dispatcherTimer.Interval = new TimeSpan(0, 1, 0);
-
                 //Connect to Camera
                 OpenVideoSource();
             }
@@ -98,17 +98,20 @@ namespace Horus
         
         private void MediaElement_MediaEnded(object sender, RoutedEventArgs e)
         {
+            //Loop video playback
             mediaPlayer.Position = new TimeSpan(0, 0, 0, 0, 1);
             mediaPlayer.Play();
         }
 
         private void MainWindow_KeyUp(object sender, KeyEventArgs e)
         {
+            App.CloseApplication = true;
             App.RequestClose();
         }
 
         private void MainWindow_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            App.CloseApplication = true;
             App.RequestClose();
         }
         
@@ -124,7 +127,6 @@ namespace Horus
                 videoCaptureDevice.NewFrame += new NewFrameEventHandler(nextFrame);
                 videoCaptureDevice.Start();
 
-                dispatcherTimer.Start();
                 cameraOnline = true;
 
                 App.WriteMessage("Webcam Connected");
@@ -158,32 +160,32 @@ namespace Horus
         private void nextFrame(object sender, NewFrameEventArgs eventArgs)
         {
             // get new frame
-            bitmap = eventArgs.Frame;
-            lastFrame = (Bitmap) bitmap.Clone();
-
-            // process the frame
-            ResizeBicubic resize = new ResizeBicubic(lastFrame.Width/2, lastFrame.Height/2);
-            Bitmap bresize = resize.Apply(lastFrame);
-
-            //Convert the Image into grayscale Image
-            grayImage = Grayscale.CommonAlgorithms.BT709.Apply(bresize);
-            Rectangle[] rect = haarObjectDetector.ProcessFrame(grayImage);
-            if (rect != null)
+            Bitmap bitmap = eventArgs.Frame;
+            Bitmap lastFrame = (Bitmap) bitmap.Clone();
+            
+            //Don't check more than every 10 seconds
+            if (DateTime.Now.Subtract(lastCheck).TotalSeconds > 10)
             {
-                //check flag is false
-                if (face_captured == false)
+                //Only continue if there is no processing happening in the background
+                if (!working)
                 {
-                    App.WriteMessage("Face Captured");
+                    //We can now process a frame
+                    //Set flags
+                    lastCheck = DateTime.Now;
+                    working = true;
 
-                    //take a pic if false, set  flag true (reset to false after 2 minutes (could be 5 or 0 minutes))
-                    captureImage(lastFrame);
-                    face_captured = true;
+                    //Resize Frame
+                    ResizeBicubic resize = new ResizeBicubic(lastFrame.Width / 2, lastFrame.Height / 2);
+                    Bitmap resized = resize.Apply(lastFrame);
+
+                    //Process image
+                    processImage(resized);
                 }
             }
         }
 
         /// <summary></summary>
-        private async void captureImage(Bitmap image)
+        private async void processImage(Bitmap image)
         {
             await
                 Task.Run(
@@ -204,8 +206,8 @@ namespace Horus
                         App.WriteMessage("Photo Saved To File");
 
                         //Check for Face & Get Attributes
-                        bool ownerDetected = true;
                         bool intruder = false;
+                        string username = "";
 
                         //API Call to Microsoft Cognitive
                         List<Face> faces = await App.UploadAndDetectFaces(imagePath);
@@ -215,47 +217,75 @@ namespace Horus
                             if (faces.Count > 0)
                             {
                                 //Face Detected
-                                //Compare to Owner
-                                ownerDetected = await App.VerifyPerson(faces.Select(f => f.FaceId).ToArray());
+                                App.WriteMessage("Faces Detected From API");
 
-                                //Only Set Intruder flag when there is a face detected and its not the owner
-                                if (!ownerDetected)
+                                //Compare to Owner
+                                username = await App.VerifyPerson(faces.Select(f => f.FaceId).ToArray());
+
+                                if (username == "")
+                                {
+                                    //Face detected, not owner
                                     intruder = true;
+                                }
+                            }
+                            else
+                            {
+                                App.WriteMessage("No Faces Detected");
                             }
                         }
 
                         //Test to see if we have an intruder
                         if (intruder)
                         {
-                            //Upload Photo to Google Drive
-                            byte[] byteArray = File.ReadAllBytes(System.IO.Path.Combine(App.imageSavePath, photoName));
-
-                            await GoogleAppAuthorisation.AuthorizeAndUpload(byteArray, photoName);
-                            App.WriteMessage("Photo Uploaded to Drive");
-
-                            //Send Notification
-                            if (App.smsClient != null)
+                            //Check we have not sent a notification in the past 2 minutes
+                            if (DateTime.Now.Subtract(lastNotification).TotalMinutes >= 2 )
                             {
-                                App.smsClient.sendSMS();
-                                App.WriteMessage("SMS Notification Sent");
+                                //Upload Photo to Google Drive
+                                byte[] byteArray = File.ReadAllBytes(System.IO.Path.Combine(App.imageSavePath, photoName));
+
+                                await GoogleAppAuthorisation.AuthorizeAndUpload(byteArray, photoName);
+                                App.WriteMessage("Photo Uploaded to Drive");
+
+                                //Send Notification
+                                if (App.smsClient != null)
+                                {
+                                    App.smsClient.sendSMS();
+                                    App.WriteMessage("SMS Notification Sent");
+                                }
+
+                                lastNotification = DateTime.Now;
                             }
+
+                            //Display Verification Failed Message
+                            Application.Current.Dispatcher.Invoke(new Action(() =>
+                            {
+                                MessageWindow msg = new MessageWindow { Owner = this, state = 0 };
+                                msg.ShowDialog();
+                            }));
+                        }
+                        else if (username != "")
+                        {
+                            //Delete Image - No Need to keep saved image of verified
+                            File.Delete(imagePath);
+
+                            //Unlock Screensaver
+                            Application.Current.Dispatcher.Invoke(new Action(() =>
+                            {
+                                MessageWindow msg = new MessageWindow { Owner = this, state = 1, username = username };
+                                msg.ShowDialog();
+
+                                App.CloseApplication = true;
+                                this.Close();
+                            }));
                         }
                         else
                         {
                             //Delete Image - No Need to keep saved image of nothing
                             File.Delete(imagePath);
-                        }                        
-                    });
-        }
+                        }
 
-        /// <summary></summary>
-        private void dispatcherTimer_Tick(object sender, EventArgs e)
-        {
-            //Clear Face Captured Flag
-            if (face_captured == true)
-            {
-                face_captured = false;
-            }
+                        working = false;                       
+                    });
         }
     }
 }
