@@ -116,7 +116,6 @@ namespace Horus
                     {
                         //No Face Group
                         //Facial Recognition will be disabled - this is now a general screensaver
-                        //Set disabled flag for facial recognition
                         facialCheckDisabled = true;
                     }
                     
@@ -152,6 +151,10 @@ namespace Horus
                     //Disable Facial Recognition
                     facialCheckDisabled = true;
                 }
+
+                //Google Drive Authorisation
+                string storageDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Credentials");
+                GoogleAppAuthorisation.BuildCredentails(storageDirectory);
 
                 //Get IP Address of System
                 fetchIP();

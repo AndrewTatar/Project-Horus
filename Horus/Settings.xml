@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Settings>
   <FaceID>e636cb1a-6432-4ce3-b323-43dddc8d85ce</FaceID>
-  <SMS>
+  <SMS> 
     <Enabled>True</Enabled>
     <Carrier>Telstra</Carrier>
     <MobileNumber>0411299522</MobileNumber>
