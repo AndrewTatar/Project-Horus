@@ -13,9 +13,9 @@ namespace Horus.Classes
 
         }
 
-        public VodafoneSMSService(string Username, string MobileNumber)
+        public VodafoneSMSService(string MobileNumber)
         {
-            base.userName = Username;
+            base.userName = "HORUS Security";
             base.mobileNumber = MobileNumber;
         }
     }

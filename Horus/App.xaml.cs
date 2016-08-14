@@ -49,8 +49,6 @@ namespace Horus
                     XmlDocument doc = new XmlDocument();
                     doc.Load("Settings.xml");
 
-                    string firstName = "";
-                    string lastName = "";
                     bool SMSEnabled = false;
                     string SMSCarrier = "";
                     string SMSNumber = "";
@@ -65,14 +63,6 @@ namespace Horus
                             XmlElement xele = (XmlElement)ele;
                             switch (xele.Name.ToLower())
                             {
-                                case "firstname":
-                                    firstName = xele.InnerText;
-                                    break;
-
-                                case "lastname":
-                                    lastName = xele.InnerText;
-                                    break;
-
                                 case "faceid":
                                     faceGroupID = xele.InnerText;
                                     break;
@@ -136,15 +126,15 @@ namespace Horus
                         switch (SMSCarrier.ToLower())
                         {
                             case "telstra":
-                                smsClient = new TelstraSMSService(firstName + " " + lastName, SMSNumber);
+                                smsClient = new TelstraSMSService(SMSNumber);
                                 break;
 
                             case "optus":
-                                smsClient = new OptusSMSService(firstName + " " + lastName, SMSNumber);
+                                smsClient = new OptusSMSService(SMSNumber);
                                 break;
 
                             case "Vodafone":
-                                smsClient = new VodafoneSMSService(firstName + " " + lastName, SMSNumber);
+                                smsClient = new VodafoneSMSService(SMSNumber);
                                 break;
                         }
 

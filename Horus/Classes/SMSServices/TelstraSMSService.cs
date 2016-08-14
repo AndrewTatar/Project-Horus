@@ -19,12 +19,12 @@ namespace Horus.Classes
             base.serviceSecret = SERVICE_SECRET;
         }
 
-        public TelstraSMSService(string Username, string MobileNumber)
+        public TelstraSMSService(string MobileNumber)
         {
             base.serviceKey = SERVICE_KEY;
             base.serviceSecret = SERVICE_SECRET;
             base.mobileNumber = MobileNumber;
-            base.userName = Username;
+            base.userName = "HORUS Security";
         }
 
         public override string sendSMS()

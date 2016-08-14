@@ -14,11 +14,11 @@ namespace Horus.Classes
             base.serviceSecret = SERVICE_SECRET;
         }
 
-        public OptusSMSService(string Username, string MobileNumber)
+        public OptusSMSService(string MobileNumber)
         {
             base.serviceSecret = SERVICE_SECRET;
             base.mobileNumber = MobileNumber;
-            base.userName = Username;
+            base.userName = "HORUS Security";
         }
 
         public override string sendSMS()

@@ -22,7 +22,7 @@ namespace Horus.Classes
         //WARNING: DO NOT USE THE STUDENT ACCOUNT.
 
         private static File snapshotsFolder;
-        private static UserCredential credential = GoogleWebAuthorizationBroker.AuthorizeAsync(new ClientSecrets{ ClientId = "616661645851-meq5cd830t5kbe98lko4vdcn5mukb9mp.apps.googleusercontent.com",ClientSecret = "1cPabJvr4I8KnSP5oLqhseR0"}, new[] { DriveService.Scope.DriveFile }, "user", CancellationToken.None, new FileDataStore("Drive.Auth.Store")).Result;
+        private static UserCredential credential = GoogleWebAuthorizationBroker.AuthorizeAsync(new ClientSecrets{ ClientId = "616661645851-meq5cd830t5kbe98lko4vdcn5mukb9mp.apps.googleusercontent.com", ClientSecret = "1cPabJvr4I8KnSP5oLqhseR0"}, new[] { DriveService.Scope.DriveFile }, "user", CancellationToken.None, new FileDataStore("HORUS Security")).Result;
         
         public static DriveService _service { get; private set; }
 
@@ -38,11 +38,7 @@ namespace Horus.Classes
             // First, create a reference to the Drive service.
             // The CreateAuthenticator method is passed to the service which will use that when it is time to authenticate
             // the calls going to the service.
-            _service = new DriveService(new BaseClientService.Initializer()
-            {
-                HttpClientInitializer = credential,
-                ApplicationName = "Project Horus",
-            });
+            AuthoriseUser();
             
             await setFolder(_service, _service.ApplicationName);
             
@@ -64,6 +60,15 @@ namespace Horus.Classes
             {
                 Console.WriteLine(e.Message);
             }
+        }
+
+        public static void AuthoriseUser()
+        {
+            _service = new DriveService(new BaseClientService.Initializer()
+            {
+                HttpClientInitializer = credential,
+                ApplicationName = "Project Horus",
+            });
         }
         
         private static async Task setFolder(DriveService driveService, string folderName)
@@ -119,8 +124,5 @@ namespace Horus.Classes
 
             return NewDirectory;
         }
-
-
-
     }
 }
