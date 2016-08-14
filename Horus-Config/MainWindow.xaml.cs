@@ -28,8 +28,6 @@ namespace Horus_Config
         public static readonly IFaceServiceClient faceServiceClient = new FaceServiceClient("00fd2d23618542208915def496e504ea");
 
         //Setting Variables
-        string firstName = "";
-        string lastName = "";
         bool SMSEnabled = false;
         string SMSCarrier = "";
         string SMSNumber = "";
@@ -51,6 +49,10 @@ namespace Horus_Config
 
         private async void LoadSettingsFile()
         {
+            //Show Loading Window
+            Loading l = new Loading { Owner = this };
+            l.Show();
+
             //Load Settings from File
             if (File.Exists("Settings.xml"))
             {
@@ -66,14 +68,6 @@ namespace Horus_Config
                         XmlElement xele = (XmlElement) ele;
                         switch (xele.Name.ToLower())
                         {
-                            case "firstname":
-                                firstName = xele.InnerText;
-                                break;
-
-                            case "lastname":
-                                lastName = xele.InnerText;
-                                break;
-
                             case "faceid":
                                 faceGroupID = xele.InnerText;
                                 break;
@@ -130,9 +124,7 @@ namespace Horus_Config
                         faceGroupID = "";
                     }
                 }
-                
-                eFirstName.Text = firstName;
-                eLastName.Text = lastName;
+
                 chMobileEnabled.IsChecked = SMSEnabled;
                 eMobileNumber.Text = SMSNumber;
                 eMessage.Text = SMSMessage;
@@ -161,9 +153,9 @@ namespace Horus_Config
 
                 //Save to file with default values
                 bSave_Click(bSave, new RoutedEventArgs());
-
-            
             }
+
+            l.loaded = true;
         }
 
         private async void GenerateFaceGroupID()
@@ -220,9 +212,6 @@ namespace Horus_Config
                     w.WriteStartDocument();
                     w.WriteStartElement("Settings");
 
-                    w.WriteElementString("FirstName", eFirstName.Text);
-                    w.WriteElementString("LastName", eLastName.Text);
-
                     //Face Settings
                     w.WriteElementString("FaceID", faceGroupID);
   
@@ -241,7 +230,7 @@ namespace Horus_Config
                 if (FaceChangesMade)
                 {
                     //Retrain Faces
-                    Saving s = new Saving { faceGroupID = faceGroupID };
+                    Saving s = new Saving { faceGroupID = faceGroupID, Owner = this };
                     s.ShowDialog();
                 }                
 
@@ -271,11 +260,16 @@ namespace Horus_Config
             {
                 Person person = (listBox.SelectedItem as ListBoxItem).Tag as Person;
 
-                Users u = new Users { state = 1, person = person, faceGroupID = faceGroupID };
-                u.ShowDialog();
-
-                //Refresh User List
-                LoadAllowedUsers();
+                UserWizard uw = new UserWizard { person = person, faceGroupID = faceGroupID, Owner = this };
+                var response = uw.ShowDialog();
+                if (response != null)
+                {
+                    if (response == true)
+                    {
+                        //Refresh User List
+                        LoadAllowedUsers();
+                    }
+                }
             }
             else
             {
@@ -285,11 +279,16 @@ namespace Horus_Config
 
         private void bAddUser_Click(object sender, RoutedEventArgs e)
         {
-            Users u = new Users { state = 0, faceGroupID = faceGroupID };
-            u.ShowDialog();
-
-            //Refresh User List
-            LoadAllowedUsers();
+            UserWizard uw = new UserWizard { faceGroupID = faceGroupID, Owner = this };
+            var response = uw.ShowDialog();
+            if (response != null)
+            {
+                if (response == true)
+                {
+                    //Refresh User List
+                    LoadAllowedUsers();
+                }
+            }
         }
     }
 }

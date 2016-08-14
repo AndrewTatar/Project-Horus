@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Horus_Config"
         mc:Ignorable="d"
-        Title="HORUS Configuration App" Height="400" Width="600" MinWidth="600" Loaded="Window_Loaded" Closing="Window_Closing">
+        Title="HORUS Configuration App" Height="400" Width="600" MinWidth="600" Loaded="Window_Loaded" Closing="Window_Closing" Background="Orange" WindowStartupLocation="CenterScreen" Icon="HORUS.ico">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -16,7 +16,7 @@
             <RowDefinition Height="50px"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Column="0" Margin="5">
+        <Grid Grid.Column="1" Margin="5">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -30,32 +30,26 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Label Content="First Name:" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <TextBox x:Name="eFirstName" Grid.Column="1" HorizontalAlignment="Stretch" Height="23" Grid.Row="0" TextWrapping="NoWrap" Text="" VerticalAlignment="Center"/>
+            <Label Content="Mobile Notifications:" HorizontalAlignment="Left" Grid.Row="0" VerticalAlignment="Center" />
+            <CheckBox x:Name="chMobileEnabled" Content="Enabled" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0" Grid.Row="0" VerticalAlignment="Center"/>
 
-            <Label Content="Last Name:" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center"/>
-            <TextBox x:Name="eLastName" Grid.Column="1" HorizontalAlignment="Stretch" Height="23" Grid.Row="1" TextWrapping="NoWrap" Text="" VerticalAlignment="Center"/>
-
-            <Label Content="Mobile Notifications:" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" />
-            <CheckBox x:Name="chMobileEnabled" Content="Enabled" Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0" Grid.Row="2" VerticalAlignment="Center"/>
-
-            <Label Content="Service Provider:" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" Margin="15,0,0,0" />
-            <ComboBox x:Name="eServiceProvider" Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="3" VerticalAlignment="Center">
+            <Label Content="Messaging Service:" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center" Margin="15,0,0,0" />
+            <ComboBox x:Name="eServiceProvider" Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Center">
                 <ComboBox.Items>
-                    <ComboBoxItem Content="Telstra"/>
+                    <ComboBoxItem Content="Telstra" IsSelected="True"/>
                     <ComboBoxItem Content="Optus"/>
-                    <ComboBoxItem Content="Vodafone"/>
+                    <ComboBoxItem Content="Vodafone" IsEnabled="False"/>
                 </ComboBox.Items>
             </ComboBox>
 
-            <Label Content="Mobile Number:" HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Center" Margin="15,0,0,0"/>
-            <TextBox x:Name="eMobileNumber" Grid.Column="1" HorizontalAlignment="Stretch" Height="23" Grid.Row="4" TextWrapping="NoWrap" Text="" VerticalAlignment="Center"/>
+            <Label Content="Mobile Number:" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" Margin="15,0,0,0"/>
+            <TextBox x:Name="eMobileNumber" Grid.Column="1" HorizontalAlignment="Stretch" Height="23" Grid.Row="2" TextWrapping="NoWrap" Text="" VerticalAlignment="Center"/>
 
-            <Label Content="Message:" HorizontalAlignment="Left" Grid.Row="5" VerticalAlignment="Center" Margin="15,0,0,0"/>
-            <TextBox x:Name="eMessage" Grid.Column="1" HorizontalAlignment="Stretch" Height="23" Grid.Row="5" TextWrapping="NoWrap" Text="" VerticalAlignment="Center"/>
+            <Label Content="Message:" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" Margin="15,0,0,0"/>
+            <TextBox x:Name="eMessage" Grid.Column="1" HorizontalAlignment="Stretch" Height="23" Grid.Row="3" TextWrapping="NoWrap" Text="" VerticalAlignment="Center"/>
         </Grid>
 
-        <Grid Grid.Column="1" Margin="5">
+        <Grid Grid.Column="0" Margin="5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="3*"/>
                 <RowDefinition Height="*"/>
@@ -69,7 +63,7 @@
             <Button x:Name="bAddUser" Grid.Row="1" Content="Add User" Margin="5" Click="bAddUser_Click"/>
             <Button x:Name="bManageAccess" Grid.Row="1" Grid.Column="1" Content="Manage Access" Click="bManageAccess_Click" Margin="5"/>
             <ListBox x:Name="listBox" HorizontalAlignment="Stretch"  Margin="0,25,0,0" VerticalAlignment="Stretch" Grid.ColumnSpan="2"/>
-            <Label Content="Allowed Users" HorizontalAlignment="Center" Margin="100,0" VerticalAlignment="Top" Height="25" Grid.ColumnSpan="2"/>
+            <Label Content="Allowed Users" HorizontalAlignment="Center" VerticalAlignment="Top" Height="25" Grid.ColumnSpan="2"/>
         </Grid>
 
 

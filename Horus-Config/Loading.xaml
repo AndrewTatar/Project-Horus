@@ -1,13 +1,13 @@
-﻿<Window x:Class="Horus_Config.Saving"
+﻿<Window x:Class="Horus_Config.Loading"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Horus_Config"
         mc:Ignorable="d"
-        Title="Saving" Height="100" Width="300" WindowStyle="None" ShowInTaskbar="False" Loaded="Window_Loaded" WindowStartupLocation="CenterOwner" Background="Orange">
+        Title="Saving" Height="100" Width="300" WindowStyle="None" ShowInTaskbar="False" Loaded="Window_Loaded" Topmost="True" WindowStartupLocation="CenterOwner" Background="Orange">
     <Grid>
-        <Label Content="Saving....." HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,10" FontSize="36"/>
+        <Label x:Name="lMessage" Content="Loading..." HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" Margin="0,0,0,10"/>
         <ProgressBar HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="10" IsIndeterminate="True"/>
     </Grid>
 </Window>

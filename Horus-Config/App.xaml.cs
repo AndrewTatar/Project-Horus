@@ -38,6 +38,8 @@ namespace Horus_Config
             if (INSTALLATION)
             {
                 //Initial Application Install Configuration
+
+                //TODO: Email User Link to Android APK
             }
         }
     }
