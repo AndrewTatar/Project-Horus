@@ -137,6 +137,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\Emailing.cs" />
     <Compile Include="Classes\GoogleServices\GoogleAppAuthorisation.cs" />
     <Compile Include="Loading.xaml.cs">
       <DependentUpon>Loading.xaml</DependentUpon>
@@ -203,12 +204,6 @@
   <ItemGroup>
     <Resource Include="HORUS.ico" />
     <Content Include="Settings.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Horus\Horus.csproj">
-      <Project>{0096DABC-B1CF-46F4-8BEE-C43F4C65FFB6}</Project>
-      <Name>Horus</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

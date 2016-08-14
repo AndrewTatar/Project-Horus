@@ -1,21 +1,11 @@
-﻿using Horus.Classes;
-using Microsoft.ProjectOxford.Face;
+﻿using Microsoft.ProjectOxford.Face;
 using Microsoft.ProjectOxford.Face.Contract;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Xml;
 
 namespace Horus_Config
@@ -45,6 +35,22 @@ namespace Horus_Config
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             LoadSettingsFile();
+
+            //Google Drive Authorisation
+            string storageDirectory = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Credentials");
+            bool RequireAuthorisation = false;
+
+            if (!Directory.Exists(storageDirectory))
+                RequireAuthorisation = true;
+            else
+                if (Directory.EnumerateFiles(storageDirectory).Count() == 0)
+                    RequireAuthorisation = true;
+
+            if (RequireAuthorisation)
+            {
+                GoogleAppAuthorisation.BuildCredentails(storageDirectory);
+                GoogleAppAuthorisation.AuthoriseUser();
+            }
         }
 
         private async void LoadSettingsFile()

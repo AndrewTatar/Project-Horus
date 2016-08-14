@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,15 +23,33 @@ namespace Horus_Config
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            string email = "";
+
             if (e.Args.Count() > 0)
             {
                 foreach(var a in e.Args)
                 {
-                    switch(a.ToLower())
+                    if (a.IndexOf(":") == -1)
                     {
-                        case "-install":
-                            INSTALLATION = true;
-                            break;
+                        //Flag
+                        switch (a.ToLower())
+                        {
+                            case "-install":
+                                INSTALLATION = true;
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        //Value
+                        string header = a.Substring(0, a.IndexOf(":"));
+
+                        switch (header.ToLower())
+                        {
+                            case "email":
+                                email = a.Substring(a.IndexOf(":") + 1);
+                                break;
+                        }
                     }
                 }
             }
@@ -39,7 +58,9 @@ namespace Horus_Config
             {
                 //Initial Application Install Configuration
 
-                //TODO: Email User Link to Android APK
+                //Email User Link to Android APK
+                if (email != "")
+                    Emailing.EmailNewUser(email);
             }
         }
     }
