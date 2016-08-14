@@ -179,6 +179,9 @@ namespace Horus_Config
                     //Pause Preview
                     isPreview = true;
 
+                    if (!Directory.Exists(@"Faces"))
+                        Directory.CreateDirectory("Faces");
+
                     Guid photoID = Guid.NewGuid();
                     string filePath = @"Faces\" + photoID.ToString() + ".jpg";
 
