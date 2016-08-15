@@ -43,7 +43,10 @@ namespace Horus_Config
                 //Initial Application Install Configuration
                 //Email User Link to Android APK
                 if (App.EMAIL_ADDRESS != "")
-                    Emailing.EmailNewUser(App.EMAIL_ADDRESS);
+                {
+                    EmailAPK email = new EmailAPK { Owner = this };
+                    email.ShowDialog();
+                }
             }
 
             //Load Settings from File

@@ -139,6 +139,9 @@
     </ApplicationDefinition>
     <Compile Include="Classes\Emailing.cs" />
     <Compile Include="Classes\GoogleServices\GoogleAppAuthorisation.cs" />
+    <Compile Include="EmailAPK.xaml.cs">
+      <DependentUpon>EmailAPK.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GoogleDriveAuth.xaml.cs">
       <DependentUpon>GoogleDriveAuth.xaml</DependentUpon>
     </Compile>
@@ -151,6 +154,10 @@
     <Compile Include="UserWizard.xaml.cs">
       <DependentUpon>UserWizard.xaml</DependentUpon>
     </Compile>
+    <Page Include="EmailAPK.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="GoogleDriveAuth.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
