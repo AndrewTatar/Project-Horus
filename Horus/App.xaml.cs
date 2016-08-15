@@ -3,8 +3,7 @@ using Microsoft.ProjectOxford.Face;
 using Microsoft.ProjectOxford.Face.Contract;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -12,7 +11,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using System.Xml;
-
 
 namespace Horus
 {
@@ -36,6 +34,8 @@ namespace Horus
 
         private async void Application_Startup(object sender, StartupEventArgs e)
         {
+            bool displayScreensaver = false;
+
             if (e.Args.Length == 0 || e.Args[0].ToLower().StartsWith("/s"))
             {
                 //Set Image Storage Path & Create Directory if required
@@ -159,6 +159,28 @@ namespace Horus
                 //Get IP Address of System
                 fetchIP();
 
+                //Display the Screensaver
+                displayScreensaver = true;
+            }
+            else if (e.Args[0].ToLower().StartsWith("/p"))
+            {
+                facialCheckDisabled = true;
+
+            }
+            else if (e.Args[0].ToLower().StartsWith("/c"))
+            {
+                //Start configuration Tool
+                Process process = new Process();
+                process.StartInfo.FileName = "horus-config.exe";
+                process.StartInfo.WorkingDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                process.Start();
+
+                //Close this application
+                Environment.Exit(0);
+            }
+
+            if (displayScreensaver)
+            {
                 //Load Screensaver Windows
                 foreach (Screen s in Screen.AllScreens)
                 {
@@ -181,14 +203,6 @@ namespace Horus
                         window.Show();
                     }
                 }
-            }
-            else if (e.Args[0].ToLower().StartsWith("/p"))
-            {
-
-            }
-            else
-            {
-
             }
         }
 

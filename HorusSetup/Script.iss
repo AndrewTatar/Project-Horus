@@ -26,15 +26,12 @@ AppSupportURL=https://github.com/AndrewTatar/Project-Horus
 AppUpdatesURL=https://github.com/AndrewTatar/Project-Horus
 DefaultDirName={code:GetPFPath|{#AppCPU}}\Team Horus\Project Horus
 DefaultGroupName=Team Horus\Project Horus
-InfoBeforeFile=C:\Users\Duane\Source\Repos\Project-Horus\HorusSetup\Resources\readme.txt
-OutputDir=C:\Users\Duane\Source\Repos\Project-Horus\HorusSetup\Deployable
+InfoBeforeFile=\Resources\readme.txt
+OutputDir=\Deployable
 OutputBaseFilename=HorusSetup
-SetupIconFile=C:\Users\Duane\Source\Repos\Project-Horus\HorusSetup\Resources\Icons\48X48-HORUS-Icon.ico
+SetupIconFile=\Icons\HORUS.ico
 Compression=lzma
 SolidCompression=yes
-;#section Association
-ChangesAssociations=yes
-;#end_section Association
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
