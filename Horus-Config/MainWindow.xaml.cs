@@ -37,6 +37,8 @@ namespace Horus_Config
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            this.Hide();
+
             //Check if Initial Install
             if (App.INSTALLATION)
             {
@@ -54,6 +56,8 @@ namespace Horus_Config
 
             //Google Drive Authorisation
             CheckGoogleDriveAccess();
+
+            this.Show();
         }
 
         private bool CheckGoogleDriveAccess()
