@@ -19,7 +19,6 @@ namespace Horus_Config
         {
             try
             {
-                //TODO: Further Testing Required
                 //Configure SMTP
                 SmtpClient client = new SmtpClient(EMAIL_SERVER, EMAIL_PORT);
                 client.UseDefaultCredentials = false;
@@ -32,7 +31,7 @@ namespace Horus_Config
                 string body = "";
                 body += "Hello New User! <br/>";
                 body += "Download our Android App from the link below so you can have quick and easy access to review any unauthorised access attempts at your pc. <br/> <br/>";
-                body += "<a href='https://drive.google.com/file/d/0B-hJtziIY0dlYk43WDdqY3NxZ1U/view?usp=sharing'>Download Link</a> <br/> <br/>";
+                body += "<a href='" + App.ANDROID_APK + "'>Download Link</a> <br/> <br/>";
                 body += "Best Regards <br/>";
                 body += "HORUS Security Team";
 

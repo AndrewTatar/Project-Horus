@@ -2,6 +2,7 @@
 using Microsoft.ProjectOxford.Face.Contract;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -36,6 +37,15 @@ namespace Horus_Config
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            //Check if Initial Install
+            if (App.INSTALLATION)
+            {
+                //Initial Application Install Configuration
+                //Email User Link to Android APK
+                if (App.EMAIL_ADDRESS != "")
+                    Emailing.EmailNewUser(App.EMAIL_ADDRESS);
+            }
+
             //Load Settings from File
             LoadSettingsFile();
 
@@ -363,6 +373,12 @@ namespace Horus_Config
                 var timer = sender as DispatcherTimer;
                 timer.Stop();
             }
+        }
+
+        private void bAndroidAPK_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(App.ANDROID_APK));
+            e.Handled = true;
         }
     }
 }

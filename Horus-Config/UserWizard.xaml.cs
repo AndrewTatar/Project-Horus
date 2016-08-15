@@ -463,6 +463,7 @@ namespace Horus_Config
                 {
                     await MainWindow.faceServiceClient.DeletePersonAsync(faceGroupID, person.PersonId);
 
+                    MainWindow.FaceChangesMade = true;
                     this.DialogResult = true;
                     this.Close();
                 }

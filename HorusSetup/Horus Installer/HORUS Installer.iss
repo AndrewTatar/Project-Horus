@@ -14,7 +14,6 @@
 AppId={{27D70D37-A94B-4B3C-B249-E1EDDD0D208D}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
-;AppVerName={#MyAppName} {#MyAppVersion}
 AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
@@ -52,7 +51,7 @@ Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 #include "it_download.iss"; 
 
 [Run]
-Filename: "{app}\Horus-Config.exe"; Parameters: "{code:GetUserData}"; WorkingDir: "{app}"; Flags: postinstall runascurrentuser shellexec; Description: "Start Configuration"
+Filename: "{app}\Horus-Config.exe"; Parameters: "{code:GetUserData}"; WorkingDir: "{app}"; Flags: postinstall runascurrentuser shellexec nowait hidewizard; Description: "Start Configuration"
 
 [Dirs]
 Name: {app}; Permissions: users-full
@@ -70,7 +69,7 @@ begin
   itd_downloadafter(wpReady);
   Page := CreateInputQueryPage(wpWelcome,
   'Personal Information (Required)', 'Who are you?',
-  'Please specify your Name and your Email Address, then click Next.' + #13#10 + #13#10 + 'After the installation we will use your email addres to email you our Android application.');
+  'Please specify your Name and your Email Address, then click Next.' + #13#10 + #13#10 + 'After the installation is completed we email you our Android App.');
   // Add items (False means it's not a password edit)
   Page.Add('Name:', False);
   Page.Add('Email:', False);
@@ -92,7 +91,7 @@ end;
 
 function GetUserData(Value: string): string;
 begin
-Result := '-install "email:' + Page.Values[1] + '"';
+  Result := '-install "email:' + Page.Values[1] + '"';
 end;
 
 function IsDotNetDetected_da7caa4c_5c42_47d9_88e0_a8c0ed5e1b76(version: string; service: cardinal): boolean;
@@ -115,6 +114,7 @@ var
     key: string;
     install, release, serviceCount: cardinal;
     check45, check451, success: boolean;
+
 begin
     version := 'v' + version;
     // .NET 4.5 installs as update to .NET 4.0 Full
@@ -124,7 +124,7 @@ begin
     end else
         check45 := false;
 
-	// .NET 4.5.1 installs as update to .NET 4.0 Full
+    // .NET 4.5.1 installs as update to .NET 4.0 Full
     if version = 'v4.5.1' then begin
         version := 'v4\Full';
         check451 := true;
@@ -154,14 +154,13 @@ begin
         success := success and (release >= 378389);
     end;
 	
-	// .NET 4.5.1 uses additional value Release
+    // .NET 4.5.1 uses additional value Release
     if check451 then begin
         success := success and RegQueryDWordValue(HKLM, key, 'Release', release);
         success := success and (release >= 378675);
     end;
 
     result := success and (install = 1) and (serviceCount >= service);
-
 end;
 
 function InitializeSetup(): Boolean;
@@ -183,7 +182,6 @@ end;
 procedure CurStepChanged(CurStep: TSetupStep);
 var
     ErrCode: integer;
-    UserName, UserEmail: String;
 
 begin
     if (CurStep = ssPostInstall) then
@@ -203,6 +201,12 @@ begin
         
         WizardForm.StatusLabel.Caption := '';
       end;
+end;
+
+procedure CurPageChanged(CurPageID: Integer);
+begin
+  if CurPageID = wpFinished then
+    WizardForm.RunList.Visible := False;
 end;
 
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);

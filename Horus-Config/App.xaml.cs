@@ -15,6 +15,8 @@ namespace Horus_Config
     public partial class App : Application
     {
         public static bool INSTALLATION = false;
+        public static string EMAIL_ADDRESS = "";
+        public static string ANDROID_APK = "https://drive.google.com/file/d/0B-hJtziIY0dlYk43WDdqY3NxZ1U/view?usp=sharing";
 
         public static void WriteMessage(string message)
         {
@@ -23,8 +25,6 @@ namespace Horus_Config
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            string email = "";
-
             if (e.Args.Count() > 0)
             {
                 foreach(var a in e.Args)
@@ -47,20 +47,11 @@ namespace Horus_Config
                         switch (header.ToLower())
                         {
                             case "email":
-                                email = a.Substring(a.IndexOf(":") + 1);
+                                EMAIL_ADDRESS = a.Substring(a.IndexOf(":") + 1);
                                 break;
                         }
                     }
                 }
-            }
-
-            if (INSTALLATION)
-            {
-                //Initial Application Install Configuration
-
-                //Email User Link to Android APK
-                if (email != "")
-                    Emailing.EmailNewUser(email);
             }
         }
     }
