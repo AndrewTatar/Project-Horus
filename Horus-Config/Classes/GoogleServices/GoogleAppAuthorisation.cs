@@ -23,9 +23,14 @@ namespace Horus_Config
         private static UserCredential credential;
         public static DriveService _service { get; private set; }
         
-        public static void BuildCredentails(string storageDirectory)
+        public static async void BuildCredentails(string storageDirectory)
         {
-            credential = GoogleWebAuthorizationBroker.AuthorizeAsync(new ClientSecrets { ClientId = "616661645851-meq5cd830t5kbe98lko4vdcn5mukb9mp.apps.googleusercontent.com", ClientSecret = "1cPabJvr4I8KnSP5oLqhseR0" }, new[] { DriveService.Scope.DriveFile }, "user", CancellationToken.None, new FileDataStore(storageDirectory, true)).Result;
+            ClientSecrets cs = new ClientSecrets { ClientId = "616661645851-meq5cd830t5kbe98lko4vdcn5mukb9mp.apps.googleusercontent.com", ClientSecret = "1cPabJvr4I8KnSP5oLqhseR0" };
+            string[] scope = new string[] { DriveService.Scope.DriveFile };
+
+            var creds = await GoogleWebAuthorizationBroker.AuthorizeAsync(cs, scope, "user", CancellationToken.None, new FileDataStore(storageDirectory, true));
+
+            credential = creds;
         }
 
         public static async void AuthoriseUser()

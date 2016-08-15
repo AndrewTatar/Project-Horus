@@ -282,7 +282,7 @@ namespace Horus_Config
 
         private async void bSave_Click(object sender, RoutedEventArgs e)
         {
-            Loading l = new Loading();
+            Loading l = new Loading { Owner = this };
             l.lMessage.Content = "Saving...";
             l.Show();
 
@@ -299,15 +299,23 @@ namespace Horus_Config
                         //Add Faces to Person
                         foreach (var f in imageFiles)
                         {
-                            using (Stream imgFile = File.OpenRead(f))
+                            try
                             {
-                                var addFace = await MainWindow.faceServiceClient.AddPersonFaceAsync(faceGroupID, newPerson.PersonId, imgFile);
-                                if (addFace != null)
+                                using (Stream imgFile = File.OpenRead(f))
                                 {
-                                    //Process completed
-                                    //Rename image file
-                                    File.Move(f, @"Faces\" + addFace.PersistedFaceId.ToString() + ".jpg");
+                                    var addFace = await MainWindow.faceServiceClient.AddPersonFaceAsync(faceGroupID, person.PersonId, imgFile);
+                                    if (addFace != null)
+                                    {
+                                        //Process completed
+                                        //Rename image file
+                                        File.Move(f, @"Faces\" + addFace.PersistedFaceId.ToString() + ".jpg");
+                                    }
                                 }
+
+                            }
+                            catch (Exception)
+                            {
+                                //Skip Image and move on
                             }
                         }
 
@@ -334,15 +342,23 @@ namespace Horus_Config
                         //Update Images
                         foreach (var f in imageFiles)
                         {
-                            using (Stream imgFile = File.OpenRead(f))
+                            try
                             {
-                                var addFace = await MainWindow.faceServiceClient.AddPersonFaceAsync(faceGroupID, person.PersonId, imgFile);
-                                if (addFace != null)
+                                using (Stream imgFile = File.OpenRead(f))
                                 {
-                                    //Process completed
-                                    //Rename image file
-                                    File.Move(f, @"Faces\" + addFace.PersistedFaceId.ToString() + ".jpg");
+                                    var addFace = await MainWindow.faceServiceClient.AddPersonFaceAsync(faceGroupID, person.PersonId, imgFile);
+                                    if (addFace != null)
+                                    {
+                                        //Process completed
+                                        //Rename image file
+                                        File.Move(f, @"Faces\" + addFace.PersistedFaceId.ToString() + ".jpg");
+                                    }
                                 }
+
+                            }
+                            catch (Exception)
+                            {
+
                             }
                         }
 
@@ -361,7 +377,7 @@ namespace Horus_Config
             l.loaded = true;
         }
 
-        private bool OpenWebcam()
+        private bool OpenWebcam(int source = 0)
         {
             try
             {
@@ -374,11 +390,15 @@ namespace Horus_Config
                 }
 
                 webCamCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-                webCam = new VideoCaptureDevice(webCamCollection[0].MonikerString);
+
+                //HACK: FOR RECORDING PURPOSE ONLY
+                if (webCamCollection.Count > 1)
+                    source = 1;
+
+                webCam = new VideoCaptureDevice(webCamCollection[source].MonikerString);
                 webCam.NewFrame += WebCam_NewFrame;
-
                 webCam.Start();
-
+                                
                 return true;
             }
             catch (Exception)

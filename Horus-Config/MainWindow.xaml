@@ -47,6 +47,16 @@
 
             <Label Content="Message:" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" Margin="15,0,0,0"/>
             <TextBox x:Name="eMessage" Grid.Column="1" HorizontalAlignment="Stretch" Height="23" Grid.Row="3" TextWrapping="NoWrap" Text="" VerticalAlignment="Center"/>
+
+            <Label Content="Google Drive Authorisation:" HorizontalAlignment="Left" Grid.Row="5" VerticalAlignment="Center" Margin="0,0,0,0"/>
+            <Button x:Name="bGoogleDrive" Grid.Row="5" Grid.Column="1" Margin="10" Background="White" Click="bGoogleDrive_Click">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Image x:Name="gIcon" Source="cross-icon.png" Width="25"/>
+                        <Label x:Name="gLabel" Content="Not Allowed" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    </StackPanel>                    
+                </Button.Content>
+            </Button>
         </Grid>
 
         <Grid Grid.Column="0" Margin="5">

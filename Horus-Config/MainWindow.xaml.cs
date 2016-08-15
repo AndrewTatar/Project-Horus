@@ -6,6 +6,8 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 using System.Xml;
 
 namespace Horus_Config
@@ -34,23 +36,58 @@ namespace Horus_Config
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            //Load Settings from File
             LoadSettingsFile();
 
             //Google Drive Authorisation
-            string storageDirectory = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Credentials");
-            bool RequireAuthorisation = false;
+            CheckGoogleDriveAccess();
+        }
 
-            if (!Directory.Exists(storageDirectory))
-                RequireAuthorisation = true;
-            else
-                if (Directory.EnumerateFiles(storageDirectory).Count() == 0)
+        private bool CheckGoogleDriveAccess()
+        {
+            try
+            {
+                //Google Drive Authorisation
+                string storageDirectory = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Credentials");
+                bool RequireAuthorisation = false;
+
+                if (!Directory.Exists(storageDirectory))
+                    RequireAuthorisation = true;
+                else
+                    if (Directory.EnumerateFiles(storageDirectory).Count() == 0)
                     RequireAuthorisation = true;
 
-            if (RequireAuthorisation)
-            {
-                GoogleAppAuthorisation.BuildCredentails(storageDirectory);
-                GoogleAppAuthorisation.AuthoriseUser();
+                if (RequireAuthorisation)
+                {
+                    var bmp = new BitmapImage();
+                    bmp.BeginInit();
+                    bmp.UriSource = new Uri(@"/Horus-Config;component/cross-icon.png", UriKind.RelativeOrAbsolute);
+                    bmp.EndInit();
+
+                    gIcon.Source = bmp;
+
+                    gLabel.Content = "Not Allowed";
+                    return false;
+                }
+                else
+                {
+                    var bmp = new BitmapImage();
+                    bmp.BeginInit();
+                    bmp.UriSource = new Uri(@"/Horus-Config;component/check-icon.png", UriKind.RelativeOrAbsolute);
+                    bmp.EndInit();
+
+                    gIcon.Source = bmp;
+
+                    gLabel.Content = "Allowed";
+
+                    return true;
+                }
             }
+            catch (Exception)
+            {
+
+            }
+            return false;
         }
 
         private async void LoadSettingsFile()
@@ -294,6 +331,37 @@ namespace Horus_Config
                     //Refresh User List
                     LoadAllowedUsers();
                 }
+            }
+        }
+
+        private void bGoogleDrive_Click(object sender, RoutedEventArgs e)
+        {
+            if (gLabel.Content.ToString() != "Allowed")
+            {
+                //Show Dialog for Log into your Google Account
+                GoogleDriveAuth gd = new GoogleDriveAuth { Owner = this };
+                gd.Show();
+
+                //Start monitoring timer
+                DispatcherTimer timer = new DispatcherTimer();
+                timer.Interval = TimeSpan.FromSeconds(1);
+                timer.Tick += Timer_Tick;
+                timer.Start();
+
+                //Start the Authorisation Request
+                string storageDirectory = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Credentials");
+
+                GoogleAppAuthorisation.BuildCredentails(storageDirectory);
+                GoogleAppAuthorisation.AuthoriseUser();
+            }            
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            if (CheckGoogleDriveAccess())
+            {
+                var timer = sender as DispatcherTimer;
+                timer.Stop();
             }
         }
     }

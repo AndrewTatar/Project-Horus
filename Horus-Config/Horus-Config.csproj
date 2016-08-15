@@ -139,6 +139,9 @@
     </ApplicationDefinition>
     <Compile Include="Classes\Emailing.cs" />
     <Compile Include="Classes\GoogleServices\GoogleAppAuthorisation.cs" />
+    <Compile Include="GoogleDriveAuth.xaml.cs">
+      <DependentUpon>GoogleDriveAuth.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Loading.xaml.cs">
       <DependentUpon>Loading.xaml</DependentUpon>
     </Compile>
@@ -148,6 +151,10 @@
     <Compile Include="UserWizard.xaml.cs">
       <DependentUpon>UserWizard.xaml</DependentUpon>
     </Compile>
+    <Page Include="GoogleDriveAuth.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -203,6 +210,8 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="HORUS.ico" />
+    <Resource Include="check-icon.png" />
+    <Resource Include="cross-icon.png" />
     <Content Include="Settings.xml" />
   </ItemGroup>
   <ItemGroup />
