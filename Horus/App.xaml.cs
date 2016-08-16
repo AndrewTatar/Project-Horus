@@ -32,6 +32,9 @@ namespace Horus
         //Communications
         public static AbstractSMSService smsClient;
 
+        //Events
+        public static event EventHandler ShowCameraFeed;
+
         private async void Application_Startup(object sender, StartupEventArgs e)
         {
             bool displayScreensaver = false;
@@ -191,7 +194,7 @@ namespace Horus
                         window.Top = s.WorkingArea.Top;
                         window.Width = s.WorkingArea.Width;
                         window.Height = s.WorkingArea.Height;
-                        window.Show();
+                        //window.Show();
                     }
                     else
                     {
@@ -293,6 +296,7 @@ namespace Horus
                             }
                             else
                             {
+                                username = "N/C";
                                 App.WriteMessage("User Verification Failed - Confidence: " + candidate.Confidence);
                             }                            
                         }
@@ -309,6 +313,20 @@ namespace Horus
             catch (Exception)
             {
                 return "";
+            }
+        }
+
+        public static void ShowCamera()
+        {
+            try
+            {
+                EventHandler handler = ShowCameraFeed;
+                if (handler != null)
+                    handler(null, EventArgs.Empty);
+            }
+            catch (Exception)
+            {
+
             }
         }
     }

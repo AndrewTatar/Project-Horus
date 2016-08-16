@@ -1,31 +1,19 @@
-﻿using AForge.Video; 
+﻿using AForge.Video;
 using AForge.Video.DirectShow;
-using Accord.Vision.Detection;
-using Accord.Vision.Detection.Cascades;
 using AForge.Imaging.Filters;
-using AForge.Vision.Motion;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Rectangle = System.Drawing.Rectangle;
-using System.Windows.Threading;
 using Horus.Classes;
 using System.Drawing.Imaging;
 using System.IO;
-using Microsoft.ProjectOxford.Face;
 using Microsoft.ProjectOxford.Face.Contract;
+using System.Windows.Media.Imaging;
+using System.Threading;
 
 namespace Horus
 {
@@ -36,8 +24,6 @@ namespace Horus
     {
         //Webcam Variables
         private VideoCaptureDevice videoCaptureDevice;      //Create an Instance for VideoCaptureDevice
-        private HaarObjectDetector haarObjectDetector;      //Create an Instance for Haar Object
-        private HaarCascade cascade;
 
         //Image Processing Variablse
         private bool cameraOnline = false;
@@ -52,10 +38,21 @@ namespace Horus
             this.Loaded += MainWindow_Loaded;
             this.Closing += MainWindow_Closing;
 
-            if (App.facialCheckDisabled)
+            this.MouseDown += MainWindow_MouseDown;
+            this.KeyUp += MainWindow_KeyUp;
+
+            App.ShowCameraFeed += App_ShowCameraFeed;
+        }
+
+        private void App_ShowCameraFeed(object sender, EventArgs e)
+        {
+            //Show Camera Feed Window
+            if (cameraWindow.Visibility != Visibility.Visible)
             {
-                this.MouseDown += MainWindow_MouseDown;
-                this.KeyUp += MainWindow_KeyUp;
+                cameraWindow.Visibility = Visibility.Visible;
+
+                //Give a 2 second delay before taking a snapshot
+                lastCheck = DateTime.Now.AddSeconds(-8);
             }
         }
 
@@ -81,12 +78,6 @@ namespace Horus
 
             if (!App.facialCheckDisabled)
             {
-                //Configure Webcam
-                cascade = new FaceHaarCascade();
-                haarObjectDetector = new HaarObjectDetector(cascade,
-                    25, ObjectDetectorSearchMode.Single, 1.2f,
-                    ObjectDetectorScalingMode.SmallerToGreater);
-
                 //Connect to Camera
                 OpenVideoSource();
             }
@@ -105,25 +96,63 @@ namespace Horus
 
         private void MainWindow_KeyUp(object sender, KeyEventArgs e)
         {
-            App.CloseApplication = true;
-            App.RequestClose();
+            if (App.facialCheckDisabled)
+            {
+                App.CloseApplication = true;
+                App.RequestClose();
+            }
+            else
+            {
+                //HACK: Override Application Close Flag
+                if (e.Key == Key.F3)
+                {
+                    App.CloseApplication = true;
+                }
+
+                App.ShowCamera();
+            }
+        }
+        
+        private void MainWindow_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (App.facialCheckDisabled)
+            {
+                App.CloseApplication = true;
+                App.RequestClose();
+            }
+            else
+            {
+                App.ShowCamera();
+            }
         }
 
         private void MainWindow_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            App.CloseApplication = true;
-            App.RequestClose();
+            if (App.facialCheckDisabled)
+            {
+                App.CloseApplication = true;
+                App.RequestClose();
+            }
+            else
+            {
+                App.ShowCamera();
+            }
         }
         
         //Open the video source
-        private void OpenVideoSource()
+        private void OpenVideoSource(int source = 0)
         {
             try
             {
-                //gets the first webcam available
-                videoCaptureDevice = new VideoCaptureDevice(new FilterInfoCollection(FilterCategory.VideoInputDevice)[0].MonikerString);
+                //Get a list of video input devices
+                FilterInfoCollection info = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+
+                //HACK: FOR RECORDING PURPOSE ONLY
+                if (info.Count > 1)
+                    source = 1;
 
                 //Start Capture of Video Device
+                videoCaptureDevice = new VideoCaptureDevice(info[source].MonikerString);
                 videoCaptureDevice.NewFrame += new NewFrameEventHandler(nextFrame);
                 videoCaptureDevice.Start();
 
@@ -159,29 +188,47 @@ namespace Horus
         /// <summary>getFrame from the videosource</summary>
         private void nextFrame(object sender, NewFrameEventArgs eventArgs)
         {
-            // get new frame
+            //Get New Frame
             Bitmap bitmap = eventArgs.Frame;
             Bitmap lastFrame = (Bitmap) bitmap.Clone();
+
+            //Update Preview Window
+            MemoryStream ms = new MemoryStream();
+            bitmap.Save(ms, ImageFormat.Bmp);
+            ms.Seek(0, SeekOrigin.Begin);
+            BitmapImage bi = new BitmapImage();
+            bi.BeginInit();
+            bi.StreamSource = ms;
+            bi.EndInit();
+            bi.Freeze();
             
-            //Don't check more than every 10 seconds
-            if (DateTime.Now.Subtract(lastCheck).TotalSeconds > 10)
+            Dispatcher.BeginInvoke(new Action(() => {
+                cameraPreview.Source = bi;
+            }));
+
+            //Camera window needs to be visible
+            if (this.cameraWindow.Visibility != Visibility.Collapsed)
             {
-                //Only continue if there is no processing happening in the background
-                if (!working)
+                //Don't check more than every 10 seconds
+                if (DateTime.Now.Subtract(lastCheck).TotalSeconds > 10)
                 {
-                    //We can now process a frame
-                    //Set flags
-                    lastCheck = DateTime.Now;
-                    working = true;
+                    //Only continue if there is no processing happening in the background
+                    if (!working)
+                    {
+                        //We can now process a frame
+                        //Set flags
+                        lastCheck = DateTime.Now;
+                        working = true;
 
-                    //Resize Frame
-                    ResizeBicubic resize = new ResizeBicubic(lastFrame.Width / 2, lastFrame.Height / 2);
-                    Bitmap resized = resize.Apply(lastFrame);
+                        //Resize Frame
+                        ResizeBicubic resize = new ResizeBicubic(lastFrame.Width / 2, lastFrame.Height / 2);
+                        Bitmap resized = resize.Apply(lastFrame);
 
-                    //Process image
-                    processImage(resized);
+                        //Process image
+                        processImage(resized);
+                    }
                 }
-            }
+            }            
         }
 
         /// <summary></summary>
@@ -259,6 +306,8 @@ namespace Horus
                             //Display Verification Failed Message
                             Application.Current.Dispatcher.Invoke(new Action(() =>
                             {
+                                this.cameraWindow.Visibility = Visibility.Collapsed;
+
                                 MessageWindow msg = new MessageWindow { Owner = this, state = 0 };
                                 msg.ShowDialog();
                             }));
@@ -268,20 +317,50 @@ namespace Horus
                             //Delete Image - No Need to keep saved image of verified
                             File.Delete(imagePath);
 
-                            //Unlock Screensaver
-                            Application.Current.Dispatcher.Invoke(new Action(() =>
+                            //Check if we could verify, but not confident enough
+                            if (username != "N/C")
                             {
-                                MessageWindow msg = new MessageWindow { Owner = this, state = 1, username = username };
-                                msg.ShowDialog();
+                                //Unlock Screensaver
+                                Application.Current.Dispatcher.Invoke(new Action(() =>
+                                {
+                                    this.cameraWindow.Visibility = Visibility.Collapsed;
 
-                                App.CloseApplication = true;
-                                this.Close();
-                            }));
+                                    MessageWindow msg = new MessageWindow { Owner = this, state = 1, username = username };
+                                    msg.ShowDialog();
+
+                                    App.CloseApplication = true;
+                                    this.Close();
+                                }));
+                            }
+                            else
+                            {
+                                //Verified, just not confidence
+                                //Display Verification Failed Message
+                                Application.Current.Dispatcher.Invoke(new Action(() =>
+                                {
+                                    this.cameraWindow.Visibility = Visibility.Collapsed;
+
+                                    MessageWindow msg = new MessageWindow { Owner = this, state = 2 };
+                                    msg.ShowDialog();
+
+                                    //Keep Window Open for re-verification
+                                    this.cameraWindow.Visibility = Visibility.Visible;
+                                }));
+                            }
+                            
                         }
                         else
                         {
                             //Delete Image - No Need to keep saved image of nothing
                             File.Delete(imagePath);
+
+                            //No Faces Detected
+                            Application.Current.Dispatcher.Invoke(new Action(() =>
+                            {
+                                cameraLabel.Content = "Verifying User";
+
+                                this.cameraWindow.Visibility = Visibility.Collapsed;
+                            }));
                         }
 
                         working = false;                       

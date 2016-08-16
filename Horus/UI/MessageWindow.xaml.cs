@@ -42,13 +42,18 @@ namespace Horus
         {
             if (state == 0)
             {
-                this.BorderBrush = new SolidColorBrush(Colors.Red);
+                this.border.BorderBrush = new SolidColorBrush(Colors.Red);
                 lMessage.Content = "ACCESS DENIED!";
             }
             else if (state == 1)
             {
-                this.BorderBrush = new SolidColorBrush(Colors.LightGreen);
+                this.border.BorderBrush = new SolidColorBrush(Colors.LightGreen);
                 lMessage.Content = "Hello " +  username + "!";
+            }
+            else if (state == 2)
+            {
+                this.border.BorderBrush = new SolidColorBrush(Colors.Orange);
+                lMessage.Content = "Please Try Again!";
             }
 
             timer.Start();

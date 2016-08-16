@@ -24,24 +24,53 @@ namespace Horus
             InitializeComponent();
 
             this.Loaded += Blank_Loaded;
+            this.MouseDown += Blank_MouseDown;
+            this.KeyUp += Blank_KeyUp;
+        }
 
+        private void Blank_MouseMove(object sender, MouseEventArgs e)
+        {
             if (App.facialCheckDisabled)
             {
-                this.MouseDown += Blank_MouseDown;
-                this.KeyUp += Blank_KeyUp;
+                App.CloseApplication = true;
+                App.RequestClose();
+            }
+            else
+            {
+                App.ShowCamera();
             }
         }
 
         private void Blank_KeyUp(object sender, KeyEventArgs e)
         {
-            App.CloseApplication = true;
-            App.RequestClose();
+            if (App.facialCheckDisabled)
+            {
+                App.CloseApplication = true;
+                App.RequestClose();
+            }
+            else
+            {
+                //HACK: Override Application Close Flag
+                if (e.Key == Key.F3)
+                {
+                    App.CloseApplication = true;
+                }
+
+                App.ShowCamera();
+            }
         }
 
         private void Blank_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            App.CloseApplication = true;
-            App.RequestClose();
+            if (App.facialCheckDisabled)
+            {
+                App.CloseApplication = true;
+                App.RequestClose();
+            }
+            else
+            {
+                App.ShowCamera();
+            }
         }
 
         private void Blank_Loaded(object sender, RoutedEventArgs e)

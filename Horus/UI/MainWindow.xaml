@@ -8,5 +8,19 @@
         Title="" Background="Black" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="None" Topmost="True">
     <Grid x:Name="MainGrid">
         <MediaElement x:Name="mediaPlayer" LoadedBehavior="Play" Stretch="UniformToFill" MediaEnded="MediaElement_MediaEnded" UnloadedBehavior="Manual"/>
+
+        <Border x:Name="cameraWindow" Visibility="Collapsed" BorderThickness="2" BorderBrush="White" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Black">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Image x:Name="cameraPreview" Width="480" Height="360"/>
+
+                <Label x:Name="cameraLabel" Content="Verifying User" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Foreground="White" Margin="0,0,0,5"/>
+                <ProgressBar Grid.Row="1" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" IsIndeterminate="True"/>
+            </Grid>            
+        </Border>
     </Grid>
 </Window>

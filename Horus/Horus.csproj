@@ -174,7 +174,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MessageWindow.xaml">
+    <Page Include="UI\MessageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -196,7 +196,7 @@
     <Compile Include="Classes\SMSServices\SMSService.cs" />
     <Compile Include="Classes\SMSServices\TelstraSMSService.cs" />
     <Compile Include="Classes\SMSServices\VodafoneSMSService.cs" />
-    <Compile Include="MessageWindow.xaml.cs">
+    <Compile Include="UI\MessageWindow.xaml.cs">
       <DependentUpon>MessageWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Service References\OptusWebServiceReference\Reference.cs">
@@ -327,6 +327,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Resource Include="HORUS.ico" />
+    <Resource Include="Border2.png" />
     <Content Include="Horus.wmv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
