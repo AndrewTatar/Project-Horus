@@ -24,6 +24,7 @@ namespace Horus
             InitializeComponent();
 
             this.Loaded += Blank_Loaded;
+            //this.MouseMove += Blank_MouseMove;
             this.MouseDown += Blank_MouseDown;
             this.KeyUp += Blank_KeyUp;
         }

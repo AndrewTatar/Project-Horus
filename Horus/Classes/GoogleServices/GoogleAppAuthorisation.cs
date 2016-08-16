@@ -32,33 +32,42 @@ namespace Horus.Classes
         /// </summary>
         public static async Task AuthorizeAndUpload(Byte[] byteArray, string title)
         {
-
-            MemoryStream stream = new MemoryStream(byteArray);
-
-            // First, create a reference to the Drive service.
-            // The CreateAuthenticator method is passed to the service which will use that when it is time to authenticate
-            // the calls going to the service.
-            AuthoriseUser();
-            
-            await setFolder(_service, _service.ApplicationName);
-            
-            // Create metaData for a new file
-            File body = new File();
-            body.Title = title;
-            body.Description = App.currentIP;
-            body.MimeType = "image/png";
-
-            // Set the parent folder.
-            body.Parents = new List<ParentReference>() { new ParentReference() { Id = snapshotsFolder.Id } };
-
             try
             {
-                FilesResource.InsertMediaUpload request = _service.Files.Insert(body, stream, body.MimeType);
-                request.Upload();
+                MemoryStream stream = new MemoryStream(byteArray);
+
+                // First, create a reference to the Drive service.
+                // The CreateAuthenticator method is passed to the service which will use that when it is time to authenticate
+                // the calls going to the service.
+                if (credential != null)
+                {
+                    AuthoriseUser();
+
+                    await setFolder(_service, _service.ApplicationName);
+
+                    // Create metaData for a new file
+                    File body = new File();
+                    body.Title = title;
+                    body.Description = App.currentIP;
+                    body.MimeType = "image/png";
+
+                    // Set the parent folder.
+                    body.Parents = new List<ParentReference>() { new ParentReference() { Id = snapshotsFolder.Id } };
+
+                    try
+                    {
+                        FilesResource.InsertMediaUpload request = _service.Files.Insert(body, stream, body.MimeType);
+                        request.Upload();
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+                }
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
+
             }
         }
 

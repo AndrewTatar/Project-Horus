@@ -37,7 +37,7 @@
             <ComboBox x:Name="eServiceProvider" Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Center">
                 <ComboBox.Items>
                     <ComboBoxItem Content="Telstra" IsSelected="True"/>
-                    <ComboBoxItem Content="Optus"/>
+                    <ComboBoxItem Content="Optus" IsEnabled="False"/>
                     <ComboBoxItem Content="Vodafone" IsEnabled="False"/>
                 </ComboBox.Items>
             </ComboBox>

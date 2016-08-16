@@ -28,6 +28,8 @@ namespace Horus_Config
         string faceGroupID = "";
         List<Person> allowedPeople = new List<Person>();
 
+        private bool noMessage = false;
+
         public static bool FaceChangesMade = false;
 
         public MainWindow()
@@ -201,6 +203,8 @@ namespace Horus_Config
                     //Generate new FaceGroupID
                     GenerateFaceGroupID();
 
+                    //Save to file with default values
+                    noMessage = true;
                     bSave_Click(bSave, new RoutedEventArgs());
                 }
 
@@ -212,6 +216,7 @@ namespace Horus_Config
                 GenerateFaceGroupID();
 
                 //Save to file with default values
+                noMessage = true;
                 bSave_Click(bSave, new RoutedEventArgs());
             }
 
@@ -294,7 +299,8 @@ namespace Horus_Config
                     s.ShowDialog();
                 }                
 
-                MessageBox.Show("Settings Saved!", "HORUS Configuration");
+                if (!noMessage)
+                    MessageBox.Show("Settings Saved!", "HORUS Configuration");
             }
             catch (Exception)
             {
@@ -328,6 +334,9 @@ namespace Horus_Config
                     {
                         //Refresh User List
                         LoadAllowedUsers();
+
+                        if (FaceChangesMade)
+                            bSave_Click(bSave, new RoutedEventArgs());
                     }
                 }
             }
@@ -347,6 +356,9 @@ namespace Horus_Config
                 {
                     //Refresh User List
                     LoadAllowedUsers();
+
+                    if (FaceChangesMade)
+                        bSave_Click(bSave, new RoutedEventArgs());
                 }
             }
         }

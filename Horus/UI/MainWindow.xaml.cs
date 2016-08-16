@@ -37,7 +37,7 @@ namespace Horus
 
             this.Loaded += MainWindow_Loaded;
             this.Closing += MainWindow_Closing;
-
+            //this.MouseMove += MainWindow_MouseMove;
             this.MouseDown += MainWindow_MouseDown;
             this.KeyUp += MainWindow_KeyUp;
 
@@ -289,10 +289,14 @@ namespace Horus
                             {
                                 //Upload Photo to Google Drive
                                 byte[] byteArray = File.ReadAllBytes(System.IO.Path.Combine(App.imageSavePath, photoName));
-
-                                await GoogleAppAuthorisation.AuthorizeAndUpload(byteArray, photoName);
-                                App.WriteMessage("Photo Uploaded to Drive");
-
+                                
+                                //Make Sure I have Google Drive configured
+                                if (App.AllowGoogleDrive)
+                                {
+                                    await GoogleAppAuthorisation.AuthorizeAndUpload(byteArray, photoName);
+                                    App.WriteMessage("Photo Uploaded to Drive");
+                                }
+                                
                                 //Send Notification
                                 if (App.smsClient != null)
                                 {

@@ -9,8 +9,8 @@
         AllowsTransparency="True"
         Title="MessageWindow" Height="150" Width="601" WindowStyle="None" ResizeMode="NoResize" Topmost="True" WindowStartupLocation="CenterOwner" Loaded="Window_Loaded">
     <Grid>
-        <Image  Stretch="Fill" Source="/Horus;component/Border2.png" />
-        <Border x:Name="border" Background="Black" Margin="17,10,16,10" BorderThickness="2" BorderBrush="Red">
+        <Image  Stretch="Fill" Source="/Horus;component/Border2.png" Visibility="Collapsed" />
+        <Border x:Name="border" Background="Black" Margin="11,6,10,6" BorderThickness="2" BorderBrush="Red">
             <Label x:Name="lMessage" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Content="" FontSize="34"/>
         </Border>
     </Grid>

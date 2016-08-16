@@ -1,6 +1,7 @@
 ﻿using Horus.Classes;
 using Microsoft.ProjectOxford.Face;
 using Microsoft.ProjectOxford.Face.Contract;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -23,7 +24,8 @@ namespace Horus
         public static string imageSavePath = "";
         public static string currentIP = "";
         public static bool CloseApplication = false;
-        
+        public static bool AllowGoogleDrive = false;
+
         //Facial Recognition
         public static readonly IFaceServiceClient faceServiceClient = new FaceServiceClient("00fd2d23618542208915def496e504ea");
         public static string faceGroupID = "";
@@ -157,7 +159,14 @@ namespace Horus
 
                 //Google Drive Authorisation
                 string storageDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Credentials");
-                GoogleAppAuthorisation.BuildCredentails(storageDirectory);
+                if (Directory.Exists(storageDirectory))
+                {
+                    if (Directory.EnumerateFiles(storageDirectory).Count() > 0)
+                        AllowGoogleDrive = true;
+                }
+
+                if (AllowGoogleDrive)
+                    GoogleAppAuthorisation.BuildCredentails(storageDirectory);
 
                 //Get IP Address of System
                 fetchIP();
@@ -169,16 +178,33 @@ namespace Horus
             {
                 facialCheckDisabled = true;
 
+                //No Preview Available
+                
+                //Close this application
+                App.CloseApplication = true;
+                Environment.Exit(0);
             }
             else if (e.Args[0].ToLower().StartsWith("/c"))
             {
-                //Start configuration Tool
-                Process process = new Process();
-                process.StartInfo.FileName = "horus-config.exe";
-                process.StartInfo.WorkingDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                process.Start();
+                RegistryKey key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Horus");
 
+                if (key != null)
+                {
+                    string appPath = (string)key.GetValue("AppPath");
+
+                    if (appPath != null)
+                    {
+                        //Start configuration Tool
+                        Process process = new Process();
+                        process.StartInfo.FileName = "horus-config.exe";
+                        process.StartInfo.UseShellExecute = true;
+                        process.StartInfo.WorkingDirectory = appPath;
+                        process.Start();
+                    }
+                }
+                
                 //Close this application
+                App.CloseApplication = true;
                 Environment.Exit(0);
             }
 
@@ -194,7 +220,7 @@ namespace Horus
                         window.Top = s.WorkingArea.Top;
                         window.Width = s.WorkingArea.Width;
                         window.Height = s.WorkingArea.Height;
-                        //window.Show();
+                        window.Show();
                     }
                     else
                     {

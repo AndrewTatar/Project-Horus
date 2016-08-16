@@ -36,14 +36,15 @@ VersionInfoVersion=1.0
 VersionInfoCompany=Project Horus
 VersionInfoCopyright=Project Hours - RMIT BITS SP2 2016
 VersionInfoProductName=HORUS Desktop Security
-VersionInfoProductVersion=1.1
+VersionInfoProductVersion=1.0
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
 Source: "Files\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "Files\Horus-Config.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "Files\Horus.scr"; DestDir: "{sys}"; Flags: ignoreversion
+Source: "Files\Horus.scr.config"; DestDir: "{sys}"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
@@ -58,6 +59,9 @@ Name: {app}; Permissions: users-full
 Name: "{app}\Credentials"; Permissions: users-full
 Name: "{app}\Faces"; Permissions: users-full
 Name: "{app}\Captures"; Permissions: users-full
+
+[Registry]
+Root: "HKLM"; Subkey: "Software\Horus"; ValueType: string; ValueName: "AppPath"; ValueData: "{app}"; Permissions: users-full
 
 [Code]
 var
@@ -86,7 +90,7 @@ begin
 
   //Set Horus as Screensaver
   RegWriteStringValue(HKEY_CURRENT_USER, 'Control Panel\Desktop',
-    'SCRNSAVE.EXE', ExpandConstant('{app}') + '\Horus.scr');
+    'SCRNSAVE.EXE', ExpandConstant('{sys}') + '\Horus.scr');
 end;
 
 function GetUserData(Value: string): string;
