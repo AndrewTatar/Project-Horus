@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Horus", "Horus\Horus.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Horus-Config", "Horus-Config\Horus-Config.csproj", "{2C2C1A90-EB4E-484C-90D0-8F06B6C42E28}"
 EndProject
-Project("{3B84926E-F739-4306-9FA2-3627D2E8779A}") = "HorusSetup", "HorusSetup\HorusSetup.innoproj", "{197DAB0E-D5D8-4A7C-AA82-88036A66DBC2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Horus-Email", "Horus-Email\Horus-Email.csproj", "{18AC5FC3-0BE4-4B72-AB4D-ADE2E010E06C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Horus-Screensaver", "Horus-Screensaver\Horus-Screensaver.csproj", "{A82AF050-E7BA-4CD4-944C-B5826EB7C117}"
@@ -37,12 +35,6 @@ Global
 		{2C2C1A90-EB4E-484C-90D0-8F06B6C42E28}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2C2C1A90-EB4E-484C-90D0-8F06B6C42E28}.Release|x86.ActiveCfg = Release|Any CPU
 		{2C2C1A90-EB4E-484C-90D0-8F06B6C42E28}.Release|x86.Build.0 = Release|Any CPU
-		{197DAB0E-D5D8-4A7C-AA82-88036A66DBC2}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{197DAB0E-D5D8-4A7C-AA82-88036A66DBC2}.Debug|x86.ActiveCfg = Debug|x86
-		{197DAB0E-D5D8-4A7C-AA82-88036A66DBC2}.Debug|x86.Build.0 = Debug|x86
-		{197DAB0E-D5D8-4A7C-AA82-88036A66DBC2}.Release|Any CPU.ActiveCfg = Release|x86
-		{197DAB0E-D5D8-4A7C-AA82-88036A66DBC2}.Release|x86.ActiveCfg = Release|x86
-		{197DAB0E-D5D8-4A7C-AA82-88036A66DBC2}.Release|x86.Build.0 = Release|x86
 		{18AC5FC3-0BE4-4B72-AB4D-ADE2E010E06C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{18AC5FC3-0BE4-4B72-AB4D-ADE2E010E06C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18AC5FC3-0BE4-4B72-AB4D-ADE2E010E06C}.Debug|x86.ActiveCfg = Debug|Any CPU
