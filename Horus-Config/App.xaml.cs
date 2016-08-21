@@ -16,7 +16,7 @@ namespace Horus_Config
     {
         public static bool INSTALLATION = false;
         public static string EMAIL_ADDRESS = "";
-        public static string ANDROID_APK = "https://drive.google.com/file/d/0B-hJtziIY0dlYk43WDdqY3NxZ1U/view?usp=sharing";
+        public static string ANDROID_APK = "https://drive.google.com/file/d/0BwNzsfhSv3N1WXJhV2pTMkVIQUk/view?usp=sharing";
 
         public static void WriteMessage(string message)
         {
